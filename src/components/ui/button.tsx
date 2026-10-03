@@ -32,9 +32,10 @@ type ButtonProps = {
   href?: string;
   arrow?: boolean;
   children: ReactNode;
-} & Omit<ComponentProps<"button">, "children">;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+} & Omit<ComponentProps<"button">, "children" | "onClick">;
 
-export function Button({ variant = "primary", size = "md", href, arrow, children, className = "", ...props }: ButtonProps) {
+export function Button({ variant = "primary", size = "md", href, arrow, children, className = "", onClick, ...props }: ButtonProps) {
   const cls = `${buttonClasses(variant, size)} ${className}`;
   const content = (
     <>
@@ -46,13 +47,13 @@ export function Button({ variant = "primary", size = "md", href, arrow, children
   );
   if (href) {
     return (
-      <Link href={href} className={cls}>
+      <Link href={href} className={cls} onClick={onClick}>
         {content}
       </Link>
     );
   }
   return (
-    <button className={cls} {...props}>
+    <button className={cls} onClick={onClick} {...props}>
       {content}
     </button>
   );
