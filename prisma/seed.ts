@@ -20,7 +20,13 @@ async function main() {
     create: { email, passwordHash: hashPassword(password), role: "ADMIN" },
   });
 
-  await prisma.donationOffer.createMany({
+  const offerCount = await prisma.donationOffer.count();
+  if (offerCount > 0) {
+    console.log("Offres déjà présentes — seed des offres ignoré");
+  }
+
+  if (offerCount === 0) {
+    await prisma.donationOffer.createMany({
     data: [
       {
         title: "Soutien à un projet professionnel",
@@ -69,7 +75,8 @@ async function main() {
         status: "DRAFT",
       },
     ],
-  });
+    });
+  }
 
   // Paramètres du site
   for (const [key, value] of Object.entries({
