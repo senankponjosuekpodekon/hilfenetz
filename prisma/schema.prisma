@@ -65,6 +65,7 @@ model User {
 model DonationOffer {
   id           String           @id @default(cuid())
   title        String
+  donorName    String?
   description  String
   donorMessage String?
   amount       Decimal          @db.Decimal(12, 2)

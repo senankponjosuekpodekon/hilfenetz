@@ -24,6 +24,7 @@ async function main() {
     data: [
       {
         title: "Soutien à un projet professionnel",
+        donorName: "Laurent D.",
         description:
           "Un donateur souhaite soutenir un projet ou une situation présentant un intérêt professionnel : création d'activité, reconversion, développement d'une compétence.",
         donorMessage:
@@ -36,6 +37,7 @@ async function main() {
       },
       {
         title: "Soutien à une initiative communautaire",
+        donorName: "Marie K.",
         description:
           "Offre destinée aux initiatives à portée collective : association, projet de quartier, action solidaire locale.",
         donorMessage:
@@ -48,6 +50,7 @@ async function main() {
       },
       {
         title: "Soutien à une situation sociale",
+        donorName: "Donateur anonyme",
         description:
           "Un donateur souhaite apporter un soutien ponctuel à une personne traversant une situation difficile.",
         donorMessage:

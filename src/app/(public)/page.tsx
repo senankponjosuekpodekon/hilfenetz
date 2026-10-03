@@ -57,8 +57,9 @@ function Hero() {
                 <Check className="size-3.5" aria-hidden /> Offre examinée
               </span>
             </div>
-            <h2 className="mt-5 text-lg font-semibold text-navy">Soutien à un projet professionnel</h2>
-            <p className="mt-5 text-xs uppercase tracking-wide text-muted">Montant proposé</p>
+            <h2 className="mt-5 text-lg font-semibold text-navy">Un donateur souhaite proposer son soutien</h2>
+            <p className="mt-1.5 text-sm text-muted">Donateur : Laurent D.</p>
+            <p className="mt-5 text-xs uppercase tracking-wide text-muted">Montant du don proposé</p>
             <p className="mt-1 text-4xl font-semibold tracking-tight text-ink">5 000 €</p>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Une opportunité de soutien pour un projet répondant aux critères du donateur.
@@ -157,13 +158,17 @@ async function FeaturedOffer() {
           {offer ? (
             <div className="rounded-3xl border border-border bg-background p-8 md:p-10">
               <Badge tone="navy">Offre de don</Badge>
-              <h3 className="mt-4 text-2xl font-semibold text-navy">{offer.title}</h3>
-              <p className="mt-4 text-5xl font-semibold tracking-tight text-ink">
+              <h3 className="mt-4 text-2xl font-semibold text-navy">
+                Un donateur souhaite proposer son soutien
+              </h3>
+              <p className="mt-2 text-sm text-muted">
+                Donateur : {offer.donorName || "Donateur anonyme"}
+              </p>
+              <p className="mt-4 text-xs uppercase tracking-wide text-muted">Montant du don proposé</p>
+              <p className="mt-1 text-5xl font-semibold tracking-tight text-ink">
                 {formatAmount(Number(offer.amount), offer.currency)}
               </p>
-              <p className="mt-4 text-sm text-muted">
-                Intérêt : Social · Professionnel · Communautaire
-              </p>
+              <p className="mt-4 text-sm text-muted">{offer.title}</p>
               <p className="mt-2 text-xs text-muted">Décision finale : donateur</p>
               <Button href={`/offres/${offer.id}`} className="mt-7" arrow>
                 Voir l&apos;offre

@@ -47,6 +47,7 @@ export const contactSchema = z.object({
 
 export const offerSchema = z.object({
   title: z.string().trim().min(1, "Ce champ est obligatoire.").max(200),
+  donorName: z.string().trim().max(120).optional(),
   description: z.string().trim().min(10, "Décrivez l'offre.").max(5000),
   donorMessage: z.string().trim().max(2000).optional(),
   amount: z.coerce.number().positive("Montant invalide.").max(10_000_000),

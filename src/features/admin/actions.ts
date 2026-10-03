@@ -39,6 +39,7 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
 
   const parsed = offerSchema.safeParse({
     title: formData.get("title"),
+    donorName: formData.get("donorName") || undefined,
     description: formData.get("description"),
     donorMessage: formData.get("donorMessage") || undefined,
     amount: formData.get("amount"),

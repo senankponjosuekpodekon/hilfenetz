@@ -41,25 +41,33 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
         <div className="mt-8">
           <Badge tone="navy">Offre de don</Badge>
           <h1 className="mt-4 text-3xl font-semibold tracking-tight text-navy md:text-4xl">{offer.title}</h1>
-          <div className="mt-5 flex flex-wrap items-center gap-4">
-            <p className="text-4xl font-semibold tracking-tight text-ink">
-              {formatAmount(Number(offer.amount), offer.currency)}
+          <p className="mt-3 text-lg text-muted">Un donateur souhaite proposer son soutien</p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <p className="text-sm text-muted">
+              Donateur : <span className="font-medium text-ink">{offer.donorName || "Donateur anonyme"}</span>
             </p>
             <Badge tone="positive">
               <Check className="size-3.5" aria-hidden />
               Offre actuellement disponible
             </Badge>
           </div>
+          <div className="mt-6 rounded-2xl border border-border bg-surface px-6 py-5">
+            <p className="text-xs uppercase tracking-wide text-muted">Montant du don proposé</p>
+            <p className="mt-1 text-4xl font-semibold tracking-tight text-ink">
+              {formatAmount(Number(offer.amount), offer.currency)}
+            </p>
+          </div>
         </div>
 
         <p className="mt-8 text-base leading-relaxed text-ink/90">{offer.description}</p>
 
-        {offer.donorMessage ? (
-          <blockquote className="mt-8 rounded-2xl border border-border bg-surface p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Message du donateur</p>
-            <p className="mt-3 text-base leading-relaxed text-ink/90">{offer.donorMessage}</p>
-          </blockquote>
-        ) : null}
+        <blockquote className="mt-8 rounded-2xl border-l-4 border-trust bg-surface p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Message du donateur</p>
+          <p className="mt-3 text-base leading-relaxed text-ink/90">
+            {offer.donorMessage ||
+              "Je souhaite proposer un don afin de soutenir une personne, une initiative ou un projet présentant un intérêt social, professionnel ou communautaire. Les personnes intéressées peuvent présenter leur projet ou leur situation au moyen du formulaire prévu à cet effet."}
+          </p>
+        </blockquote>
 
         <dl className="mt-8 divide-y divide-border rounded-2xl border border-border bg-surface">
           {criteria.map((item) => (

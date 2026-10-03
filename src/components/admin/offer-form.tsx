@@ -9,6 +9,7 @@ import { CATEGORY_LABELS, OFFER_STATUS_LABELS } from "@/lib/utils";
 type OfferData = {
   id?: string;
   title: string;
+  donorName: string | null;
   description: string;
   donorMessage: string | null;
   amount: unknown;
@@ -27,6 +28,9 @@ export function OfferForm({ offer }: { offer?: OfferData }) {
       {offer?.id ? <input type="hidden" name="id" value={offer.id} /> : null}
       <Field label="Titre" required error={errors.title?.[0]}>
         <Input name="title" defaultValue={offer?.title} error={!!errors.title} />
+      </Field>
+      <Field label="Donateur" hint="Nom affiché publiquement. Laissez vide pour « Donateur anonyme ».">
+        <Input name="donorName" defaultValue={offer?.donorName ?? ""} placeholder="Ex. : Laurent D." />
       </Field>
       <Field label="Description" required error={errors.description?.[0]}>
         <Textarea name="description" defaultValue={offer?.description} error={!!errors.description} rows={5} />
