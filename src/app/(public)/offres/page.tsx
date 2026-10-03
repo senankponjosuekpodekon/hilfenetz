@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { OfferCard } from "@/components/offers/offer-card";
+import { FilterSheet } from "@/components/offers/filter-sheet";
 
 export const dynamic = "force-dynamic";
 
@@ -82,7 +83,7 @@ export default async function OffersPage({
         </div>
 
         {/* Recherche */}
-        <form action="/offres" method="get" className="mt-10 flex gap-3">
+        <form action="/offres" method="get" className="mt-10 flex flex-col gap-3 sm:flex-row">
           {category !== "all" ? <input type="hidden" name="category" value={category} /> : null}
           {amount !== "all" ? <input type="hidden" name="amount" value={amount} /> : null}
           <div className="relative flex-1">
@@ -98,8 +99,13 @@ export default async function OffersPage({
           <Button type="submit" size="lg">Rechercher</Button>
         </form>
 
-        {/* Filtres */}
-        <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
+        {/* Filtres — bottom sheet sur mobile */}
+        <div className="mt-4 md:hidden">
+          <FilterSheet q={q} category={category} amount={amount} />
+        </div>
+
+        {/* Filtres — pills sur desktop */}
+        <div className="mt-6 hidden flex-wrap items-center gap-x-8 gap-y-4 md:flex">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold uppercase tracking-wide text-muted">Domaine</span>
             {CATEGORIES.map((c) => (
