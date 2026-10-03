@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { FaqAccordion } from "@/components/faq/faq-accordion";
-import { FAQ_ITEMS } from "@/lib/faq-data";
+import { getFaqItems } from "@/lib/content";
 import { formatAmount } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -316,7 +316,8 @@ function AntiFraud() {
   );
 }
 
-function FaqPreview() {
+async function FaqPreview() {
+  const items = await getFaqItems();
   return (
     <section className="py-20 md:py-28">
       <Container className="grid gap-10 lg:grid-cols-[360px_1fr]">
@@ -329,7 +330,7 @@ function FaqPreview() {
             Voir toutes les questions
           </Button>
         </div>
-        <FaqAccordion items={FAQ_ITEMS.slice(0, 5)} />
+        <FaqAccordion items={items.slice(0, 5)} />
       </Container>
     </section>
   );

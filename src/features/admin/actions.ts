@@ -102,3 +102,49 @@ export async function setReportStatus(id: string, status: ReportStatus): Promise
   });
   revalidatePath("/admin/signalements");
 }
+
+export async function saveSettings(_prev: unknown, formData: FormData): Promise<{ status: string }> {
+  await requireAdmin();
+  const entries: [string, string][] = [
+    ["contactEmail", String(formData.get("contactEmail") ?? "").trim()],
+    ["contactPhone", String(formData.get("contactPhone") ?? "").trim()],
+  ];
+  for (const [key, value] of entries) {
+    await db.siteSetting.upsert({ where: { key }, update: { value }, create: { key, value } });
+  }
+  revalidatePath("/contact");
+  revalidatePath("/admin/parametres");
+  return { status: "success" };
+}
+
+export async function saveFaqItem(_prev: unknown, formData: FormData): Promise<{ status: string; errors?: Record<string, string[]> }> {
+  await requireAdmin();
+  const question = String(formData.get("question") ?? "").trim();
+  const answer = String(formData.get("answer") ?? "").trim();
+  const order = Number(formData.get("order") ?? 0);
+  const published = formData.get("published") === "on";
+  const id = String(formData.get("id") ?? "");
+
+  const errors: Record<string, string[]> = {};
+  if (!question) errors.question = ["Ce champ est obligatoire."];
+  if (!answer) errors.answer = ["Ce champ est obligatoire."];
+  if (Object.keys(errors).length > 0) return { status: "error", errors };
+
+  if (id) {
+    await db.faqItem.update({ where: { id }, data: { question, answer, order, published } });
+  } else {
+    await db.faqItem.create({ data: { question, answer, order, published } });
+  }
+  revalidatePath("/faq");
+  revalidatePath("/");
+  revalidatePath("/admin/faq");
+  return { status: "success" };
+}
+
+export async function deleteFaqItem(id: string): Promise<void> {
+  await requireAdmin();
+  await db.faqItem.delete({ where: { id } });
+  revalidatePath("/faq");
+  revalidatePath("/");
+  revalidatePath("/admin/faq");
+}

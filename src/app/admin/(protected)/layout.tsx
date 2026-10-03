@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { LayoutDashboard, Gift, Inbox, HeartHandshake, Flag, Mail, LogOut } from "lucide-react";
+import { LayoutDashboard, Gift, Inbox, HeartHandshake, Flag, Mail, LogOut, CircleHelp, Settings } from "lucide-react";
 import { getSession } from "@/lib/auth";
 import { Logo } from "@/components/layout/logo";
 import { logout } from "@/features/admin/actions";
@@ -18,6 +18,8 @@ const NAV = [
   { href: "/admin/propositions", label: "Propositions", icon: HeartHandshake },
   { href: "/admin/signalements", label: "Signalements", icon: Flag },
   { href: "/admin/messages", label: "Messages", icon: Mail },
+  { href: "/admin/faq", label: "FAQ", icon: CircleHelp },
+  { href: "/admin/parametres", label: "Paramètres", icon: Settings },
 ];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {

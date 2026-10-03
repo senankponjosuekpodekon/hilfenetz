@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import { Mail, MessageSquare } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ContactForm } from "@/components/forms/contact-form";
+import { getSiteSettings } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Une question concernant HilfeNetz ? Nous sommes à votre disposition.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const settings = await getSiteSettings();
   return (
     <div className="py-14 md:py-20">
       <Container className="grid gap-12 lg:grid-cols-[380px_1fr]">
@@ -22,14 +26,16 @@ export default function ContactPage() {
               <Mail className="size-5 text-trust" aria-hidden />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted">E-mail</p>
-                <p className="text-sm font-medium text-ink">contact@hilfenetz.example</p>
+                <p className="text-sm font-medium text-ink">{settings.contactEmail}</p>
               </div>
             </li>
             <li className="flex items-center gap-3 rounded-2xl border border-border bg-surface px-5 py-4">
               <MessageSquare className="size-5 text-trust" aria-hidden />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted">Téléphone / WhatsApp</p>
-                <p className="text-sm font-medium text-ink">À communiquer prochainement</p>
+                <p className="text-sm font-medium text-ink">
+                  {settings.contactPhone || "À communiquer prochainement"}
+                </p>
               </div>
             </li>
           </ul>

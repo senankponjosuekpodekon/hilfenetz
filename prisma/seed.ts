@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { scryptSync, randomBytes } from "node:crypto";
+import { FAQ_ITEMS } from "../src/lib/faq-data.ts";
 
 const prisma = new PrismaClient();
 
@@ -66,6 +67,26 @@ async function main() {
       },
     ],
   });
+
+  // Paramètres du site
+  for (const [key, value] of Object.entries({
+    contactEmail: "contact@hilfenetz.example",
+    contactPhone: "",
+  })) {
+    await prisma.siteSetting.upsert({ where: { key }, update: {}, create: { key, value } });
+  }
+
+  // Questions FAQ initiales
+  const faqCount = await prisma.faqItem.count();
+  if (faqCount === 0) {
+    await prisma.faqItem.createMany({
+      data: FAQ_ITEMS.map((item, i) => ({
+        question: item.q,
+        answer: item.a,
+        order: i,
+      })),
+    });
+  }
 }
 
 main()
