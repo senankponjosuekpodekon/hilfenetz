@@ -243,11 +243,11 @@ function DonorPath() {
             Vous souhaitez proposer votre soutien ?
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
-            Transmettez votre proposition à l&apos;équipe HilfeNetz pour examen. Vous définissez
-            librement vos critères et gardez la décision finale.
+            Contactez l&apos;équipe HilfeNetz pour transmettre votre proposition. Après examen, votre
+            offre pourra être publiée sur la plateforme avec vos propres critères.
           </p>
-          <Button href="/don" variant="light" size="lg" className="mt-8" arrow>
-            Proposer un don
+          <Button href="/contact" variant="light" size="lg" className="mt-8" arrow>
+            Contacter l&apos;équipe
           </Button>
         </div>
         <ol className="space-y-4">

@@ -22,19 +22,6 @@ export const supportRequestSchema = z.object({
   website: z.string().max(0).optional().or(z.literal("")),
 });
 
-export const donationProposalSchema = z.object({
-  name: z.string().trim().min(1, "Ce champ est obligatoire.").max(120),
-  organization: z.string().trim().max(120).optional(),
-  email: z.string().trim().email("Adresse e-mail invalide.").max(160),
-  phone: z.string().trim().max(30).optional(),
-  amount: z.coerce.number().positive("Indiquez un montant valide.").max(10_000_000),
-  currency: z.enum(["EUR", "USD", "CHF", "GBP"]),
-  supportType: z.string().trim().min(1, "Ce champ est obligatoire.").max(120),
-  criteria: z.string().trim().min(10, "Décrivez vos critères.").max(2000),
-  message: z.string().trim().min(10, "Rédigez un message.").max(2000),
-  website: z.string().max(0).optional().or(z.literal("")),
-});
-
 export const reportSchema = z.object({
   offerName: z.string().trim().min(1, "Ce champ est obligatoire.").max(200),
   offerUrl: z.string().trim().min(1, "Ce champ est obligatoire.").max(500),
@@ -70,7 +57,6 @@ export const offerSchema = z.object({
 });
 
 export type SupportRequestInput = z.infer<typeof supportRequestSchema>;
-export type DonationProposalInput = z.infer<typeof donationProposalSchema>;
 export type ReportInput = z.infer<typeof reportSchema>;
 export type ContactInput = z.infer<typeof contactSchema>;
 export type OfferInput = z.infer<typeof offerSchema>;

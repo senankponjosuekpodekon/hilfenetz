@@ -22,11 +22,8 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <Link href="/demande" className="text-sm font-medium text-muted transition-colors hover:text-navy">
+          <Link href="/demande" className={buttonClasses("primary", "sm")}>
             Présenter une demande
-          </Link>
-          <Link href="/don" className={buttonClasses("primary", "sm")}>
-            Proposer un don
           </Link>
         </div>
         <MobileNav />

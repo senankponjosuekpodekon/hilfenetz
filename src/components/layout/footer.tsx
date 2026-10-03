@@ -8,7 +8,6 @@ const columns = [
       { href: "/comment-ca-marche", label: "Comment ça marche" },
       { href: "/offres", label: "Offres de dons" },
       { href: "/demande", label: "Présenter une demande" },
-      { href: "/don", label: "Proposer un don" },
     ],
   },
   {

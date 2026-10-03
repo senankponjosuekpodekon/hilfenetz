@@ -4,14 +4,13 @@ import { db } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const [requests, requestsToReview, offersActive, offersPending, reportsNew, proposalsNew, messages] =
+  const [requests, requestsToReview, offersActive, offersPending, reportsNew, messages] =
     await Promise.all([
       db.supportRequest.count(),
       db.supportRequest.count({ where: { status: { in: ["RECEIVED", "UNDER_REVIEW"] } } }),
       db.donationOffer.count({ where: { status: "PUBLISHED" } }),
       db.donationOffer.count({ where: { status: "PENDING_REVIEW" } }),
       db.report.count({ where: { status: "NEW" } }),
-      db.donationProposal.count({ where: { status: "NEW" } }),
       db.contactMessage.count(),
     ]);
 
@@ -20,7 +19,6 @@ export default async function AdminDashboard() {
     { label: "Demandes à examiner", value: requestsToReview, href: "/admin/demandes" },
     { label: "Offres actives", value: offersActive, href: "/admin/offres" },
     { label: "Offres en attente", value: offersPending, href: "/admin/offres" },
-    { label: "Propositions nouvelles", value: proposalsNew, href: "/admin/propositions" },
     { label: "Signalements", value: reportsNew, href: "/admin/signalements" },
     { label: "Messages", value: messages, href: "/admin/messages" },
   ];

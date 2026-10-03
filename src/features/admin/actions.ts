@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import type { OfferStatus, ProposalStatus, ReportStatus, RequestStatus } from "@prisma/client";
+import type { OfferStatus, ReportStatus, RequestStatus } from "@prisma/client";
 import { db } from "@/lib/db";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { createSession, destroySession, requireAdmin, verifyPassword } from "@/lib/auth";
@@ -86,12 +86,6 @@ export async function setRequestStatus(id: string, status: RequestStatus, intern
     data: { status, ...(internalNote !== undefined ? { internalNote } : {}) },
   });
   revalidatePath("/admin/demandes");
-}
-
-export async function setProposalStatus(id: string, status: ProposalStatus): Promise<void> {
-  await requireAdmin();
-  await db.donationProposal.update({ where: { id }, data: { status } });
-  revalidatePath("/admin/propositions");
 }
 
 export async function setReportStatus(id: string, status: ReportStatus): Promise<void> {

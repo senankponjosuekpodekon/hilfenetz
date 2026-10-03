@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <section>
         <h2>2. Finalités</h2>
         <ul>
-          <li>examen des demandes et propositions ;</li>
+          <li>examen des demandes ;</li>
           <li>mise en relation entre donateurs et demandeurs ;</li>
           <li>traitement des signalements ;</li>
           <li>réponse aux messages de contact.</li>

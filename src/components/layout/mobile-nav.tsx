@@ -49,16 +49,9 @@ export function MobileNav() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/demande"
-              onClick={() => setOpen(false)}
-              className="rounded-[10px] px-3 py-3 text-lg font-medium text-white hover:bg-white/10"
-            >
-              Présenter une demande
-            </Link>
             <div className="mt-auto pb-8 pt-6">
-              <Button href="/don" variant="light" className="w-full" size="lg" onClick={() => setOpen(false)}>
-                Proposer un don
+              <Button href="/demande" variant="light" className="w-full" size="lg" onClick={() => setOpen(false)}>
+                Présenter une demande
               </Button>
             </div>
           </nav>
