@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { db } from "@/lib/db";
+import { notifyAdmin } from "@/lib/email";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { contactSchema } from "@/lib/validation";
 import type { FormState } from "@/features/requests/actions";
@@ -30,6 +31,13 @@ export async function submitContact(_prev: FormState, formData: FormData): Promi
 
   const { website: _w, ...data } = parsed.data;
   await db.contactMessage.create({ data });
+
+  await notifyAdmin(`Message de contact — ${data.subject}`, [
+    ["Nom", data.name],
+    ["E-mail", data.email],
+    ["Sujet", data.subject],
+    ["Message", data.message],
+  ]);
 
   return { status: "success" };
 }

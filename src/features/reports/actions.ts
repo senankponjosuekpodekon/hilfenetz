@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { db } from "@/lib/db";
+import { notifyAdmin } from "@/lib/email";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { reportSchema } from "@/lib/validation";
 import type { FormState } from "@/features/requests/actions";
@@ -31,6 +32,14 @@ export async function submitReport(_prev: FormState, formData: FormData): Promis
 
   const { website: _w, ...data } = parsed.data;
   await db.report.create({ data });
+
+  await notifyAdmin(`Nouveau signalement — ${data.offerName}`, [
+    ["Annonce", data.offerName],
+    ["Lien", data.offerUrl],
+    ["Motif", data.reason],
+    ["Description", data.description],
+    ["Signalé par", data.email],
+  ]);
 
   return { status: "success" };
 }

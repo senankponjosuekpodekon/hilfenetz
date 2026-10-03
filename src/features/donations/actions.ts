@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { db } from "@/lib/db";
+import { notifyAdmin } from "@/lib/email";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { donationProposalSchema } from "@/lib/validation";
 import type { FormState } from "@/features/requests/actions";
@@ -35,6 +36,17 @@ export async function submitDonationProposal(_prev: FormState, formData: FormDat
 
   const { website: _w, ...data } = parsed.data;
   await db.donationProposal.create({ data });
+
+  await notifyAdmin(`Nouvelle proposition de don — ${data.name}`, [
+    ["Nom", data.name],
+    ["Organisation", data.organization || "—"],
+    ["E-mail", data.email],
+    ["Téléphone", data.phone || "—"],
+    ["Montant proposé", `${data.amount} ${data.currency}`],
+    ["Type de soutien", data.supportType],
+    ["Critères", data.criteria],
+    ["Message", data.message],
+  ]);
 
   return { status: "success" };
 }

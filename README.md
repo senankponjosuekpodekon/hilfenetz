@@ -56,6 +56,6 @@ src/
 
 - [ ] Changer `ADMIN_PASSWORD` et `SESSION_SECRET`
 - [ ] Brancher Cloudflare Turnstile sur les formulaires publics (le honeypot + rate-limit mémoire sont best-effort)
-- [ ] Configurer un provider e-mail transactionnel (Resend/Postmark) pour les notifications
+- [x] ~~Configurer un provider e-mail~~ → **Resend intégré** : ajouter RESEND_API_KEY, ADMIN_NOTIFY_EMAIL, EMAIL_FROM dans les env vars
 - [ ] Faire valider les contenus légaux (`/conditions`, `/confidentialite`, `/mentions-legales`)
 - [ ] Remplacer le rate-limit en mémoire par un store partagé si multi-instance

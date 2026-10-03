@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { db } from "@/lib/db";
+import { notifyAdmin, notifyUser } from "@/lib/email";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { generateReference } from "@/lib/utils";
 import { supportRequestSchema } from "@/lib/validation";
@@ -46,6 +47,23 @@ export async function submitSupportRequest(_prev: FormState, formData: FormData)
   const reference = generateReference();
 
   await db.supportRequest.create({ data: { ...data, reference } });
+
+  await notifyAdmin(`Nouvelle demande reçue — ${reference}`, [
+    ["Référence", reference],
+    ["Nom", `${data.firstName} ${data.lastName}`],
+    ["E-mail", data.email],
+    ["Téléphone", data.phone],
+    ["Pays", data.country],
+    ["Offre liée", data.offerId ?? "—"],
+    ["Situation / projet", data.projectDescription],
+    ["Message au donateur", data.donorMessage || "—"],
+  ]);
+
+  await notifyUser(data.email, "Votre demande a bien été reçue — HilfeNetz", [
+    ["Référence", reference],
+    ["", "Merci d'avoir présenté votre projet à HilfeNetz. Votre demande va être examinée conformément aux règles de la plateforme."],
+    ["Important", "La soumission d'une demande ne garantit pas l'obtention d'un don."],
+  ]);
 
   return { status: "success", reference };
 }
