@@ -23,20 +23,20 @@ export function MobileNav() {
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-50 flex flex-col bg-surface">
+        <div className="fixed inset-0 z-50 flex flex-col bg-navy-dark">
           <div className="flex h-16 items-center justify-between px-5">
-            <Logo />
+            <Logo dark />
             <button
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Fermer le menu"
-              className="flex size-11 items-center justify-center rounded-[10px] text-navy hover:bg-black/5"
+              className="flex size-11 items-center justify-center rounded-[10px] text-white/80 hover:bg-white/10"
             >
               <X className="size-6" aria-hidden />
             </button>
           </div>
           <nav className="flex flex-1 flex-col gap-1 px-5 pt-6" aria-label="Navigation mobile">
-            <Link href="/" onClick={() => setOpen(false)} className="rounded-[10px] px-3 py-3 text-lg font-medium text-ink hover:bg-background">
+            <Link href="/" onClick={() => setOpen(false)} className="rounded-[10px] px-3 py-3 text-lg font-medium text-white hover:bg-white/10">
               Accueil
             </Link>
             {NAV_LINKS.map((link) => (
@@ -44,7 +44,7 @@ export function MobileNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-[10px] px-3 py-3 text-lg font-medium text-ink hover:bg-background"
+                className="rounded-[10px] px-3 py-3 text-lg font-medium text-white hover:bg-white/10"
               >
                 {link.label}
               </Link>
@@ -52,12 +52,12 @@ export function MobileNav() {
             <Link
               href="/demande"
               onClick={() => setOpen(false)}
-              className="rounded-[10px] px-3 py-3 text-lg font-medium text-ink hover:bg-background"
+              className="rounded-[10px] px-3 py-3 text-lg font-medium text-white hover:bg-white/10"
             >
               Présenter une demande
             </Link>
             <div className="mt-auto pb-8 pt-6">
-              <Button href="/don" className="w-full" size="lg" onClick={() => setOpen(false)}>
+              <Button href="/don" variant="light" className="w-full" size="lg" onClick={() => setOpen(false)}>
                 Proposer un don
               </Button>
             </div>
