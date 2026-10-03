@@ -5,7 +5,6 @@ import Link from "next/link";
 import { SlidersHorizontal, X } from "lucide-react";
 
 const CATEGORIES = [
-  { value: "all", label: "Tous" },
   { value: "SOCIAL", label: "Social" },
   { value: "PROFESSIONAL", label: "Professionnel" },
   { value: "COMMUNITY", label: "Communautaire" },
@@ -21,24 +20,30 @@ const AMOUNTS = [
 
 export function FilterSheet({
   q,
-  category,
+  categories,
   amount,
 }: {
   q: string;
-  category: string;
+  categories: string[];
   amount: string;
 }) {
   const [open, setOpen] = useState(false);
-  const activeCount = (category !== "all" ? 1 : 0) + (amount !== "all" ? 1 : 0);
+  const activeCount = categories.length + (amount !== "all" ? 1 : 0);
 
   function buildHref(next: Record<string, string>) {
-    const sp = new URLSearchParams({ q, category, amount, ...next });
+    const sp = new URLSearchParams({ q, category: categories.join(","), amount, ...next });
     if (!sp.get("q")) sp.delete("q");
-    for (const key of ["category", "amount"]) {
-      if (sp.get(key) === "all") sp.delete(key);
-    }
+    if (!sp.get("category")) sp.delete("category");
+    if (sp.get("amount") === "all") sp.delete("amount");
     const qs = sp.toString();
     return `/offres${qs ? `?${qs}` : ""}`;
+  }
+
+  function toggleCategory(value: string) {
+    const next = categories.includes(value)
+      ? categories.filter((c) => c !== value)
+      : [...categories, value];
+    return buildHref({ category: next.join(",") });
   }
 
   const pill = (active: boolean) =>
@@ -49,7 +54,7 @@ export function FilterSheet({
     }`;
 
   return (
-    <div className="md:hidden">
+    <div>
       <button
         type="button"
         onClick={() => setOpen(true)}
@@ -86,10 +91,12 @@ export function FilterSheet({
               </button>
             </div>
 
-            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-muted">Domaine</p>
+            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-muted">
+              Domaine — plusieurs choix possibles
+            </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {CATEGORIES.map((c) => (
-                <Link key={c.value} href={buildHref({ category: c.value })} className={pill(category === c.value)}>
+                <Link key={c.value} href={toggleCategory(c.value)} className={pill(categories.includes(c.value))}>
                   {c.label}
                 </Link>
               ))}

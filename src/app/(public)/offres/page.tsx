@@ -38,7 +38,10 @@ export default async function OffersPage({
 }) {
   const params = await searchParams;
   const q = typeof params.q === "string" ? params.q.trim() : "";
-  const category = typeof params.category === "string" ? params.category : "all";
+  const validCategories = new Set(["SOCIAL", "PROFESSIONAL", "COMMUNITY"]);
+  const categories = (typeof params.category === "string" ? params.category : "")
+    .split(",")
+    .filter((c): c is Category => validCategories.has(c));
   const amount = typeof params.amount === "string" ? params.amount : "all";
 
   const where: Prisma.DonationOfferWhereInput = { status: "PUBLISHED" };
@@ -48,7 +51,7 @@ export default async function OffersPage({
       { description: { contains: q, mode: "insensitive" } },
     ];
   }
-  if (category !== "all") where.category = category as Category;
+  if (categories.length > 0) where.category = { in: categories };
   const range = AMOUNT_RANGES[amount];
   if (range && (range.gte || range.lt)) {
     where.amount = { gte: range.gte, lt: range.lt };
@@ -60,13 +63,19 @@ export default async function OffersPage({
   });
 
   const buildHref = (next: Record<string, string>) => {
-    const sp = new URLSearchParams({ q, category, amount, ...next });
+    const sp = new URLSearchParams({ q, category: categories.join(","), amount, ...next });
     if (!sp.get("q")) sp.delete("q");
-    for (const key of ["category", "amount"]) {
-      if (sp.get(key) === "all") sp.delete(key);
-    }
+    if (!sp.get("category")) sp.delete("category");
+    if (sp.get("amount") === "all") sp.delete("amount");
     const qs = sp.toString();
     return `/offres${qs ? `?${qs}` : ""}`;
+  };
+
+  const toggleCategory = (value: Category) => {
+    const next = categories.includes(value)
+      ? categories.filter((c) => c !== value)
+      : [...categories, value];
+    return buildHref({ category: next.join(",") });
   };
 
   return (
@@ -84,7 +93,7 @@ export default async function OffersPage({
 
         {/* Recherche */}
         <form action="/offres" method="get" className="mt-10 flex flex-col gap-3 sm:flex-row">
-          {category !== "all" ? <input type="hidden" name="category" value={category} /> : null}
+          {categories.length > 0 ? <input type="hidden" name="category" value={categories.join(",")} /> : null}
           {amount !== "all" ? <input type="hidden" name="amount" value={amount} /> : null}
           <div className="relative flex-1">
             <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted" aria-hidden />
@@ -101,19 +110,29 @@ export default async function OffersPage({
 
         {/* Filtres — bottom sheet sur mobile */}
         <div className="mt-4 md:hidden">
-          <FilterSheet q={q} category={category} amount={amount} />
+          <FilterSheet q={q} categories={categories} amount={amount} />
         </div>
 
         {/* Filtres — pills sur desktop */}
         <div className="mt-6 hidden flex-wrap items-center gap-x-8 gap-y-4 md:flex">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold uppercase tracking-wide text-muted">Domaine</span>
-            {CATEGORIES.map((c) => (
+            <Link
+              href={buildHref({ category: "" })}
+              className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
+                categories.length === 0
+                  ? "border-trust bg-trust text-white"
+                  : "border-border bg-surface text-muted hover:border-trust hover:text-trust"
+              }`}
+            >
+              Tous
+            </Link>
+            {CATEGORIES.filter((c) => c.value !== "all").map((c) => (
               <Link
                 key={c.value}
-                href={buildHref({ category: c.value })}
+                href={toggleCategory(c.value as Category)}
                 className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
-                  category === c.value
+                  categories.includes(c.value as Category)
                     ? "border-trust bg-trust text-white"
                     : "border-border bg-surface text-muted hover:border-trust hover:text-trust"
                 }`}
@@ -138,7 +157,7 @@ export default async function OffersPage({
               </Link>
             ))}
           </div>
-          {q || category !== "all" || amount !== "all" ? (
+          {q || categories.length > 0 || amount !== "all" ? (
             <Link href="/offres" className="text-sm font-medium text-trust hover:underline">
               Réinitialiser
             </Link>
