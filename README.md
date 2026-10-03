@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HilfeNetz
 
-## Getting Started
+Plateforme de mise en relation entre donateurs et personnes ou projets recherchant un soutien.
+V1 : site public + offres + formulaires + administration.
 
-First, run the development server:
+> Spécification complète : `project-info.md`
+
+## Stack
+
+- Next.js 16 (App Router, Turbopack) + TypeScript
+- Tailwind CSS v4 (design tokens dans `src/app/globals.css`)
+- PostgreSQL + Prisma 6
+- Zod + React Hook Form
+- Auth admin : session cookie HMAC (scrypt) — `src/lib/auth.ts`
+
+## Démarrage
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Base de données (Docker)
+docker run -d --name hilfenetz-db \
+  -e POSTGRES_USER=hilfenetz -e POSTGRES_PASSWORD=hilfenetz_dev_pw \
+  -e POSTGRES_DB=hilfenetz -p 5434:5432 postgres:17-alpine
+
+cp .env.example .env   # adapter DATABASE_URL et les secrets
+
+npm install
+npm run db:migrate     # applique les migrations
+npm run db:seed        # admin + offres de démonstration
+npm run dev            # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Administration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- URL : `/admin` (redirige vers `/admin/connexion` si non connecté)
+- Identifiants : `ADMIN_EMAIL` / `ADMIN_PASSWORD` du `.env` (utilisateur créé par le seed)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```text
+src/
+├── app/
+│   ├── (public)/          # site public (header/footer)
+│   │   ├── offres/        # liste + détail
+│   │   ├── demande/       # formulaire multi-step + confirmation
+│   │   ├── don/ signaler/ contact/
+│   │   └── faq/ a-propos/ comment-ca-marche/ + pages légales
+│   └── admin/
+│       ├── connexion/     # login (hors garde)
+│       └── (protected)/   # dashboard, offres, demandes, propositions, signalements, messages
+├── components/            # ui/ layout/ offers/ forms/ faq/ admin/
+├── features/              # server actions (requests, donations, reports, contact, admin)
+└── lib/                   # db, auth, validation (zod), rate-limit, utils
+```
 
-To learn more about Next.js, take a look at the following resources:
+## À faire avant production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Changer `ADMIN_PASSWORD` et `SESSION_SECRET`
+- [ ] Brancher Cloudflare Turnstile sur les formulaires publics (le honeypot + rate-limit mémoire sont best-effort)
+- [ ] Configurer un provider e-mail transactionnel (Resend/Postmark) pour les notifications
+- [ ] Faire valider les contenus légaux (`/conditions`, `/confidentialite`, `/mentions-legales`)
+- [ ] Remplacer le rate-limit en mémoire par un store partagé si multi-instance
