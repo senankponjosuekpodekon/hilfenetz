@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://hilfenetz.vercel.app"),
   title: {
     default: "HilfeNetz — Plateforme de mise en relation entre donateurs et demandeurs",
     template: "%s — HilfeNetz",

@@ -34,7 +34,8 @@
     "closeFilters": "Cerrar los filtros",
     "mainNav": "Navegación principal",
     "mobileNav": "Navegación móvil",
-    "formSteps": "Pasos del formulario"
+    "formSteps": "Pasos del formulario",
+    "chooseLanguage": "Elegir idioma"
   },
   "nav": {
     "home": "Inicio",
