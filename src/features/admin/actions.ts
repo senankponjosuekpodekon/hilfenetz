@@ -7,7 +7,7 @@ import type { OfferStatus, ReportStatus, RequestStatus } from "@prisma/client";
 import { db } from "@/lib/db";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { createSession, destroySession, requireAdmin, verifyPassword } from "@/lib/auth";
-import { offerSchema } from "@/lib/validation";
+import { offerSchema, OFFER_LOCALES } from "@/lib/validation";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -38,6 +38,7 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
   await requireAdmin();
 
   const parsed = offerSchema.safeParse({
+    locale: formData.get("locale"),
     title: formData.get("title"),
     donorName: formData.get("donorName") || undefined,
     description: formData.get("description"),
@@ -66,7 +67,7 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
   }
 
   revalidatePath("/admin/offres");
-  revalidatePath("/offres");
+  revalidatePath("/[locale]/offres", "page");
   return { status: "success" };
 }
 
@@ -77,7 +78,7 @@ export async function setOfferStatus(id: string, status: OfferStatus): Promise<v
     data: { status, publishedAt: status === "PUBLISHED" ? new Date() : undefined },
   });
   revalidatePath("/admin/offres");
-  revalidatePath("/offres");
+  revalidatePath("/[locale]/offres", "page");
 }
 
 export async function setRequestStatus(id: string, status: RequestStatus, internalNote?: string): Promise<void> {
@@ -107,7 +108,7 @@ export async function saveSettings(_prev: unknown, formData: FormData): Promise<
   for (const [key, value] of entries) {
     await db.siteSetting.upsert({ where: { key }, update: { value }, create: { key, value } });
   }
-  revalidatePath("/contact");
+  revalidatePath("/[locale]/contact", "page");
   revalidatePath("/admin/parametres");
   return { status: "success" };
 }
@@ -119,6 +120,8 @@ export async function saveFaqItem(_prev: unknown, formData: FormData): Promise<{
   const order = Number(formData.get("order") ?? 0);
   const published = formData.get("published") === "on";
   const id = String(formData.get("id") ?? "");
+  const localeRaw = String(formData.get("locale") ?? "fr");
+  const locale = OFFER_LOCALES.includes(localeRaw as (typeof OFFER_LOCALES)[number]) ? localeRaw : "fr";
 
   const errors: Record<string, string[]> = {};
   if (!question) errors.question = ["Ce champ est obligatoire."];
@@ -126,12 +129,12 @@ export async function saveFaqItem(_prev: unknown, formData: FormData): Promise<{
   if (Object.keys(errors).length > 0) return { status: "error", errors };
 
   if (id) {
-    await db.faqItem.update({ where: { id }, data: { question, answer, order, published } });
+    await db.faqItem.update({ where: { id }, data: { question, answer, order, published, locale } });
   } else {
-    await db.faqItem.create({ data: { question, answer, order, published } });
+    await db.faqItem.create({ data: { question, answer, order, published, locale } });
   }
-  revalidatePath("/faq");
-  revalidatePath("/");
+  revalidatePath("/[locale]/faq", "page");
+  revalidatePath("/[locale]", "page");
   revalidatePath("/admin/faq");
   return { status: "success" };
 }
@@ -139,7 +142,7 @@ export async function saveFaqItem(_prev: unknown, formData: FormData): Promise<{
 export async function deleteFaqItem(id: string): Promise<void> {
   await requireAdmin();
   await db.faqItem.delete({ where: { id } });
-  revalidatePath("/faq");
-  revalidatePath("/");
+  revalidatePath("/[locale]/faq", "page");
+  revalidatePath("/[locale]", "page");
   revalidatePath("/admin/faq");
 }

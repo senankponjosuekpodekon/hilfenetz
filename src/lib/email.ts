@@ -49,5 +49,44 @@ async function send(to: string, subject: string, lines: [string, string][]): Pro
 export const notifyAdmin = (subject: string, lines: [string, string][]) =>
   send(adminEmail() ?? "", subject, lines);
 
-export const notifyUser = (to: string, subject: string, lines: [string, string][]) =>
-  send(to, subject, lines);
+const CONFIRMATION: Record<string, { subject: string; refLabel: string; body: string; important: string }> = {
+  fr: {
+    subject: "Votre demande a bien été reçue — HilfeNetz",
+    refLabel: "Référence",
+    body: "Merci d'avoir présenté votre projet à HilfeNetz. Votre demande va être examinée conformément aux règles de la plateforme.",
+    important: "La soumission d'une demande ne garantit pas l'obtention d'un don.",
+  },
+  de: {
+    subject: "Ihre Anfrage wurde empfangen — HilfeNetz",
+    refLabel: "Referenznummer",
+    body: "Vielen Dank, dass Sie Ihr Projekt bei HilfeNetz vorgestellt haben. Ihre Anfrage wird gemäß den Regeln der Plattform geprüft.",
+    important: "Das Einreichen einer Anfrage garantiert nicht den Erhalt einer Spende.",
+  },
+  it: {
+    subject: "La tua richiesta è stata ricevuta — HilfeNetz",
+    refLabel: "Numero di riferimento",
+    body: "Grazie per aver presentato il tuo progetto a HilfeNetz. La tua richiesta sarà esaminata conformemente alle regole della piattaforma.",
+    important: "L'invio di una richiesta non garantisce l'ottenimento di una donazione.",
+  },
+  es: {
+    subject: "Tu solicitud ha sido recibida — HilfeNetz",
+    refLabel: "Número de referencia",
+    body: "Gracias por presentar tu proyecto a HilfeNetz. Tu solicitud será examinada conforme a las reglas de la plataforma.",
+    important: "Enviar una solicitud no garantiza la obtención de una donación.",
+  },
+  pt: {
+    subject: "O seu pedido foi recebido — HilfeNetz",
+    refLabel: "Número de referência",
+    body: "Obrigado por apresentar o seu projeto ao HilfeNetz. O seu pedido será analisado em conformidade com as regras da plataforma.",
+    important: "A submissão de um pedido não garante a obtenção de uma doação.",
+  },
+};
+
+export const notifyUserConfirmation = (to: string, locale: string, reference: string) => {
+  const m = CONFIRMATION[locale] ?? CONFIRMATION.de;
+  return send(to, m.subject, [
+    [m.refLabel, reference],
+    ["", m.body],
+    ["Important", m.important],
+  ]);
+};

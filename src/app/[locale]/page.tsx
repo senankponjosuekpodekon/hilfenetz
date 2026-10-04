@@ -133,10 +133,15 @@ async function FeaturedOffer() {
   const t = await getTranslations("home.featured");
   const tc = await getTranslations("common");
   const locale = await getLocale();
-  const offer = await db.donationOffer.findFirst({
-    where: { status: "PUBLISHED" },
-    orderBy: { publishedAt: "desc" },
-  });
+  const offer =
+    (await db.donationOffer.findFirst({
+      where: { status: "PUBLISHED", locale },
+      orderBy: { publishedAt: "desc" },
+    })) ??
+    (await db.donationOffer.findFirst({
+      where: { status: "PUBLISHED" },
+      orderBy: { publishedAt: "desc" },
+    }));
 
   return (
     <section className="border-y border-border/60 bg-surface py-20 md:py-28">

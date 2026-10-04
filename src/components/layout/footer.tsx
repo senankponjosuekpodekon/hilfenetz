@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "./logo";
 
@@ -6,6 +6,7 @@ export async function Footer() {
   const t = await getTranslations("footer");
   const tn = await getTranslations("nav");
   const tc = await getTranslations("common");
+  const locale = await getLocale();
 
   const columns = [
     {
@@ -40,7 +41,7 @@ export async function Footer() {
       <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo />
+            <Logo href={`/${locale}`} />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{t("tagline")}</p>
           </div>
           {columns.map((col) => (

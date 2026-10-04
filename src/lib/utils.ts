@@ -27,6 +27,14 @@ export function formatDate(date: Date | string | null | undefined, locale = "de"
   }).format(new Date(date));
 }
 
+export const LOCALE_LABELS: Record<string, string> = {
+  de: "Allemand",
+  fr: "Français",
+  it: "Italien",
+  es: "Espagnol",
+  pt: "Portugais",
+};
+
 export const CATEGORY_LABELS: Record<string, string> = {
   SOCIAL: "Social",
   PROFESSIONAL: "Professionnel",

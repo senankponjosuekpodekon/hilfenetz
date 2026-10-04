@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DeleteFaqButton } from "@/components/admin/faq-form";
+import { LOCALE_LABELS } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,7 @@ export default async function AdminFaqPage() {
             <div key={item.id} className="flex items-start justify-between gap-4 rounded-2xl border border-border bg-surface p-5">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-semibold text-muted">#{item.order}</span>
+                  <span className="text-xs font-semibold uppercase text-muted">#{item.order} · {LOCALE_LABELS[item.locale] ?? item.locale}</span>
                   <p className="font-medium text-navy">{item.question}</p>
                   {!item.published ? <Badge tone="warning">Non publiée</Badge> : null}
                 </div>

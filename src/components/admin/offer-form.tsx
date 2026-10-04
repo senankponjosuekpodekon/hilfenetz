@@ -4,10 +4,11 @@ import { useActionState } from "react";
 import { saveOffer } from "@/features/admin/actions";
 import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
-import { CATEGORY_LABELS, OFFER_STATUS_LABELS } from "@/lib/utils";
+import { CATEGORY_LABELS, LOCALE_LABELS, OFFER_STATUS_LABELS } from "@/lib/utils";
 
 type OfferData = {
   id?: string;
+  locale: string;
   title: string;
   donorName: string | null;
   description: string;
@@ -26,6 +27,13 @@ export function OfferForm({ offer }: { offer?: OfferData }) {
   return (
     <form action={action} className="space-y-5">
       {offer?.id ? <input type="hidden" name="id" value={offer.id} /> : null}
+      <Field label="Langue" required hint="L'offre s'affichera dans cette langue sur le site." error={errors.locale?.[0]}>
+        <Select name="locale" defaultValue={offer?.locale ?? "de"} error={!!errors.locale}>
+          {Object.entries(LOCALE_LABELS).map(([v, l]) => (
+            <option key={v} value={v}>{l}</option>
+          ))}
+        </Select>
+      </Field>
       <Field label="Titre" required error={errors.title?.[0]}>
         <Input name="title" defaultValue={offer?.title} error={!!errors.title} />
       </Field>

@@ -2,11 +2,13 @@
 
 import { useActionState, useTransition } from "react";
 import { deleteFaqItem, saveFaqItem } from "@/features/admin/actions";
-import { Field, Input, Textarea } from "@/components/ui/field";
+import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
+import { LOCALE_LABELS } from "@/lib/utils";
 
 type FaqData = {
   id?: string;
+  locale: string;
   question: string;
   answer: string;
   order: number;
@@ -20,6 +22,13 @@ export function FaqForm({ item }: { item?: FaqData }) {
   return (
     <form action={action} className="space-y-5">
       {item?.id ? <input type="hidden" name="id" value={item.id} /> : null}
+      <Field label="Langue" required hint="La question s'affichera dans cette langue sur le site.">
+        <Select name="locale" defaultValue={item?.locale ?? "fr"}>
+          {Object.entries(LOCALE_LABELS).map(([v, l]) => (
+            <option key={v} value={v}>{l}</option>
+          ))}
+        </Select>
+      </Field>
       <Field label="Question" required error={errors.question?.[0]}>
         <Input name="question" defaultValue={item?.question} error={!!errors.question} />
       </Field>

@@ -64,6 +64,7 @@ model User {
 
 model DonationOffer {
   id           String           @id @default(cuid())
+  locale       String           @default("fr")
   title        String
   donorName    String?
   description  String

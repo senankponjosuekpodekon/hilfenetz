@@ -45,7 +45,10 @@ export const contactSchema = z.object({
   website: z.string().max(0).optional().or(z.literal("")),
 });
 
+export const OFFER_LOCALES = ["de", "fr", "it", "es", "pt"] as const;
+
 export const offerSchema = z.object({
+  locale: z.enum(OFFER_LOCALES),
   title: z.string().trim().min(1, "Ce champ est obligatoire.").max(200),
   donorName: z.string().trim().max(120).optional(),
   description: z.string().trim().min(10, "Décrivez l'offre.").max(5000),

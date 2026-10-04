@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { db } from "@/lib/db";
-import { notifyAdmin, notifyUser } from "@/lib/email";
+import { notifyAdmin, notifyUserConfirmation } from "@/lib/email";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { generateReference } from "@/lib/utils";
 import { supportRequestSchema } from "@/lib/validation";
@@ -59,11 +59,8 @@ export async function submitSupportRequest(_prev: FormState, formData: FormData)
     ["Message au donateur", data.donorMessage || "—"],
   ]);
 
-  await notifyUser(data.email, "Votre demande a bien été reçue — HilfeNetz", [
-    ["Référence", reference],
-    ["", "Merci d'avoir présenté votre projet à HilfeNetz. Votre demande va être examinée conformément aux règles de la plateforme."],
-    ["Important", "La soumission d'une demande ne garantit pas l'obtention d'un don."],
-  ]);
+  const locale = String(formData.get("locale") ?? "de");
+  await notifyUserConfirmation(data.email, locale, reference);
 
   return { status: "success", reference };
 }

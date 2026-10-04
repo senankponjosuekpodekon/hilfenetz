@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/ui/badge";
 import { StatusSelect } from "@/components/admin/status-select";
 import { setOfferStatus } from "@/features/admin/actions";
-import { CATEGORY_LABELS, OFFER_STATUS_LABELS, formatAmount, formatDate } from "@/lib/utils";
+import { CATEGORY_LABELS, LOCALE_LABELS, OFFER_STATUS_LABELS, formatAmount, formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +26,7 @@ export default async function AdminOffersPage() {
           <thead>
             <tr className="border-b border-border text-xs uppercase tracking-wide text-muted">
               <th className="px-5 py-3">Titre</th>
+              <th className="px-5 py-3">Langue</th>
               <th className="px-5 py-3">Montant</th>
               <th className="px-5 py-3">Domaine</th>
               <th className="px-5 py-3">Statut</th>
@@ -46,7 +47,8 @@ export default async function AdminOffersPage() {
                       {o.title}
                     </Link>
                   </td>
-                  <td className="px-5 py-3">{formatAmount(Number(o.amount), o.currency)}</td>
+                  <td className="px-5 py-3 text-muted uppercase">{LOCALE_LABELS[o.locale] ?? o.locale}</td>
+                  <td className="px-5 py-3">{formatAmount(Number(o.amount), o.currency, "fr")}</td>
                   <td className="px-5 py-3 text-muted">{CATEGORY_LABELS[o.category]}</td>
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-2">

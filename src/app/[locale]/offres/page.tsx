@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Search } from "lucide-react";
 import type { Category, Prisma } from "@prisma/client";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { db } from "@/lib/db";
 import { Container } from "@/components/ui/container";
@@ -33,6 +33,7 @@ export default async function OffersPage({
 }) {
   const t = await getTranslations("offers");
   const tc = await getTranslations("common");
+  const locale = await getLocale();
 
   const params = await searchParams;
   const q = typeof params.q === "string" ? params.q.trim() : "";
@@ -55,10 +56,15 @@ export default async function OffersPage({
     where.amount = { gte: range.gte, lt: range.lt };
   }
 
-  const offers = await db.donationOffer.findMany({
-    where,
+  let offers = await db.donationOffer.findMany({
+    where: { ...where, locale },
     orderBy: { publishedAt: "desc" },
   });
+  // Aucune offre dans la langue courante : on affiche toutes les langues
+  // plutôt qu'une vitrine vide.
+  if (offers.length === 0) {
+    offers = await db.donationOffer.findMany({ where, orderBy: { publishedAt: "desc" } });
+  }
 
   const buildHref = (next: Record<string, string>) => {
     const sp = new URLSearchParams({ q, category: categories.join(","), amount, ...next });

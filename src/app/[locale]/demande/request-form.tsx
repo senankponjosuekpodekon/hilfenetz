@@ -5,7 +5,7 @@ import { useRouter } from "@/i18n/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { submitSupportRequest } from "@/features/requests/actions";
 import { Field, Input, Textarea } from "@/components/ui/field";
@@ -21,6 +21,7 @@ const STEP_FIELDS: string[][] = [
 export function RequestForm({ offerId, offerTitle }: { offerId?: string; offerTitle?: string }) {
   const t = useTranslations("request");
   const tc = useTranslations("common");
+  const locale = useLocale();
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -242,6 +243,8 @@ export function RequestForm({ offerId, offerTitle }: { offerId?: string; offerTi
           {serverError}
         </p>
       ) : null}
+
+      <input type="hidden" name="locale" value={locale} />
 
       {/* Honeypot */}
       <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden">

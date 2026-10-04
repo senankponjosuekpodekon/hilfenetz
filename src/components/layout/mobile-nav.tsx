@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./logo";
@@ -13,6 +13,7 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const t = useTranslations("nav");
   const tc = useTranslations("common");
+  const locale = useLocale();
 
   return (
     <div className="lg:hidden">
@@ -29,7 +30,7 @@ export function MobileNav() {
       {open ? (
         <div className="fixed inset-0 z-50 flex flex-col bg-navy-dark">
           <div className="flex h-16 items-center justify-between px-5">
-            <Logo dark />
+            <Logo dark href={`/${locale}`} />
             <button
               type="button"
               onClick={() => setOpen(false)}
