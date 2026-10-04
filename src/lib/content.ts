@@ -12,11 +12,13 @@ export async function getSiteSettings(): Promise<{ contactEmail: string; contact
   };
 }
 
-export async function getFaqItems(): Promise<{ q: string; a: string }[]> {
+export async function getFaqItems(locale = "de"): Promise<{ q: string; a: string }[]> {
   const items = await db.faqItem.findMany({
-    where: { published: true },
+    where: { published: true, locale: { in: [locale, "fr"] } },
     orderBy: { order: "asc" },
   });
-  if (items.length === 0) return FAQ_ITEMS;
-  return items.map((i) => ({ q: i.question, a: i.answer }));
+  const localized = items.filter((i) => i.locale === locale);
+  const source = localized.length > 0 ? localized : items.filter((i) => i.locale === "fr");
+  if (source.length === 0) return FAQ_ITEMS;
+  return source.map((i) => ({ q: i.question, a: i.answer }));
 }

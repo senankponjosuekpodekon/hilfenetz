@@ -1,4 +1,5 @@
-import Link from "next/link";
+import NextLink from "next/link";
+import { Link as IntlLink } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -46,10 +47,11 @@ export function Button({ variant = "primary", size = "md", href, arrow, children
     </>
   );
   if (href) {
+    const Comp = href.startsWith("/admin") ? NextLink : IntlLink;
     return (
-      <Link href={href} className={cls} onClick={onClick}>
+      <Comp href={href} className={cls} onClick={onClick}>
         {content}
-      </Link>
+      </Comp>
     );
   }
   return (

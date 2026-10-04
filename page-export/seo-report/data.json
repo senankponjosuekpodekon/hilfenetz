@@ -1,0 +1,27 @@
+{
+  "score": 80,
+  "issues": [
+    {
+      "type": "error",
+      "message": "Missing <h1> heading"
+    },
+    {
+      "type": "warning",
+      "message": "9 image(s) missing alt text"
+    }
+  ],
+  "passed": [
+    "Title tag is properly configured",
+    "Meta description is properly configured",
+    "Canonical URL is set",
+    "Open Graph meta tags present",
+    "Viewport meta tag present",
+    "Language attribute set"
+  ],
+  "meta": {
+    "title": "Startseite - KREDIT IN DEUTSCHLAND",
+    "description": "Entdecken Sie KREDIT IN DEUTSCHLAND – Ihre schnelle und sichere Online-Kreditlösung in Deutschland. Einfache Antragstellung, schnelle Bearbeitung und volle Transparenz.",
+    "canonical": "https://kreditindeutschland.com/",
+    "ogImage": "https://kreditindeutschland.com/wp-content/uploads/2021/12/service-1.png"
+  }
+}

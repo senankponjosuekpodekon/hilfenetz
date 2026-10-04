@@ -1,22 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { SlidersHorizontal, X } from "lucide-react";
 
-const CATEGORIES = [
-  { value: "SOCIAL", label: "Social" },
-  { value: "PROFESSIONAL", label: "Professionnel" },
-  { value: "COMMUNITY", label: "Communautaire" },
-];
-
-const AMOUNTS = [
-  { value: "all", label: "Tous" },
-  { value: "low", label: "Moins de 1 000 €" },
-  { value: "mid", label: "1 000 – 5 000 €" },
-  { value: "high", label: "5 000 – 10 000 €" },
-  { value: "max", label: "Plus de 10 000 €" },
-];
+const CATEGORIES = ["SOCIAL", "PROFESSIONAL", "COMMUNITY"] as const;
+const AMOUNTS = ["all", "low", "mid", "high", "max"] as const;
 
 export function FilterSheet({
   q,
@@ -27,6 +17,8 @@ export function FilterSheet({
   categories: string[];
   amount: string;
 }) {
+  const t = useTranslations("offers");
+  const tc = useTranslations("common");
   const [open, setOpen] = useState(false);
   const activeCount = categories.length + (amount !== "all" ? 1 : 0);
 
@@ -62,7 +54,7 @@ export function FilterSheet({
         aria-expanded={open}
       >
         <SlidersHorizontal className="size-4" aria-hidden />
-        Filtrer
+        {t("filter")}
         {activeCount > 0 ? (
           <span className="flex size-5 items-center justify-center rounded-full bg-trust text-xs font-semibold text-white">
             {activeCount}
@@ -71,42 +63,40 @@ export function FilterSheet({
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-50 flex flex-col justify-end" role="dialog" aria-modal="true" aria-label="Filtres">
+        <div className="fixed inset-0 z-50 flex flex-col justify-end" role="dialog" aria-modal="true" aria-label={t("filters")}>
           <button
             type="button"
-            aria-label="Fermer les filtres"
+            aria-label={tc("closeFilters")}
             onClick={() => setOpen(false)}
             className="absolute inset-0 bg-navy-dark/50"
           />
           <div className="relative max-h-[80vh] overflow-y-auto rounded-t-3xl bg-surface p-6 pb-8">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-navy">Filtres</h2>
+              <h2 className="text-lg font-semibold text-navy">{t("filters")}</h2>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="Fermer"
+                aria-label={tc("menuClose")}
                 className="flex size-11 items-center justify-center rounded-[10px] text-muted hover:bg-background"
               >
                 <X className="size-5" aria-hidden />
               </button>
             </div>
 
-            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-muted">
-              Domaine — plusieurs choix possibles
-            </p>
+            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-muted">{t("domainMulti")}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {CATEGORIES.map((c) => (
-                <Link key={c.value} href={toggleCategory(c.value)} className={pill(categories.includes(c.value))}>
-                  {c.label}
+                <Link key={c} href={toggleCategory(c)} className={pill(categories.includes(c))}>
+                  {tc(`categories.${c}`)}
                 </Link>
               ))}
             </div>
 
-            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-muted">Montant</p>
+            <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-muted">{t("amount")}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {AMOUNTS.map((a) => (
-                <Link key={a.value} href={buildHref({ amount: a.value })} className={pill(amount === a.value)}>
-                  {a.label}
+                <Link key={a} href={buildHref({ amount: a })} className={pill(amount === a)}>
+                  {a === "all" ? t("all") : t(`amounts.${a}`)}
                 </Link>
               ))}
             </div>
@@ -116,14 +106,14 @@ export function FilterSheet({
                 href="/offres"
                 className="flex h-11 flex-1 items-center justify-center rounded-[10px] border border-border text-sm font-medium text-ink"
               >
-                Réinitialiser
+                {t("reset")}
               </Link>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 className="flex h-11 flex-1 items-center justify-center rounded-[10px] bg-trust text-sm font-medium text-white"
               >
-                Voir les résultats
+                {t("seeResults")}
               </button>
             </div>
           </div>

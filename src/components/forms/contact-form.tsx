@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { submitContact } from "@/features/contact/actions";
 import { Field, Input, Textarea, Honeypot } from "@/components/ui/field";
@@ -10,6 +11,8 @@ import type { FormState } from "@/features/requests/actions";
 const initial: FormState = { status: "idle" };
 
 export function ContactForm() {
+  const t = useTranslations("contact");
+  const tc = useTranslations("common");
   const [state, action, pending] = useActionState(submitContact, initial);
   const errors = state.errors ?? {};
 
@@ -17,8 +20,8 @@ export function ContactForm() {
     return (
       <div className="rounded-2xl border border-positive/30 bg-positive-soft p-8 text-center">
         <CheckCircle2 className="mx-auto size-10 text-positive" aria-hidden />
-        <p className="mt-4 text-lg font-semibold text-navy">Votre message a bien été envoyé.</p>
-        <p className="mt-2 text-sm text-muted">L&apos;équipe HilfeNetz vous répondra dès que possible.</p>
+        <p className="mt-4 text-lg font-semibold text-navy">{t("successTitle")}</p>
+        <p className="mt-2 text-sm text-muted">{t("successDesc")}</p>
       </div>
     );
   }
@@ -26,17 +29,17 @@ export function ContactForm() {
   return (
     <form action={action} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Nom" required error={errors.name?.[0]}>
+        <Field label={t("name")} required error={errors.name?.[0]}>
           <Input name="name" error={!!errors.name} autoComplete="name" />
         </Field>
-        <Field label="E-mail" required error={errors.email?.[0]}>
+        <Field label={t("email")} required error={errors.email?.[0]}>
           <Input type="email" name="email" error={!!errors.email} autoComplete="email" />
         </Field>
       </div>
-      <Field label="Sujet" required error={errors.subject?.[0]}>
+      <Field label={t("subject")} required error={errors.subject?.[0]}>
         <Input name="subject" error={!!errors.subject} />
       </Field>
-      <Field label="Message" required error={errors.message?.[0]}>
+      <Field label={t("message")} required error={errors.message?.[0]}>
         <Textarea name="message" error={!!errors.message} rows={6} maxLength={2000} />
       </Field>
       <Honeypot />
@@ -44,7 +47,7 @@ export function ContactForm() {
         <p role="alert" className="rounded-xl border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-danger">{state.message}</p>
       ) : null}
       <Button type="submit" size="lg" disabled={pending}>
-        {pending ? "Envoi en cours…" : "Envoyer"}
+        {pending ? tc("sending") : t("send")}
       </Button>
     </form>
   );

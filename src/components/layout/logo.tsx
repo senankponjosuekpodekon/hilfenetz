@@ -1,8 +1,8 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
-    <Link href="/" className="flex items-center gap-2.5" aria-label="HilfeNetz — accueil">
+    <Link href="/" className="flex items-center gap-2.5" aria-label="HilfeNetz">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
         <circle cx="5" cy="7" r="3" className={dark ? "fill-white" : "fill-trust"} />
         <circle cx="21" cy="7" r="3" className={dark ? "fill-white" : "fill-trust"} />

@@ -1,0 +1,496 @@
+{
+  "common": {
+    "skipToContent": "Vai al contenuto",
+    "required": "Questo campo è obbligatorio.",
+    "invalidEmail": "Indirizzo e-mail non valido.",
+    "invalidPhone": "Numero non valido.",
+    "sending": "Invio in corso…",
+    "send": "Invia",
+    "backHome": "Torna alla home",
+    "backToOffers": "Torna alle offerte",
+    "offerBadge": "Offerta di donazione",
+    "offerSubtitle": "Un donatore desidera offrire il suo sostegno",
+    "donor": "Donatore",
+    "anonymous": "Donatore anonimo",
+    "amountProposed": "Importo della donazione proposta",
+    "decisionDonor": "Decisione finale: donatore",
+    "publishedOn": "Pubblicato il {date}",
+    "viewDetails": "Vedi i dettagli",
+    "viewAllOffers": "Vedi tutte le offerte",
+    "viewOffers": "Vedi le offerte di donazione",
+    "submitRequest": "Presenta la tua richiesta",
+    "noOffersTitle": "Nessuna offerta disponibile al momento.",
+    "noOffersDesc": "Torna presto per scoprire le nuove proposte di sostegno.",
+    "chars": "{count} / 2.000 caratteri",
+    "donorMessageDefault": "Desidero offrire una donazione per sostenere una persona, un'iniziativa o un progetto con un interesse sociale, professionale o comunitario. Le persone interessate possono presentare il proprio progetto o la propria situazione tramite l'apposito modulo.",
+    "legalDisclaimer": "HilfeNetz è una piattaforma di collegamento. La decisione di attribuire una donazione spetta esclusivamente al donatore.",
+    "categories": {
+      "SOCIAL": "Sociale",
+      "PROFESSIONAL": "Professionale",
+      "COMMUNITY": "Comunitario"
+    },
+    "menuOpen": "Apri il menu",
+    "menuClose": "Chiudi il menu",
+    "closeFilters": "Chiudi i filtri",
+    "mainNav": "Navigazione principale",
+    "mobileNav": "Navigazione mobile",
+    "formSteps": "Passaggi del modulo"
+  },
+  "nav": {
+    "home": "Home",
+    "howItWorks": "Come funziona",
+    "offers": "Offerte",
+    "about": "Chi siamo",
+    "faq": "FAQ",
+    "contact": "Contatto",
+    "submitRequest": "Presenta una richiesta"
+  },
+  "footer": {
+    "tagline": "Piattaforma di collegamento tra donatori e persone che hanno bisogno di sostegno.",
+    "platform": "Piattaforma",
+    "information": "Informazioni",
+    "legal": "Legale",
+    "offersLink": "Offerte di donazione",
+    "requestLink": "Presenta una richiesta",
+    "aboutLink": "Chi siamo",
+    "contactLink": "Contatto",
+    "reportLink": "Segnala un annuncio",
+    "termsLink": "Condizioni di partecipazione",
+    "privacyLink": "Protezione dei dati",
+    "imprintLink": "Note legali",
+    "copyright": "© {year} HilfeNetz"
+  },
+  "home": {
+    "hero": {
+      "badge": "Piattaforma di collegamento",
+      "title1": "Persone pronte a sostenere.",
+      "title2": "Progetti in cerca della loro opportunità.",
+      "sub": "HilfeNetz facilita il collegamento tra donatori e persone con un progetto, un'iniziativa o una situazione che richiede sostegno.",
+      "ctaOffers": "Vedi le offerte di donazione",
+      "ctaRequest": "Presenta la tua richiesta",
+      "checks": [
+        "Piattaforma trasparente",
+        "Richieste esaminate",
+        "Decisione del donatore"
+      ],
+      "cardReviewed": "Richiesta esaminata",
+      "cardConnection": "Collegamento",
+      "cardVerified": "Offerta verificata",
+      "cardDesc": "Un'opportunità di sostegno per un progetto che risponde ai criteri del donatore."
+    },
+    "trustBar": {
+      "title": "Una piattaforma progettata per la chiarezza",
+      "items": [
+        "Funzionamento trasparente",
+        "Richieste esaminate",
+        "Decisione indipendente",
+        "Vigilanza contro le frodi"
+      ]
+    },
+    "howItWorks": {
+      "title": "Un collegamento in 5 passaggi",
+      "desc": "Dalla presentazione della tua situazione alla decisione del donatore, ogni passaggio è chiaramente definito.",
+      "steps": [
+        {
+          "title": "Presenta la tua richiesta",
+          "desc": "Descrivi il tuo progetto, la tua iniziativa o la tua situazione."
+        },
+        {
+          "title": "La tua richiesta viene esaminata",
+          "desc": "Le informazioni possono essere soggette a un controllo amministrativo."
+        },
+        {
+          "title": "Collegamento",
+          "desc": "La tua richiesta può essere presentata a un donatore potenzialmente interessato."
+        },
+        {
+          "title": "Il donatore prende la sua decisione",
+          "desc": "Il donatore decide liberamente se concedere o meno il suo sostegno."
+        },
+        {
+          "title": "Le condizioni sono definite",
+          "desc": "Le eventuali condizioni sono stabilite tra le parti."
+        }
+      ],
+      "more": "Vedi il funzionamento dettagliato"
+    },
+    "featured": {
+      "title": "Un'offerta di sostegno può cambiare una traiettoria.",
+      "desc": "Scopri le offerte pubblicate dai donatori e presenta la tua situazione quando corrisponde ai criteri indicati.",
+      "viewOffer": "Vedi l'offerta",
+      "aside": "Ogni offerta precisa i suoi criteri e l'importo proposto. Verifica che la tua situazione corrisponda prima di presentare la richiesta."
+    },
+    "requester": {
+      "eyebrow": "Cerchi un sostegno?",
+      "title": "Presenta il tuo progetto o la tua situazione in pochi passaggi.",
+      "formSteps": [
+        "Le tue informazioni",
+        "La tua situazione",
+        "Il tuo messaggio",
+        "Conferma"
+      ],
+      "steps": [
+        "Descrivi la tua situazione",
+        "Spiega il tuo bisogno",
+        "Aggiungi il tuo messaggio",
+        "Invia la tua richiesta"
+      ]
+    },
+    "donor": {
+      "eyebrow": "Sei un donatore?",
+      "title": "Vuoi offrire il tuo sostegno?",
+      "desc": "Contatta il team HilfeNetz per trasmettere la tua proposta. Dopo la verifica, la tua offerta potrà essere pubblicata sulla piattaforma con i tuoi criteri.",
+      "cta": "Contatta il team",
+      "steps": [
+        "Definisci la tua offerta",
+        "Indica i tuoi criteri",
+        "Ricevi richieste pertinenti"
+      ]
+    },
+    "engagement": {
+      "title": "Il nostro impegno: chiarezza, vigilanza e responsabilità.",
+      "cards": [
+        {
+          "title": "Trasparenza",
+          "desc": "Presentiamo chiaramente il funzionamento della piattaforma e il ruolo di ciascuna parte."
+        },
+        {
+          "title": "Vigilanza",
+          "desc": "Annunci o richieste manifestamente fraudolenti possono essere rifiutati o rimossi."
+        },
+        {
+          "title": "Protezione",
+          "desc": "Le informazioni trasmesse sono trattate nell'ambito del funzionamento della piattaforma."
+        },
+        {
+          "title": "Segnalazione",
+          "desc": "Ogni utente può segnalare un annuncio o un comportamento sospetto."
+        }
+      ]
+    },
+    "antiFraud": {
+      "eyebrow": "Vigilanza",
+      "title": "Non pagare mai per ottenere una donazione.",
+      "desc": "HilfeNetz non richiede alcun pagamento per garantire l'ottenimento di una donazione. Non comunicare mai i tuoi dati bancari sensibili nella richiesta.",
+      "cta": "Segnala un annuncio"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "desc": "Le risposte alle domande essenziali sul funzionamento di HilfeNetz.",
+      "more": "Vedi tutte le domande"
+    },
+    "finalCta": {
+      "title1": "Una richiesta. Una proposta.",
+      "title2": "Una possibilità di incontro.",
+      "sub": "Scopri come funziona HilfeNetz.",
+      "ctaOffers": "Vedi le offerte",
+      "ctaRequest": "Presenta una richiesta"
+    }
+  },
+  "offers": {
+    "title": "Scopri le offerte di sostegno",
+    "sub": "Sfoglia le proposte di donazione pubblicate su HilfeNetz e verifica i criteri prima di presentare la tua richiesta.",
+    "searchPlaceholder": "Cerca un'offerta…",
+    "search": "Cerca",
+    "filter": "Filtra",
+    "filters": "Filtri",
+    "domain": "Ambito",
+    "domainMulti": "Ambito — selezione multipla possibile",
+    "amount": "Importo",
+    "all": "Tutti",
+    "amounts": {
+      "low": "Meno di 1.000 €",
+      "mid": "1.000 – 5.000 €",
+      "high": "5.000 – 10.000 €",
+      "max": "Più di 10.000 €"
+    },
+    "reset": "Reimposta",
+    "seeResults": "Vedi i risultati",
+    "emptyTitle": "Nessuna offerta disponibile al momento.",
+    "emptyDesc": "Torna presto per scoprire le nuove proposte di sostegno.",
+    "emptyReset": "Reimposta i filtri"
+  },
+  "offerDetail": {
+    "available": "Offerta attualmente disponibile",
+    "donorMessageLabel": "Messaggio del donatore",
+    "criteriaTitle": "Criteri del donatore",
+    "criteria": {
+      "type": "Tipo di sostegno",
+      "typeValue": "Progetto / Iniziativa / Situazione",
+      "domain": "Ambito",
+      "amount": "Importo proposto",
+      "decision": "Decisione",
+      "decisionValue": "Donatore",
+      "published": "Pubblicato il"
+    },
+    "warningStrong": "Questa offerta non costituisce una garanzia di finanziamento.",
+    "warningBody": "Le richieste sono esaminate secondo i criteri definiti dal donatore. La decisione finale spetta esclusivamente al donatore.",
+    "notFound": "Offerta non trovata"
+  },
+  "request": {
+    "title": "Presenta la tua richiesta",
+    "intro": "Spiega la tua situazione, la tua iniziativa o il tuo progetto. Una volta esaminata, la tua richiesta può essere presentata a un donatore corrispondente ai criteri di un'offerta.",
+    "warning": "Non comunicare mai i tuoi dati bancari sensibili nella richiesta. L'invio di una richiesta non garantisce l'ottenimento di una donazione.",
+    "linkedOffer": "Richiesta collegata all'offerta:",
+    "steps": [
+      "Informazioni",
+      "La tua situazione",
+      "Il tuo messaggio",
+      "Conferma"
+    ],
+    "s0": {
+      "title": "Le tue informazioni",
+      "desc": "Utilizza informazioni che permettano al team HilfeNetz di contattarti se la tua richiesta viene selezionata per l'esame.",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "E-mail",
+      "phone": "Telefono / WhatsApp",
+      "country": "Paese"
+    },
+    "s1": {
+      "title": "Il tuo progetto o la tua situazione",
+      "label": "Presenta il tuo progetto, la tua iniziativa o la tua situazione",
+      "hint": "Spiega chiaramente la tua situazione, il tuo progetto, i tuoi obiettivi e come un eventuale sostegno potrebbe aiutarti.",
+      "minError": "Descrivi la tua situazione in almeno 50 caratteri.",
+      "maxError": "Massimo 2.000 caratteri."
+    },
+    "s2": {
+      "title": "Il tuo messaggio al donatore",
+      "label": "Presenta il tuo percorso, le tue motivazioni e gli obiettivi della tua richiesta"
+    },
+    "s3": {
+      "title": "Conferma",
+      "youInfo": "Le tue informazioni",
+      "yourRequest": "La tua richiesta",
+      "donorMessage": "Messaggio al donatore",
+      "confirmAccuracy": "Confermo che le informazioni comunicate sono esatte al meglio della mia conoscenza.",
+      "confirmAccuracyError": "Devi confermare l'esattezza delle informazioni.",
+      "acceptProcessing": "Accetto che le mie informazioni siano utilizzate conformemente alle regole applicabili al trattamento delle richieste.",
+      "acceptProcessingError": "Devi accettare il trattamento delle tue informazioni."
+    },
+    "back": "Indietro",
+    "next": "Continua",
+    "submit": "Invia la mia richiesta",
+    "serverError": "Si è verificato un errore. Riprova.",
+    "tooMany": "Troppi tentativi. Riprova più tardi."
+  },
+  "requestConfirm": {
+    "title": "La tua richiesta è stata trasmessa.",
+    "desc": "Grazie per aver presentato il tuo progetto a HilfeNetz. La tua richiesta sarà esaminata conformemente alle regole della piattaforma.",
+    "ref": "Numero di riferimento",
+    "disclaimer": "L'invio di una richiesta non garantisce l'ottenimento di una donazione."
+  },
+  "contact": {
+    "title": "Contatto",
+    "sub": "Una domanda su HilfeNetz? Siamo a tua disposizione.",
+    "email": "E-mail",
+    "phone": "Telefono / WhatsApp",
+    "phoneSoon": "Sarà comunicato prossimamente",
+    "name": "Nome",
+    "subject": "Oggetto",
+    "message": "Messaggio",
+    "send": "Invia",
+    "successTitle": "Il tuo messaggio è stato inviato.",
+    "successDesc": "Il team HilfeNetz ti risponderà al più presto."
+  },
+  "report": {
+    "title": "Hai notato qualcosa di sospetto?",
+    "sub": "Aiutaci a mantenere un ambiente affidabile segnalando un annuncio o un comportamento che non rispetta le regole di HilfeNetz.",
+    "offerName": "Nome dell'annuncio",
+    "offerUrl": "Link dell'annuncio",
+    "reason": "Motivo della segnalazione",
+    "selectReason": "Seleziona un motivo",
+    "reasons": {
+      "MISLEADING_INFO": "Informazioni fuorvianti",
+      "PAYMENT_REQUEST": "Richiesta di pagamento",
+      "SUSPICIOUS_BEHAVIOR": "Comportamento sospetto",
+      "SUSPECTED_FRAUD": "Sospetta frode",
+      "OTHER": "Altro"
+    },
+    "description": "Descrizione",
+    "yourEmail": "La tua e-mail",
+    "submit": "Invia la segnalazione",
+    "success": "Grazie. La tua segnalazione è stata trasmessa al team HilfeNetz."
+  },
+  "howItWorks": {
+    "eyebrow": "Funzionamento",
+    "title": "Un collegamento in 5 passaggi",
+    "desc": "HilfeNetz facilita l'incontro tra donatori e persone in cerca di sostegno. Ecco il dettaglio di ogni passaggio.",
+    "steps": [
+      {
+        "title": "Presenta la tua richiesta",
+        "desc": "Descrivi il tuo progetto, la tua iniziativa o la tua situazione e spiega perché cerchi un sostegno. Fornisci informazioni esatte e complete."
+      },
+      {
+        "title": "La tua richiesta viene esaminata",
+        "desc": "Il team HilfeNetz esamina le informazioni trasmesse. Le richieste incomplete, inesatte o manifestamente fraudolente possono essere rifiutate."
+      },
+      {
+        "title": "Collegamento",
+        "desc": "Se la tua richiesta corrisponde ai criteri di un'offerta, può essere presentata al donatore interessato."
+      },
+      {
+        "title": "Il donatore prende la sua decisione",
+        "desc": "Il donatore decide liberamente se concedere o meno il suo sostegno. HilfeNetz non decide mai al suo posto."
+      },
+      {
+        "title": "Le condizioni sono definite",
+        "desc": "Se il donatore accetta, le eventuali condizioni sono stabilite direttamente tra le parti."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "Chi siamo",
+    "title": "Creare uno spazio di collegamento più chiaro e trasparente.",
+    "missionTitle": "La nostra missione",
+    "missionBody": "HilfeNetz è una piattaforma destinata a facilitare il collegamento tra donatori e persone o portatori di progetti che desiderano presentare una richiesta di sostegno. Il nostro obiettivo: rendere questo processo più chiaro, più strutturato e più sicuro per tutti.",
+    "roleTitle": "Il nostro ruolo",
+    "roleDonor": "DONATORE",
+    "roleRequester": "RICHIEDENTE",
+    "roleBody": "HilfeNetz facilita il collegamento ma non decide l'attribuzione delle donazioni. La decisione di concedere una donazione spetta esclusivamente al donatore.",
+    "notTitle": "Cosa HilfeNetz non fa",
+    "notList": [
+      "HilfeNetz non garantisce l'ottenimento di una donazione.",
+      "HilfeNetz non decide al posto del donatore.",
+      "HilfeNetz non è né una banca né un istituto di credito.",
+      "HilfeNetz non propone alcun prodotto finanziario o prestito."
+    ],
+    "commitmentTitle": "Il nostro impegno",
+    "commitmentBody": "Trasparenza sul funzionamento, vigilanza contro le frodi, protezione delle informazioni trasmesse e possibilità per chiunque di segnalare un comportamento sospetto."
+  },
+  "faqPage": {
+    "title": "Domande frequenti",
+    "desc": "Tutto quello che c'è da sapere sul funzionamento della piattaforma.",
+    "empty": "Non trovi la risposta alla tua domanda?",
+    "cta": "Contattaci"
+  },
+  "legal": {
+    "notice": "Documento fornito a titolo indicativo — il contenuto definitivo deve essere validato dal responsabile legale del progetto.",
+    "conditions": {
+      "title": "Condizioni di partecipazione",
+      "sections": [
+        {
+          "title": "1. Ruolo della piattaforma",
+          "body": [
+            "HilfeNetz è una piattaforma di collegamento tra donatori e persone o portatori di progetti che desiderano presentare una richiesta di sostegno. HilfeNetz non è né una banca, né un istituto di credito, né un intermediario che decide l'attribuzione di una donazione."
+          ]
+        },
+        {
+          "title": "2. Assenza di garanzia",
+          "body": [
+            "La pubblicazione di una richiesta o di un'offerta non garantisce l'ottenimento di una donazione. La decisione di concedere una donazione spetta esclusivamente al donatore."
+          ]
+        },
+        {
+          "title": "3. Esattezza delle informazioni",
+          "body": [
+            "Gli utenti si impegnano a fornire informazioni esatte. Le richieste o gli annunci inesatti, fuorvianti o manifestamente fraudolenti possono essere rifiutati o rimossi."
+          ]
+        },
+        {
+          "title": "4. Divieto di pagamento",
+          "body": [
+            "Nessun pagamento è richiesto per presentare una richiesta o per garantire l'ottenimento di una donazione. Qualsiasi richiesta di pagamento proveniente da terzi deve essere segnalata."
+          ]
+        },
+        {
+          "title": "5. Segnalazioni",
+          "body": [
+            "Ogni utente può segnalare un annuncio o un comportamento sospetto tramite l'apposito modulo. HilfeNetz si riserva la possibilità di sospendere o rimuovere i contenuti segnalati dopo la verifica."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Protezione dei dati",
+      "sections": [
+        {
+          "title": "1. Dati raccolti",
+          "body": [
+            "HilfeNetz raccoglie le informazioni trasmesse tramite i suoi moduli: identità, recapiti (e-mail, telefono), descrizione della situazione o della proposta."
+          ]
+        },
+        {
+          "title": "2. Finalità",
+          "items": [
+            "esame delle richieste;",
+            "collegamento tra donatori e richiedenti;",
+            "trattamento delle segnalazioni;",
+            "risposta ai messaggi di contatto."
+          ]
+        },
+        {
+          "title": "3. Conservazione e sicurezza",
+          "body": [
+            "Le informazioni sono conservate per il tempo necessario al trattamento delle richieste e sono accessibili solo alle persone autorizzate. I tempi di conservazione precisi saranno definiti con il responsabile legale del progetto."
+          ]
+        },
+        {
+          "title": "4. I tuoi diritti",
+          "body": [
+            "Conformemente alla normativa applicabile, puoi richiedere l'accesso, la rettifica o la cancellazione delle tue informazioni contattandoci tramite la pagina Contatto."
+          ]
+        }
+      ]
+    },
+    "imprint": {
+      "title": "Note legali",
+      "sections": [
+        {
+          "title": "Editore del sito",
+          "body": [
+            "HilfeNetz — piattaforma di collegamento.\n[Ragione sociale, indirizzo e dati di registrazione da completare da parte del responsabile legale del progetto.]"
+          ]
+        },
+        {
+          "title": "Contatto",
+          "body": [
+            "[Indirizzo e-mail di contatto da completare.]"
+          ]
+        },
+        {
+          "title": "Hosting",
+          "body": [
+            "[Nome e indirizzo dell'hosting da completare.]"
+          ]
+        },
+        {
+          "title": "Proprietà intellettuale",
+          "body": [
+            "Tutti i contenuti del sito (testi, elementi grafici, logo) sono protetti. Ogni riproduzione senza autorizzazione è vietata."
+          ]
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Questa pagina non esiste.",
+    "desc": "Il contenuto che cerchi non è stato trovato o è stato spostato."
+  },
+  "errorPage": {
+    "title": "Si è verificato un errore.",
+    "desc": "Impossibile caricare il contenuto. Riprova.",
+    "retry": "Riprova"
+  },
+  "meta": {
+    "home": "Piattaforma di collegamento tra donatori e richiedenti",
+    "offers": "Offerte di donazione",
+    "offersDesc": "Sfoglia le proposte di donazione pubblicate su HilfeNetz e verifica i criteri prima di presentare la tua richiesta.",
+    "request": "Presenta una richiesta",
+    "requestDesc": "Presenta il tuo progetto, la tua iniziativa o la tua situazione in pochi passaggi.",
+    "requestConfirm": "Richiesta trasmessa",
+    "contact": "Contatto",
+    "contactDesc": "Una domanda su HilfeNetz? Siamo a tua disposizione.",
+    "report": "Segnala un annuncio",
+    "reportDesc": "Segnala un annuncio o un comportamento che non rispetta le regole di HilfeNetz.",
+    "howItWorks": "Come funziona",
+    "howItWorksDesc": "Dalla presentazione della tua situazione alla decisione del donatore, ogni passaggio è chiaramente definito.",
+    "about": "Chi siamo",
+    "aboutDesc": "HilfeNetz è una piattaforma destinata a facilitare il collegamento tra donatori e portatori di progetti.",
+    "faq": "FAQ",
+    "faqDesc": "Domande frequenti sul funzionamento di HilfeNetz.",
+    "terms": "Condizioni di partecipazione",
+    "privacy": "Protezione dei dati",
+    "imprint": "Note legali"
+  }
+}

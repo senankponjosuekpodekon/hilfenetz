@@ -1,0 +1,496 @@
+{
+  "common": {
+    "skipToContent": "Zum Inhalt springen",
+    "required": "Dieses Feld ist erforderlich.",
+    "invalidEmail": "Ungültige E-Mail-Adresse.",
+    "invalidPhone": "Ungültige Telefonnummer.",
+    "sending": "Wird gesendet…",
+    "send": "Senden",
+    "backHome": "Zurück zur Startseite",
+    "backToOffers": "Zurück zu den Angeboten",
+    "offerBadge": "Spendenangebot",
+    "offerSubtitle": "Ein Spender möchte seine Unterstützung anbieten",
+    "donor": "Spender",
+    "anonymous": "Anonymer Spender",
+    "amountProposed": "Vorgeschlagener Spendenbetrag",
+    "decisionDonor": "Endgültige Entscheidung: Spender",
+    "publishedOn": "Veröffentlicht am {date}",
+    "viewDetails": "Details ansehen",
+    "viewAllOffers": "Alle Angebote ansehen",
+    "viewOffers": "Spendenangebote ansehen",
+    "submitRequest": "Meine Anfrage einreichen",
+    "noOffersTitle": "Derzeit sind keine Angebote verfügbar.",
+    "noOffersDesc": "Schauen Sie bald wieder vorbei, um neue Unterstützungsangebote zu entdecken.",
+    "chars": "{count} / 2.000 Zeichen",
+    "donorMessageDefault": "Ich möchte eine Spende anbieten, um eine Person, eine Initiative oder ein Projekt mit sozialem, beruflichem oder gemeinschaftlichem Interesse zu unterstützen. Interessierte können ihr Projekt oder ihre Situation über das dafür vorgesehene Formular einreichen.",
+    "legalDisclaimer": "HilfeNetz ist eine Vermittlungsplattform. Die Entscheidung über die Vergabe einer Spende liegt ausschließlich beim Spender.",
+    "categories": {
+      "SOCIAL": "Soziales",
+      "PROFESSIONAL": "Beruflich",
+      "COMMUNITY": "Gemeinschaft"
+    },
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "closeFilters": "Filter schließen",
+    "mainNav": "Hauptnavigation",
+    "mobileNav": "Mobile Navigation",
+    "formSteps": "Formularschritte"
+  },
+  "nav": {
+    "home": "Startseite",
+    "howItWorks": "So funktioniert's",
+    "offers": "Angebote",
+    "about": "Über uns",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "submitRequest": "Anfrage einreichen"
+  },
+  "footer": {
+    "tagline": "Vermittlungsplattform zwischen Spendern und Menschen, die Unterstützung benötigen.",
+    "platform": "Plattform",
+    "information": "Informationen",
+    "legal": "Rechtliches",
+    "offersLink": "Spendenangebote",
+    "requestLink": "Anfrage einreichen",
+    "aboutLink": "Über uns",
+    "contactLink": "Kontakt",
+    "reportLink": "Anzeige melden",
+    "termsLink": "Teilnahmebedingungen",
+    "privacyLink": "Datenschutz",
+    "imprintLink": "Impressum",
+    "copyright": "© {year} HilfeNetz"
+  },
+  "home": {
+    "hero": {
+      "badge": "Vermittlungsplattform",
+      "title1": "Menschen, die bereit sind zu unterstützen.",
+      "title2": "Projekte, die ihre Chance suchen.",
+      "sub": "HilfeNetz erleichtert die Vermittlung zwischen Spendern und Personen mit einem Projekt, einer Initiative oder einer Situation, die Unterstützung benötigt.",
+      "ctaOffers": "Spendenangebote ansehen",
+      "ctaRequest": "Meine Anfrage einreichen",
+      "checks": [
+        "Transparente Plattform",
+        "Geprüfte Anfragen",
+        "Entscheidung des Spenders"
+      ],
+      "cardReviewed": "Anfrage geprüft",
+      "cardConnection": "Vermittlung",
+      "cardVerified": "Angebot geprüft",
+      "cardDesc": "Eine Unterstützungsmöglichkeit für ein Projekt, das den Kriterien des Spenders entspricht."
+    },
+    "trustBar": {
+      "title": "Eine Plattform, die auf Klarheit ausgelegt ist",
+      "items": [
+        "Transparente Funktionsweise",
+        "Geprüfte Anfragen",
+        "Unabhängige Entscheidung",
+        "Wachsamkeit gegen Betrug"
+      ]
+    },
+    "howItWorks": {
+      "title": "Eine Vermittlung in 5 Schritten",
+      "desc": "Von der Vorstellung Ihrer Situation bis zur Entscheidung des Spenders ist jeder Schritt klar definiert.",
+      "steps": [
+        {
+          "title": "Reichen Sie Ihre Anfrage ein",
+          "desc": "Beschreiben Sie Ihr Projekt, Ihre Initiative oder Ihre Situation."
+        },
+        {
+          "title": "Ihre Anfrage wird geprüft",
+          "desc": "Die Angaben können einer administrativen Prüfung unterzogen werden."
+        },
+        {
+          "title": "Vermittlung",
+          "desc": "Ihre Anfrage kann einem interessierten Spender vorgelegt werden."
+        },
+        {
+          "title": "Der Spender trifft seine Entscheidung",
+          "desc": "Der Spender entscheidet frei, ob er seine Unterstützung gewährt."
+        },
+        {
+          "title": "Die Bedingungen werden festgelegt",
+          "desc": "Etwaige Bedingungen werden zwischen den Parteien vereinbart."
+        }
+      ],
+      "more": "Die ausführliche Funktionsweise ansehen"
+    },
+    "featured": {
+      "title": "Ein Unterstützungsangebot kann eine Lebenswende verändern.",
+      "desc": "Entdecken Sie die von Spendern veröffentlichten Angebote und stellen Sie Ihre Situation vor, wenn sie den angegebenen Kriterien entspricht.",
+      "viewOffer": "Angebot ansehen",
+      "aside": "Jedes Angebot gibt seine Kriterien und den vorgeschlagenen Betrag an. Prüfen Sie, ob Ihre Situation passt, bevor Sie Ihre Anfrage einreichen."
+    },
+    "requester": {
+      "eyebrow": "Sie suchen Unterstützung?",
+      "title": "Stellen Sie Ihr Projekt oder Ihre Situation in wenigen Schritten vor.",
+      "formSteps": [
+        "Ihre Angaben",
+        "Ihre Situation",
+        "Ihre Nachricht",
+        "Bestätigung"
+      ],
+      "steps": [
+        "Beschreiben Sie Ihre Situation",
+        "Erklären Sie Ihren Bedarf",
+        "Fügen Sie Ihre Nachricht hinzu",
+        "Senden Sie Ihre Anfrage"
+      ]
+    },
+    "donor": {
+      "eyebrow": "Sie sind Spender?",
+      "title": "Sie möchten Ihre Unterstützung anbieten?",
+      "desc": "Kontaktieren Sie das HilfeNetz-Team, um Ihren Vorschlag zu übermitteln. Nach Prüfung kann Ihr Angebot mit Ihren eigenen Kriterien auf der Plattform veröffentlicht werden.",
+      "cta": "Team kontaktieren",
+      "steps": [
+        "Definieren Sie Ihr Angebot",
+        "Geben Sie Ihre Kriterien an",
+        "Erhalten Sie passende Anfragen"
+      ]
+    },
+    "engagement": {
+      "title": "Unser Engagement: Klarheit, Wachsamkeit und Verantwortung.",
+      "cards": [
+        {
+          "title": "Transparenz",
+          "desc": "Wir stellen die Funktionsweise der Plattform und die Rolle jeder Partei klar dar."
+        },
+        {
+          "title": "Wachsamkeit",
+          "desc": "Offensichtlich betrügerische Anzeigen oder Anfragen können abgelehnt oder entfernt werden."
+        },
+        {
+          "title": "Schutz",
+          "desc": "Übermittelte Informationen werden im Rahmen des Betriebs der Plattform verarbeitet."
+        },
+        {
+          "title": "Meldung",
+          "desc": "Jeder Nutzer kann eine Anzeige oder ein verdächtiges Verhalten melden."
+        }
+      ]
+    },
+    "antiFraud": {
+      "eyebrow": "Wachsamkeit",
+      "title": "Zahlen Sie niemals, um eine Spende zu erhalten.",
+      "desc": "HilfeNetz verlangt keine Zahlung, um den Erhalt einer Spende zu garantieren. Geben Sie niemals sensible Bankdaten in Ihrer Anfrage an.",
+      "cta": "Anzeige melden"
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "desc": "Antworten auf die wesentlichen Fragen zur Funktionsweise von HilfeNetz.",
+      "more": "Alle Fragen ansehen"
+    },
+    "finalCta": {
+      "title1": "Eine Anfrage. Ein Angebot.",
+      "title2": "Eine Begegnungsmöglichkeit.",
+      "sub": "Entdecken Sie, wie HilfeNetz funktioniert.",
+      "ctaOffers": "Angebote ansehen",
+      "ctaRequest": "Anfrage einreichen"
+    }
+  },
+  "offers": {
+    "title": "Entdecken Sie die Unterstützungsangebote",
+    "sub": "Durchsuchen Sie die auf HilfeNetz veröffentlichten Spendenangebote und prüfen Sie die Kriterien, bevor Sie Ihre Anfrage einreichen.",
+    "searchPlaceholder": "Angebot suchen…",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "filters": "Filter",
+    "domain": "Bereich",
+    "domainMulti": "Bereich — Mehrfachauswahl möglich",
+    "amount": "Betrag",
+    "all": "Alle",
+    "amounts": {
+      "low": "Weniger als 1.000 €",
+      "mid": "1.000 – 5.000 €",
+      "high": "5.000 – 10.000 €",
+      "max": "Mehr als 10.000 €"
+    },
+    "reset": "Zurücksetzen",
+    "seeResults": "Ergebnisse ansehen",
+    "emptyTitle": "Derzeit sind keine Angebote verfügbar.",
+    "emptyDesc": "Schauen Sie bald wieder vorbei, um neue Unterstützungsangebote zu entdecken.",
+    "emptyReset": "Filter zurücksetzen"
+  },
+  "offerDetail": {
+    "available": "Angebot derzeit verfügbar",
+    "donorMessageLabel": "Nachricht des Spenders",
+    "criteriaTitle": "Kriterien des Spenders",
+    "criteria": {
+      "type": "Art der Unterstützung",
+      "typeValue": "Projekt / Initiative / Situation",
+      "domain": "Bereich",
+      "amount": "Vorgeschlagener Betrag",
+      "decision": "Entscheidung",
+      "decisionValue": "Spender",
+      "published": "Veröffentlicht am"
+    },
+    "warningStrong": "Dieses Angebot stellt keine Finanzierungsgarantie dar.",
+    "warningBody": "Anfragen werden nach den vom Spender festgelegten Kriterien geprüft. Die endgültige Entscheidung liegt ausschließlich beim Spender.",
+    "notFound": "Angebot nicht gefunden"
+  },
+  "request": {
+    "title": "Meine Anfrage einreichen",
+    "intro": "Erklären Sie Ihre Situation, Ihre Initiative oder Ihr Projekt. Nach der Prüfung kann Ihre Anfrage einem Spender vorgelegt werden, dessen Angebotskriterien passen.",
+    "warning": "Geben Sie niemals sensible Bankdaten in Ihrer Anfrage an. Das Einreichen einer Anfrage garantiert nicht den Erhalt einer Spende.",
+    "linkedOffer": "Anfrage zu folgendem Angebot:",
+    "steps": [
+      "Angaben",
+      "Ihre Situation",
+      "Ihre Nachricht",
+      "Bestätigung"
+    ],
+    "s0": {
+      "title": "Ihre Angaben",
+      "desc": "Verwenden Sie Angaben, mit denen das HilfeNetz-Team Sie kontaktieren kann, wenn Ihre Anfrage zur Prüfung ausgewählt wird.",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon / WhatsApp",
+      "country": "Land"
+    },
+    "s1": {
+      "title": "Ihr Projekt oder Ihre Situation",
+      "label": "Stellen Sie Ihr Projekt, Ihre Initiative oder Ihre Situation vor",
+      "hint": "Erklären Sie klar Ihre Situation, Ihr Projekt, Ihre Ziele und wie eine mögliche Unterstützung Ihnen helfen könnte.",
+      "minError": "Beschreiben Sie Ihre Situation mit mindestens 50 Zeichen.",
+      "maxError": "Maximal 2.000 Zeichen."
+    },
+    "s2": {
+      "title": "Ihre Nachricht an den Spender",
+      "label": "Beschreiben Sie Ihr Anliegen, Ihre Motivation und die Ziele Ihrer Anfrage"
+    },
+    "s3": {
+      "title": "Bestätigung",
+      "youInfo": "Ihre Angaben",
+      "yourRequest": "Ihre Anfrage",
+      "donorMessage": "Nachricht an den Spender",
+      "confirmAccuracy": "Ich bestätige, dass die angegebenen Informationen nach bestem Wissen zutreffend sind.",
+      "confirmAccuracyError": "Sie müssen die Richtigkeit der Angaben bestätigen.",
+      "acceptProcessing": "Ich akzeptiere, dass meine Angaben gemäß den geltenden Regeln für die Bearbeitung von Anfragen verwendet werden.",
+      "acceptProcessingError": "Sie müssen die Verarbeitung Ihrer Angaben akzeptieren."
+    },
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Meine Anfrage senden",
+    "serverError": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "tooMany": "Zu viele Versuche. Bitte versuchen Sie es später erneut."
+  },
+  "requestConfirm": {
+    "title": "Ihre Anfrage wurde erfolgreich übermittelt.",
+    "desc": "Vielen Dank, dass Sie Ihr Projekt bei HilfeNetz vorgestellt haben. Ihre Anfrage wird gemäß den Regeln der Plattform geprüft.",
+    "ref": "Referenznummer",
+    "disclaimer": "Das Einreichen einer Anfrage garantiert nicht den Erhalt einer Spende."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "sub": "Eine Frage zu HilfeNetz? Wir sind für Sie da.",
+    "email": "E-Mail",
+    "phone": "Telefon / WhatsApp",
+    "phoneSoon": "Wird demnächst bekannt gegeben",
+    "name": "Name",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "send": "Senden",
+    "successTitle": "Ihre Nachricht wurde gesendet.",
+    "successDesc": "Das HilfeNetz-Team wird Ihnen so schnell wie möglich antworten."
+  },
+  "report": {
+    "title": "Haben Sie etwas Verdächtiges entdeckt?",
+    "sub": "Helfen Sie uns, ein vertrauenswürdiges Umfeld zu erhalten, indem Sie eine Anzeige oder ein Verhalten melden, das gegen die Regeln von HilfeNetz verstößt.",
+    "offerName": "Name der Anzeige",
+    "offerUrl": "Link zur Anzeige",
+    "reason": "Grund der Meldung",
+    "selectReason": "Wählen Sie einen Grund",
+    "reasons": {
+      "MISLEADING_INFO": "Irreführende Informationen",
+      "PAYMENT_REQUEST": "Zahlungsaufforderung",
+      "SUSPICIOUS_BEHAVIOR": "Verdächtiges Verhalten",
+      "SUSPECTED_FRAUD": "Vermuteter Betrug",
+      "OTHER": "Sonstiges"
+    },
+    "description": "Beschreibung",
+    "yourEmail": "Ihre E-Mail",
+    "submit": "Meldung senden",
+    "success": "Vielen Dank. Ihre Meldung wurde an das HilfeNetz-Team übermittelt."
+  },
+  "howItWorks": {
+    "eyebrow": "Funktionsweise",
+    "title": "Eine Vermittlung in 5 Schritten",
+    "desc": "HilfeNetz erleichtert die Begegnung zwischen Spendern und Menschen, die Unterstützung suchen. Hier die Details jedes Schritts.",
+    "steps": [
+      {
+        "title": "Reichen Sie Ihre Anfrage ein",
+        "desc": "Beschreiben Sie Ihr Projekt, Ihre Initiative oder Ihre Situation und erklären Sie, warum Sie Unterstützung suchen. Geben Sie genaue und vollständige Informationen an."
+      },
+      {
+        "title": "Ihre Anfrage wird geprüft",
+        "desc": "Das HilfeNetz-Team prüft die übermittelten Informationen. Unvollständige, ungenaue oder offensichtlich betrügerische Anfragen können abgelehnt werden."
+      },
+      {
+        "title": "Vermittlung",
+        "desc": "Wenn Ihre Anfrage den Kriterien eines Angebots entspricht, kann sie dem betreffenden Spender vorgelegt werden."
+      },
+      {
+        "title": "Der Spender trifft seine Entscheidung",
+        "desc": "Der Spender entscheidet frei, ob er seine Unterstützung gewährt. HilfeNetz entscheidet niemals an seiner Stelle."
+      },
+      {
+        "title": "Die Bedingungen werden festgelegt",
+        "desc": "Wenn der Spender zustimmt, werden etwaige Bedingungen direkt zwischen den Parteien vereinbart."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "Über uns",
+    "title": "Einen klareren und transparenteren Vermittlungsraum schaffen.",
+    "missionTitle": "Unsere Mission",
+    "missionBody": "HilfeNetz ist eine Plattform, die die Vermittlung zwischen Spendern und Personen oder Projektträgern erleichtert, die eine Unterstützungsanfrage einreichen möchten. Unser Ziel: diesen Prozess klarer, strukturierter und sicherer für alle zu gestalten.",
+    "roleTitle": "Unsere Rolle",
+    "roleDonor": "SPENDER",
+    "roleRequester": "ANTRAGSTELLER",
+    "roleBody": "HilfeNetz erleichtert die Vermittlung, entscheidet aber nicht über die Vergabe von Spenden. Die Entscheidung, eine Spende zu gewähren, liegt ausschließlich beim Spender.",
+    "notTitle": "Was HilfeNetz nicht tut",
+    "notList": [
+      "HilfeNetz garantiert nicht den Erhalt einer Spende.",
+      "HilfeNetz entscheidet nicht anstelle des Spenders.",
+      "HilfeNetz ist weder eine Bank noch ein Kreditinstitut.",
+      "HilfeNetz bietet keine Finanzprodukte oder Kredite an."
+    ],
+    "commitmentTitle": "Unser Engagement",
+    "commitmentBody": "Transparenz über die Funktionsweise, Wachsamkeit gegen Betrug, Schutz der übermittelten Informationen und die Möglichkeit für jeden, verdächtiges Verhalten zu melden."
+  },
+  "faqPage": {
+    "title": "Häufige Fragen",
+    "desc": "Alles Wissenswerte über die Funktionsweise der Plattform.",
+    "empty": "Sie finden die Antwort auf Ihre Frage nicht?",
+    "cta": "Kontaktieren Sie uns"
+  },
+  "legal": {
+    "notice": "Dieses Dokument dient nur zur Information — der endgültige Inhalt muss vom rechtlichen Verantwortlichen des Projekts validiert werden.",
+    "conditions": {
+      "title": "Teilnahmebedingungen",
+      "sections": [
+        {
+          "title": "1. Rolle der Plattform",
+          "body": [
+            "HilfeNetz ist eine Vermittlungsplattform zwischen Spendern und Personen oder Projektträgern, die eine Unterstützungsanfrage einreichen möchten. HilfeNetz ist weder eine Bank, noch ein Kreditinstitut, noch ein Vermittler, der über die Vergabe einer Spende entscheidet."
+          ]
+        },
+        {
+          "title": "2. Keine Garantie",
+          "body": [
+            "Die Veröffentlichung einer Anfrage oder eines Angebots garantiert nicht den Erhalt einer Spende. Die Entscheidung, eine Spende zu gewähren, liegt ausschließlich beim Spender."
+          ]
+        },
+        {
+          "title": "3. Richtigkeit der Angaben",
+          "body": [
+            "Die Nutzer verpflichten sich, genaue Informationen anzugeben. Ungenaue, irreführende oder offensichtlich betrügerische Anfragen oder Anzeigen können abgelehnt oder entfernt werden."
+          ]
+        },
+        {
+          "title": "4. Zahlungsverbot",
+          "body": [
+            "Für das Einreichen einer Anfrage oder zur Garantie einer Spende ist keine Zahlung erforderlich. Jede Zahlungsaufforderung von Dritten muss gemeldet werden."
+          ]
+        },
+        {
+          "title": "5. Meldungen",
+          "body": [
+            "Jeder Nutzer kann eine Anzeige oder ein verdächtiges Verhalten über das dafür vorgesehene Formular melden. HilfeNetz behält sich vor, gemeldete Inhalte nach Prüfung zu sperren oder zu entfernen."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "sections": [
+        {
+          "title": "1. Erhobene Daten",
+          "body": [
+            "HilfeNetz erhebt die über seine Formulare übermittelten Informationen: Identität, Kontaktdaten (E-Mail, Telefon), Beschreibung der Situation oder des Vorschlags."
+          ]
+        },
+        {
+          "title": "2. Zwecke",
+          "items": [
+            "Prüfung der Anfragen;",
+            "Vermittlung zwischen Spendern und Antragstellern;",
+            "Bearbeitung von Meldungen;",
+            "Beantwortung von Kontaktnachrichten."
+          ]
+        },
+        {
+          "title": "3. Aufbewahrung und Sicherheit",
+          "body": [
+            "Die Informationen werden für die zur Bearbeitung der Anfragen erforderliche Dauer aufbewahrt und sind nur für berechtigte Personen zugänglich. Die genauen Aufbewahrungsfristen werden mit dem rechtlichen Verantwortlichen des Projekts festgelegt."
+          ]
+        },
+        {
+          "title": "4. Ihre Rechte",
+          "body": [
+            "Gemäß den geltenden Vorschriften können Sie Auskunft, Berichtigung oder Löschung Ihrer Daten verlangen, indem Sie uns über die Kontaktseite erreichen."
+          ]
+        }
+      ]
+    },
+    "imprint": {
+      "title": "Impressum",
+      "sections": [
+        {
+          "title": "Betreiber der Website",
+          "body": [
+            "HilfeNetz — Vermittlungsplattform.\n[Firmenname, Adresse und Registrierungsdaten sind vom rechtlichen Verantwortlichen des Projekts zu ergänzen.]"
+          ]
+        },
+        {
+          "title": "Kontakt",
+          "body": [
+            "[Kontakt-E-Mail-Adresse zu ergänzen.]"
+          ]
+        },
+        {
+          "title": "Hosting",
+          "body": [
+            "[Name und Adresse des Hosters zu ergänzen.]"
+          ]
+        },
+        {
+          "title": "Geistiges Eigentum",
+          "body": [
+            "Alle Inhalte der Website (Texte, grafische Elemente, Logo) sind geschützt. Jede Vervielfältigung ohne Genehmigung ist untersagt."
+          ]
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Diese Seite existiert nicht.",
+    "desc": "Der gesuchte Inhalt wurde nicht gefunden oder wurde verschoben."
+  },
+  "errorPage": {
+    "title": "Ein Fehler ist aufgetreten.",
+    "desc": "Der Inhalt konnte nicht geladen werden. Bitte versuchen Sie es erneut.",
+    "retry": "Erneut versuchen"
+  },
+  "meta": {
+    "home": "Vermittlungsplattform zwischen Spendern und Antragstellern",
+    "offers": "Spendenangebote",
+    "offersDesc": "Durchsuchen Sie die auf HilfeNetz veröffentlichten Spendenangebote und prüfen Sie die Kriterien, bevor Sie Ihre Anfrage einreichen.",
+    "request": "Anfrage einreichen",
+    "requestDesc": "Stellen Sie Ihr Projekt, Ihre Initiative oder Ihre Situation in wenigen Schritten vor.",
+    "requestConfirm": "Anfrage übermittelt",
+    "contact": "Kontakt",
+    "contactDesc": "Eine Frage zu HilfeNetz? Wir sind für Sie da.",
+    "report": "Anzeige melden",
+    "reportDesc": "Melden Sie eine Anzeige oder ein Verhalten, das gegen die Regeln von HilfeNetz verstößt.",
+    "howItWorks": "So funktioniert's",
+    "howItWorksDesc": "Von der Vorstellung Ihrer Situation bis zur Entscheidung des Spenders ist jeder Schritt klar definiert.",
+    "about": "Über uns",
+    "aboutDesc": "HilfeNetz ist eine Plattform zur Vermittlung zwischen Spendern und Projektträgern.",
+    "faq": "FAQ",
+    "faqDesc": "Häufige Fragen zur Funktionsweise von HilfeNetz.",
+    "terms": "Teilnahmebedingungen",
+    "privacy": "Datenschutzerklärung",
+    "imprint": "Impressum"
+  }
+}

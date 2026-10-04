@@ -120,6 +120,7 @@ model SiteSetting {
 
 model FaqItem {
   id        String   @id @default(cuid())
+  locale    String   @default("fr")
   question  String
   answer    String
   order     Int      @default(0)

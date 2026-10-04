@@ -1,14 +1,26 @@
-export function formatAmount(amount: number | string, currency = "EUR"): string {
-  return new Intl.NumberFormat("fr-FR", {
+const LOCALE_TAGS: Record<string, string> = {
+  de: "de-DE",
+  fr: "fr-FR",
+  it: "it-IT",
+  es: "es-ES",
+  pt: "pt-PT",
+};
+
+export function intlTag(locale: string): string {
+  return LOCALE_TAGS[locale] ?? "de-DE";
+}
+
+export function formatAmount(amount: number | string, currency = "EUR", locale = "de"): string {
+  return new Intl.NumberFormat(intlTag(locale), {
     style: "currency",
     currency,
     maximumFractionDigits: 0,
   }).format(Number(amount));
 }
 
-export function formatDate(date: Date | string | null | undefined): string {
+export function formatDate(date: Date | string | null | undefined, locale = "de"): string {
   if (!date) return "—";
-  return new Intl.DateTimeFormat("fr-FR", {
+  return new Intl.DateTimeFormat(intlTag(locale), {
     day: "numeric",
     month: "long",
     year: "numeric",
