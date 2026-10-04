@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/ui/badge";
 import { StatusSelect } from "@/components/admin/status-select";
+import { SeedOffersButton } from "@/components/admin/seed-offers-button";
 import { setOfferStatus } from "@/features/admin/actions";
 import { CATEGORY_LABELS, LOCALE_LABELS, OFFER_STATUS_LABELS, formatAmount, formatDate } from "@/lib/utils";
 
@@ -16,9 +17,12 @@ export default async function AdminOffersPage() {
     <div>
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-navy">Offres</h1>
-        <Button href="/admin/offres/nouveau" size="sm">
-          <Plus className="size-4" aria-hidden /> Nouvelle offre
-        </Button>
+        <div className="flex items-center gap-3">
+          <SeedOffersButton />
+          <Button href="/admin/offres/nouveau" size="sm">
+            <Plus className="size-4" aria-hidden /> Nouvelle offre
+          </Button>
+        </div>
       </div>
 
       <div className="mt-6 overflow-x-auto rounded-2xl border border-border bg-surface">

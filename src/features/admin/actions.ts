@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { createSession, destroySession, requireAdmin, verifyPassword } from "@/lib/auth";
 import { offerSchema, OFFER_LOCALES } from "@/lib/validation";
+import { DEMO_OFFERS } from "@/lib/demo-offers";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -137,6 +138,23 @@ export async function saveFaqItem(_prev: unknown, formData: FormData): Promise<{
   revalidatePath("/[locale]", "page");
   revalidatePath("/admin/faq");
   return { status: "success" };
+}
+
+export async function seedDemoOffers(): Promise<{ created: number }> {
+  await requireAdmin();
+  let created = 0;
+  for (const locale of OFFER_LOCALES) {
+    const count = await db.donationOffer.count({ where: { locale } });
+    if (count > 0) continue;
+    const data = DEMO_OFFERS.filter((o) => o.locale === locale);
+    if (data.length > 0) {
+      await db.donationOffer.createMany({ data });
+      created += data.length;
+    }
+  }
+  revalidatePath("/admin/offres");
+  revalidatePath("/[locale]/offres", "page");
+  return { created };
 }
 
 export async function deleteFaqItem(id: string): Promise<void> {
