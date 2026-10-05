@@ -37,7 +37,7 @@ export async function submitContact(_prev: FormState, formData: FormData): Promi
     ["E-mail", data.email],
     ["Sujet", data.subject],
     ["Message", data.message],
-  ]);
+  ], data.email);
 
   return { status: "success" };
 }

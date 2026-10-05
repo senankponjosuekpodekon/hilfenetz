@@ -26,7 +26,7 @@ function html(lines: [string, string][]): string {
   return `<table style="font-family:sans-serif;font-size:14px;color:#0f172a">${rows}</table>`;
 }
 
-async function send(to: string, subject: string, lines: [string, string][]): Promise<void> {
+async function send(to: string, subject: string, lines: [string, string][], replyTo?: string): Promise<void> {
   if (!resend || !to) {
     if (!resend) console.warn(`[email] RESEND_API_KEY absent — e-mail non envoyé : ${subject}`);
     return;
@@ -37,6 +37,7 @@ async function send(to: string, subject: string, lines: [string, string][]): Pro
       from: FROM,
       to,
       subject,
+      replyTo,
       text,
       html: html(lines),
     });
@@ -46,8 +47,8 @@ async function send(to: string, subject: string, lines: [string, string][]): Pro
   }
 }
 
-export const notifyAdmin = (subject: string, lines: [string, string][]) =>
-  send(adminEmail() ?? "", subject, lines);
+export const notifyAdmin = (subject: string, lines: [string, string][], replyTo?: string) =>
+  send(adminEmail() ?? "", subject, lines, replyTo);
 
 const CONFIRMATION: Record<string, { subject: string; refLabel: string; body: string; important: string }> = {
   fr: {

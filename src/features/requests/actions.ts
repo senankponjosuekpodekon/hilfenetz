@@ -57,7 +57,7 @@ export async function submitSupportRequest(_prev: FormState, formData: FormData)
     ["Offre liée", data.offerId ?? "—"],
     ["Situation / projet", data.projectDescription],
     ["Message au donateur", data.donorMessage || "—"],
-  ]);
+  ], data.email);
 
   const locale = String(formData.get("locale") ?? "de");
   await notifyUserConfirmation(data.email, locale, reference);

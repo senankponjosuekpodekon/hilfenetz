@@ -39,7 +39,7 @@ export async function submitReport(_prev: FormState, formData: FormData): Promis
     ["Motif", data.reason],
     ["Description", data.description],
     ["Signalé par", data.email],
-  ]);
+  ], data.email);
 
   return { status: "success" };
 }
