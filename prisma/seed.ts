@@ -37,7 +37,7 @@ async function main() {
 
   // Paramètres du site
   for (const [key, value] of Object.entries({
-    contactEmail: "contact@hilfenetz.example",
+    contactEmail: "kontakt@hilfenetz.com",
     contactPhone: "",
   })) {
     await prisma.siteSetting.upsert({ where: { key }, update: {}, create: { key, value } });

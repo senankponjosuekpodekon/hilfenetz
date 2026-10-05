@@ -7,7 +7,7 @@ export async function getSiteSettings(): Promise<{ contactEmail: string; contact
   });
   const map = Object.fromEntries(rows.map((r) => [r.key, r.value]));
   return {
-    contactEmail: map.contactEmail || "contact@hilfenetz.example",
+    contactEmail: map.contactEmail || "kontakt@hilfenetz.com",
     contactPhone: map.contactPhone || "",
   };
 }
