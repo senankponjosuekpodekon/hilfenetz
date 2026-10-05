@@ -1,0 +1,37 @@
+# HilfeNetz
+
+> HilfeNetz ist eine europäische Vermittlungsplattform, die Spender mit Personen oder Projektträgern verbindet, die Unterstützung suchen. HilfeNetz est une plateforme de mise en relation : la décision d'attribution d'un don appartient exclusivement au donateur.
+
+## Positioning (important)
+
+- HilfeNetz is NOT a bank, credit institution, loan service, crowdfunding platform, or charity distributing funds.
+- HilfeNetz does NOT guarantee that any donation will be granted or funded.
+- Publishing a request is free of charge. No payment is ever required to submit a request or to receive a donation.
+- The donor alone decides whether and to whom a donation is attributed.
+- Reported suspicious offers or behaviour are reviewed by the team.
+
+## Languages
+
+- German (default): https://www.hilfenetz.com/de
+- French: https://www.hilfenetz.com/fr
+- Italian: https://www.hilfenetz.com/it
+- Spanish: https://www.hilfenetz.com/es
+- Portuguese: https://www.hilfenetz.com/pt
+
+## Key pages
+
+- Donation offers: /{locale}/offres
+- Submit a support request: /{locale}/demande
+- How it works: /{locale}/comment-ca-marche
+- About: /{locale}/a-propos
+- FAQ: /{locale}/faq
+- Contact: /{locale}/contact
+- Report a listing: /{locale}/signaler
+- Terms: /{locale}/conditions
+- Privacy: /{locale}/confidentialite
+- Legal notice: /{locale}/mentions-legales
+
+## Contact
+
+- E-mail: kontakt@hilfenetz.com
+- Legal entity: HilfeNetz, Musterstraße 25, 10115 Berlin, Germany

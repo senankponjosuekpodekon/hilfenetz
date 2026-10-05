@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
+import { localeAlternates } from "@/lib/seo";
 import { Flag } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ReportForm } from "@/components/forms/report-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("report"), description: t("reportDesc") };
+  const locale = await getLocale();
+  return { title: t("report"), description: t("reportDesc") , alternates: localeAlternates(locale, "/signaler") };
 }
 
 export default async function ReportPage() {

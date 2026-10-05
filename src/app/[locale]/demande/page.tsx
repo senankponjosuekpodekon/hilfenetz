@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
+import { localeAlternates } from "@/lib/seo";
 import { Container, Alert } from "@/components/ui/container";
 import { RequestForm } from "./request-form";
 
@@ -8,7 +9,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("request"), description: t("requestDesc") };
+  const locale = await getLocale();
+  return { title: t("request"), description: t("requestDesc") , alternates: localeAlternates(locale, "/demande") };
 }
 
 export default async function RequestPage({

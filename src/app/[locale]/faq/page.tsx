@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, getLocale } from "next-intl/server";
+import { localeAlternates } from "@/lib/seo";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/faq/faq-accordion";
@@ -9,7 +10,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("faq"), description: t("faqDesc") };
+  const locale = await getLocale();
+  return { title: t("faq"), description: t("faqDesc") , alternates: localeAlternates(locale, "/faq") };
 }
 
 export default async function FaqPage() {

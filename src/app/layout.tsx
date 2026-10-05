@@ -24,6 +24,13 @@ export const metadata: Metadata = {
   },
   description:
     "HilfeNetz facilite la mise en relation entre donateurs et personnes présentant un projet, une initiative ou une situation nécessitant un soutien.",
+  openGraph: {
+    type: "website",
+    siteName: "HilfeNetz",
+    images: [{ url: "/images/hero-community.jpg", width: 1200, height: 630, alt: "HilfeNetz" }],
+  },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

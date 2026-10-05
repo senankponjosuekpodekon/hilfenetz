@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
+import { localeAlternates } from "@/lib/seo";
 import { ClipboardList, FileText, Handshake, SearchCheck, UserCheck } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("howItWorks"), description: t("howItWorksDesc") };
+  const locale = await getLocale();
+  return { title: t("howItWorks"), description: t("howItWorksDesc") , alternates: localeAlternates(locale, "/comment-ca-marche") };
 }
 
 const ICONS = [FileText, SearchCheck, Handshake, UserCheck, ClipboardList];

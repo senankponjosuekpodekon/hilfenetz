@@ -4,6 +4,7 @@ import type { Category, Prisma } from "@prisma/client";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { db } from "@/lib/db";
+import { localeAlternates } from "@/lib/seo";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { OfferCard } from "@/components/offers/offer-card";
@@ -14,7 +15,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("offers"), description: t("offersDesc") };
+  const locale = await getLocale();
+  return { title: t("offers"), description: t("offersDesc") , alternates: localeAlternates(locale, "/offres") };
 }
 
 const AMOUNT_RANGES: Record<string, { gte?: number; lt?: number }> = {

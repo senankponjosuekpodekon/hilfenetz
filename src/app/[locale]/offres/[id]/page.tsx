@@ -4,6 +4,7 @@ import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Check } from "lucide-react";
 import { db } from "@/lib/db";
+import { localeAlternates } from "@/lib/seo";
 import { Container, Alert } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,8 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const offer = await db.donationOffer.findUnique({ where: { id } });
   const t = await getTranslations("offerDetail");
-  if (!offer) return { title: t("notFound") };
-  return { title: offer.title, description: offer.description.slice(0, 160) };
+  if (!offer) return { title: t("notFound"), robots: { index: false } };
+  const locale = await getLocale();
+  return {
+    title: offer.title,
+    description: offer.description.slice(0, 160),
+    alternates: localeAlternates(locale, `/offres/${id}`),
+  };
 }
 
 export default async function OfferDetailPage({ params }: { params: Promise<{ id: string }> }) {

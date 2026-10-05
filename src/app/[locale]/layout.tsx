@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
+import { localeAlternates } from "@/lib/seo";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
@@ -23,8 +24,11 @@ export async function generateMetadata({
       template: "%s — HilfeNetz",
     },
     description: t("home"),
-    alternates: {
-      languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+    alternates: localeAlternates(locale),
+    openGraph: {
+      locale,
+      title: `HilfeNetz — ${t("home")}`,
+      description: t("home"),
     },
   };
 }

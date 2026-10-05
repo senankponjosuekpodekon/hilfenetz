@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
+import { localeAlternates } from "@/lib/seo";
 import { Mail, MessageSquare } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -9,7 +10,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
-  return { title: t("contact"), description: t("contactDesc") };
+  const locale = await getLocale();
+  return { title: t("contact"), description: t("contactDesc") , alternates: localeAlternates(locale, "/contact") };
 }
 
 export default async function ContactPage() {

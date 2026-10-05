@@ -9,6 +9,8 @@ import { FaqAccordion } from "@/components/faq/faq-accordion";
 import { Reveal } from "@/components/ui/reveal";
 import { getFaqItems } from "@/lib/content";
 import { formatAmount } from "@/lib/utils";
+import { SITE_URL } from "@/lib/seo";
+import { routing } from "@/i18n/routing";
 
 export const dynamic = "force-dynamic";
 
@@ -506,8 +508,33 @@ async function FinalCta() {
 }
 
 export default function HomePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        name: "HilfeNetz",
+        url: SITE_URL,
+        email: "kontakt@hilfenetz.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Musterstraße 25",
+          postalCode: "10115",
+          addressLocality: "Berlin",
+          addressCountry: "DE",
+        },
+      },
+      {
+        "@type": "WebSite",
+        name: "HilfeNetz",
+        url: SITE_URL,
+        inLanguage: routing.locales,
+      },
+    ],
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
       <TrustBar />
       <HowItWorks />
