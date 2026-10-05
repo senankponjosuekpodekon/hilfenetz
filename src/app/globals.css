@@ -36,8 +36,8 @@
   --color-danger-soft: #fef2f2;
 
   /* ── Typographie ──────────────────────────────────────── */
-  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-poppins), var(--font-open-sans), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif, sans-serif;
 
   /* ── Radius / ombres / transitions ────────────────────── */
   --radius-card: 18px;
