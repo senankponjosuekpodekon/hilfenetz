@@ -1,4 +1,4 @@
-import { Check, Eye, Flag, ShieldCheck, TriangleAlert, ClipboardList, FileText, Handshake, UserCheck, Sparkles, Euro, HeartHandshake } from "lucide-react";
+import { Check, Eye, Flag, ShieldCheck, ClipboardList, FileText, Handshake, UserCheck, Sparkles, Euro, HeartHandshake } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
@@ -354,27 +354,6 @@ async function Engagement() {
   );
 }
 
-async function AntiFraud() {
-  const t = await getTranslations("home.antiFraud");
-  return (
-    <section className="border-y border-amber/40 bg-amber-soft py-14 md:py-16">
-      <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center">
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-amber">
-          <TriangleAlert className="size-6 text-navy" aria-hidden />
-        </div>
-        <div className="flex-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-warning">{t("eyebrow")}</p>
-          <h2 className="mt-1 font-display text-2xl font-semibold text-ink md:text-3xl">{t("title")}</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink/80 md:text-base">{t("desc")}</p>
-        </div>
-        <Button href="/signaler" variant="secondary" className="shrink-0">
-          {t("cta")}
-        </Button>
-      </Container>
-    </section>
-  );
-}
-
 async function FaqPreview() {
   const t = await getTranslations("home.faq");
   const locale = await getLocale();
@@ -435,7 +414,6 @@ export default function HomePage() {
       <RequesterPath />
       <DonorPath />
       <Engagement />
-      <AntiFraud />
       <FaqPreview />
       <FinalCta />
     </>
