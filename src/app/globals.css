@@ -71,6 +71,16 @@ body {
   animation: float-slow 6s ease-in-out infinite;
 }
 
+@keyframes underline-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.anim-underline {
+  transform-origin: left;
+  animation: underline-grow 0.7s var(--ease-out-expo) 0.7s both;
+}
+
 /* Reveal au scroll — discret, une seule fois */
 .reveal {
   opacity: 0;
@@ -84,6 +94,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim-fade-up, .anim-float { animation: none; }
+  .anim-fade-up, .anim-float, .anim-underline { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }

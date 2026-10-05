@@ -41,7 +41,10 @@ async function Hero() {
           <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] tracking-tight text-ink md:text-6xl">
             {t("title1")}
             <br />
-            <span className="text-violet">{t("title2")}</span>
+            <span className="anim-fade-up relative inline-block text-violet" style={{ animationDelay: "0.25s" }}>
+              {t("title2")}
+              <span className="anim-underline absolute -bottom-1 left-0 h-1 rounded-full bg-accent" aria-hidden />
+            </span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">{t("sub")}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
