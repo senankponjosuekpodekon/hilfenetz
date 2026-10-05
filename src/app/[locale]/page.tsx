@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Check, Eye, Flag, ShieldCheck, ClipboardList, FileText, Handshake, UserCheck, Sparkles, Euro, HeartHandshake } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import { db } from "@/lib/db";
@@ -13,6 +14,7 @@ export const dynamic = "force-dynamic";
 
 async function Hero() {
   const t = await getTranslations("home.hero");
+  const ti = await getTranslations("home.images");
   const tc = await getTranslations("common");
   const checks = t.raw("checks") as string[];
   return (
@@ -53,8 +55,19 @@ async function Hero() {
           </ul>
         </div>
 
-        {/* Composition produit — carte offre + éléments flottants */}
+        {/* Composition produit — photo + carte offre + éléments flottants */}
         <div className="relative mx-auto w-full max-w-md">
+          <div className="absolute -left-10 top-16 hidden w-44 rotate-[-6deg] overflow-hidden rounded-[var(--radius-card)] shadow-card-hover md:block lg:-left-16">
+            <Image
+              src="/images/hero-project.jpg"
+              alt={ti("heroPhoto")}
+              width={352}
+              height={480}
+              sizes="176px"
+              className="h-52 w-full object-cover"
+              priority
+            />
+          </div>
           <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card md:flex">
             <span className="flex size-6 items-center justify-center rounded-full bg-positive-soft">
               <Check className="size-3.5 text-positive" aria-hidden />
@@ -69,7 +82,7 @@ async function Hero() {
             <Euro className="absolute inset-0 m-auto size-8 text-navy" />
           </div>
 
-          <div className="relative rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-card-hover">
+          <div className="relative ml-auto rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-card-hover">
             <div className="flex items-center justify-between">
               <Badge tone="accent">{tc("offerBadge")}</Badge>
               <span className="flex items-center gap-1.5 text-xs font-medium text-positive">
@@ -245,13 +258,24 @@ async function FeaturedOffer() {
 
 async function RequesterPath() {
   const t = await getTranslations("home.requester");
+  const ti = await getTranslations("home.images");
   const tc = await getTranslations("common");
   const steps = t.raw("steps") as string[];
   const formSteps = t.raw("formSteps") as string[];
   return (
     <section className="py-20 md:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-2">
-        <div className="order-2 rounded-3xl border border-border bg-surface p-8 shadow-card lg:order-1">
+        <div className="order-2 overflow-hidden rounded-3xl border border-border bg-surface shadow-card lg:order-1">
+          <div className="relative h-44 w-full">
+            <Image
+              src="/images/woman-laptop.jpg"
+              alt={ti("heroPhoto")}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="p-8">
           <div className="flex size-12 items-center justify-center rounded-2xl bg-violet-soft">
             <FileText className="size-6 text-violet" aria-hidden />
           </div>
@@ -264,6 +288,7 @@ async function RequesterPath() {
                 <span className="text-sm font-medium text-ink">{label}</span>
               </div>
             ))}
+          </div>
           </div>
         </div>
         <div className="order-1 lg:order-2">
@@ -290,6 +315,7 @@ async function RequesterPath() {
 
 async function DonorPath() {
   const t = await getTranslations("home.donor");
+  const ti = await getTranslations("home.images");
   const steps = t.raw("steps") as string[];
   return (
     <section className="relative overflow-hidden border-y border-violet/20 bg-violet-dark py-20 md:py-28">
@@ -303,6 +329,16 @@ async function DonorPath() {
           <Button href="/contact" variant="light" size="lg" className="mt-8" arrow>
             {t("cta")}
           </Button>
+          <div className="mt-8 hidden overflow-hidden rounded-[var(--radius-card)] border border-white/15 lg:block">
+            <Image
+              src="/images/community-hands.jpg"
+              alt={ti("donorPhoto")}
+              width={560}
+              height={320}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="h-44 w-full object-cover"
+            />
+          </div>
         </div>
         <ol className="space-y-4">
           {steps.map((step, i) => (

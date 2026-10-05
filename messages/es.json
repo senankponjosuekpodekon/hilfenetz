@@ -230,6 +230,10 @@
         }
       ],
       "disclaimer": "Testimonios recogidos entre los primeros usuarios."
+    },
+    "images": {
+      "heroPhoto": "Personas colaborando en un proyecto",
+      "donorPhoto": "Voluntarios en una iniciativa comunitaria"
     }
   },
   "offers": {

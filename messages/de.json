@@ -230,6 +230,10 @@
         }
       ],
       "disclaimer": "Rückmeldungen der ersten Nutzer der Plattform."
+    },
+    "images": {
+      "heroPhoto": "Menschen, die gemeinsam an einem Projekt arbeiten",
+      "donorPhoto": "Ehrenamtliche bei einer Gemeinschaftsinitiative"
     }
   },
   "offers": {
