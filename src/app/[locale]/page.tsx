@@ -28,7 +28,7 @@ async function Hero() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/95 to-surface/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-surface/30" />
       </div>
       {/* Formes décoratives discrètes */}
       <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-violet-soft/60" aria-hidden />
