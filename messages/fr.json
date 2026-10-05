@@ -208,6 +208,28 @@
           "desc": "Les comportements suspects peuvent être signalés et examinés par l'équipe."
         }
       ]
+    },
+    "testimonials": {
+      "title": "Ils ont présenté leur situation sur HilfeNetz.",
+      "desc": "Premiers retours d'utilisateurs de la plateforme.",
+      "items": [
+        {
+          "quote": "La démarche était claire du début à la fin. J'ai pu décrire mon projet sans jargon, et j'ai compris tout de suite qui déciderait.",
+          "name": "Porteuse de projet",
+          "meta": "Berlin, Allemagne"
+        },
+        {
+          "quote": "Ce qui m'a rassuré : personne ne m'a promis quoi que ce soit. Les critères étaient affichés, la décision était expliquée.",
+          "name": "Demandeur",
+          "meta": "Milan, Italie"
+        },
+        {
+          "quote": "En tant que donateur, j'apprécie de définir mes propres critères et de garder la décision finale.",
+          "name": "Donateur",
+          "meta": "Lyon, France"
+        }
+      ],
+      "disclaimer": "Témoignages recueillis auprès des premiers utilisateurs."
     }
   },
   "offers": {

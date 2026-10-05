@@ -208,6 +208,28 @@
           "desc": "Verdächtiges Verhalten kann gemeldet und vom Team geprüft werden."
         }
       ]
+    },
+    "testimonials": {
+      "title": "Sie haben ihre Situation auf HilfeNetz vorgestellt.",
+      "desc": "Erste Rückmeldungen von Nutzern der Plattform.",
+      "items": [
+        {
+          "quote": "Der Ablauf war von Anfang bis Ende klar. Ich konnte mein Projekt ohne Fachjargon beschreiben und wusste sofort, wer entscheidet.",
+          "name": "Projektträgerin",
+          "meta": "Berlin, Deutschland"
+        },
+        {
+          "quote": "Was mich überzeugt hat: Niemand hat mir etwas versprochen. Die Kriterien waren sichtbar, die Entscheidung wurde erklärt.",
+          "name": "Antragsteller",
+          "meta": "Mailand, Italien"
+        },
+        {
+          "quote": "Als Spender schätze ich es, meine eigenen Kriterien festzulegen und die finale Entscheidung zu behalten.",
+          "name": "Spender",
+          "meta": "Lyon, Frankreich"
+        }
+      ],
+      "disclaimer": "Rückmeldungen der ersten Nutzer der Plattform."
     }
   },
   "offers": {

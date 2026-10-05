@@ -208,6 +208,28 @@
           "desc": "Los comportamientos sospechosos pueden denunciarse y ser examinados por el equipo."
         }
       ]
+    },
+    "testimonials": {
+      "title": "Presentaron su situación en HilfeNetz.",
+      "desc": "Primeros testimonios de usuarios de la plataforma.",
+      "items": [
+        {
+          "quote": "El proceso fue claro de principio a fin. Pude describir mi proyecto sin jerga y entendí de inmediato quién decidiría.",
+          "name": "Promotora de proyecto",
+          "meta": "Berlín, Alemania"
+        },
+        {
+          "quote": "Lo que me tranquilizó: nadie me prometió nada. Los criterios estaban visibles y la decisión se explicó.",
+          "name": "Solicitante",
+          "meta": "Milán, Italia"
+        },
+        {
+          "quote": "Como donante, valoro poder definir mis propios criterios y conservar la decisión final.",
+          "name": "Donante",
+          "meta": "Lyon, Francia"
+        }
+      ],
+      "disclaimer": "Testimonios recogidos entre los primeros usuarios."
     }
   },
   "offers": {

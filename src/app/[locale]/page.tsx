@@ -387,6 +387,38 @@ async function Confidence() {
   );
 }
 
+async function Testimonials() {
+  const t = await getTranslations("home.testimonials");
+  const items = t.raw("items") as { quote: string; name: string; meta: string }[];
+  const tones = ["bg-violet-soft text-violet", "bg-accent-soft text-accent-dark", "bg-amber-soft text-warning"];
+  return (
+    <section className="py-20 md:py-28">
+      <Container>
+        <SectionHeading title={t("title")} description={t("desc")} />
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {items.map((item, i) => (
+            <Reveal key={item.name} delay={i * 90}>
+              <figure className="flex h-full flex-col rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+                <span className={`flex size-9 items-center justify-center rounded-xl font-display text-lg font-semibold ${tones[i % tones.length]}`} aria-hidden>
+                  «
+                </span>
+                <blockquote className="mt-4 flex-1">
+                  <p className="text-sm leading-relaxed text-ink">{item.quote}</p>
+                </blockquote>
+                <figcaption className="mt-5 border-t border-border pt-4">
+                  <p className="font-display text-sm font-semibold text-ink">{item.name}</p>
+                  <p className="mt-0.5 text-xs text-muted">{item.meta}</p>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+        <p className="mt-6 text-center text-xs text-muted">{t("disclaimer")}</p>
+      </Container>
+    </section>
+  );
+}
+
 async function FaqPreview() {
   const t = await getTranslations("home.faq");
   const locale = await getLocale();
@@ -448,6 +480,7 @@ export default function HomePage() {
       <DonorPath />
       <Engagement />
       <Confidence />
+      <Testimonials />
       <FaqPreview />
       <FinalCta />
     </>
