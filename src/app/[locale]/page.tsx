@@ -28,11 +28,9 @@ async function Hero() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/50 to-surface/5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-surface/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-transparent" />
       </div>
-      {/* Formes décoratives discrètes */}
-      <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-violet-soft/60" aria-hidden />
-      <div className="pointer-events-none absolute -left-24 bottom-0 size-64 rounded-full bg-accent-soft/60" aria-hidden />
 
       <Container className="relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[55fr_45fr]">
         <div className="anim-fade-up">
