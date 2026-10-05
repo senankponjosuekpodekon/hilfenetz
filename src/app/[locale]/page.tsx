@@ -515,6 +515,7 @@ export default function HomePage() {
         "@type": "Organization",
         name: "HilfeNetz",
         url: SITE_URL,
+        logo: `${SITE_URL}/images/logo.png`,
         email: "kontakt@hilfenetz.com",
         address: {
           "@type": "PostalAddress",
