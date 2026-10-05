@@ -14,14 +14,25 @@ export const dynamic = "force-dynamic";
 
 async function Hero() {
   const t = await getTranslations("home.hero");
-  const ti = await getTranslations("home.images");
   const tc = await getTranslations("common");
   const checks = t.raw("checks") as string[];
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-surface">
+      {/* Photo de fond + voile pour la lisibilité */}
+      <div className="absolute inset-0" aria-hidden>
+        <Image
+          src="/images/hero-project.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/95 to-surface/70" />
+      </div>
       {/* Formes décoratives discrètes */}
-      <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-violet-soft" aria-hidden />
-      <div className="pointer-events-none absolute -left-24 bottom-0 size-64 rounded-full bg-accent-soft" aria-hidden />
+      <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-violet-soft/60" aria-hidden />
+      <div className="pointer-events-none absolute -left-24 bottom-0 size-64 rounded-full bg-accent-soft/60" aria-hidden />
 
       <Container className="relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[55fr_45fr]">
         <div className="anim-fade-up">
@@ -55,19 +66,8 @@ async function Hero() {
           </ul>
         </div>
 
-        {/* Composition produit — photo + carte offre + éléments flottants */}
+        {/* Composition produit — carte offre + éléments flottants */}
         <div className="relative mx-auto w-full max-w-md">
-          <div className="absolute -left-10 top-16 hidden w-44 rotate-[-6deg] overflow-hidden rounded-[var(--radius-card)] shadow-card-hover md:block lg:-left-16">
-            <Image
-              src="/images/hero-project.jpg"
-              alt={ti("heroPhoto")}
-              width={352}
-              height={480}
-              sizes="176px"
-              className="h-52 w-full object-cover"
-              priority
-            />
-          </div>
           <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card md:flex">
             <span className="flex size-6 items-center justify-center rounded-full bg-positive-soft">
               <Check className="size-3.5 text-positive" aria-hidden />
