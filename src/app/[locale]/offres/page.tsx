@@ -7,6 +7,7 @@ import { db } from "@/lib/db";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { OfferCard } from "@/components/offers/offer-card";
+import { Reveal } from "@/components/ui/reveal";
 import { FilterSheet } from "@/components/offers/filter-sheet";
 
 export const dynamic = "force-dynamic";
@@ -152,8 +153,10 @@ export default async function OffersPage({
         {/* Résultats */}
         {offers.length > 0 ? (
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {offers.map((offer) => (
-              <OfferCard key={offer.id} offer={offer} />
+            {offers.map((offer, i) => (
+              <Reveal key={offer.id} delay={Math.min(i, 8) * 60}>
+                <OfferCard offer={offer} />
+              </Reveal>
             ))}
           </div>
         ) : (

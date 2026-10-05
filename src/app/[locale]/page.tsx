@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { FaqAccordion } from "@/components/faq/faq-accordion";
+import { Reveal } from "@/components/ui/reveal";
 import { getFaqItems } from "@/lib/content";
 import { formatAmount } from "@/lib/utils";
 
@@ -106,16 +107,17 @@ async function TrustBar() {
       <Container className="py-10">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-muted">{t("title")}</p>
         <div className="mt-6 flex gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-4 md:overflow-visible">
-          {items.map(({ icon: Icon, label, tone }) => (
+          {items.map(({ icon: Icon, label, tone }, i) => (
+            <Reveal key={label} delay={i * 60} className="min-w-52 md:min-w-0">
             <div
-              key={label}
-              className="flex min-w-52 items-center gap-3 rounded-[var(--radius-card)] border border-border bg-surface px-4 py-3.5 shadow-card transition-shadow duration-300 hover:shadow-card-hover md:min-w-0"
+              className="flex h-full items-center gap-3 rounded-[var(--radius-card)] border border-border bg-surface px-4 py-3.5 shadow-card transition-shadow duration-300 hover:shadow-card-hover"
             >
               <span className={`flex size-8 shrink-0 items-center justify-center rounded-lg ${tone}`}>
                 <Icon className="size-4" aria-hidden />
               </span>
               <span className="text-sm font-medium text-ink">{label}</span>
             </div>
+            </Reveal>
           ))}
         </div>
       </Container>
@@ -140,6 +142,7 @@ async function Stats() {
   return (
     <section className="border-b border-border/60 bg-surface">
       <Container className="grid grid-cols-1 gap-8 py-12 text-center sm:grid-cols-3 md:py-14">
+        {/* Reveal per stat via wrapper divs below */}
         {stats.map((s) => (
           <div key={s.label}>
             <p className={`font-display text-4xl font-semibold tracking-tight md:text-5xl ${s.tone}`}>{s.value}</p>
@@ -161,15 +164,16 @@ async function HowItWorks() {
         <SectionHeading title={t("title")} description={t("desc")} />
         <ol className="mt-12 grid gap-5 md:grid-cols-5 md:gap-4">
           {steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="group rounded-[var(--radius-card)] border border-border bg-surface p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
-            >
+            <li key={step.title} className="contents">
+              <Reveal delay={i * 80}>
+              <div className="group h-full rounded-[var(--radius-card)] border border-border bg-surface p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
               <span className={`flex size-9 items-center justify-center rounded-xl font-display text-sm font-semibold ${accents[i % accents.length]}`}>
                 {i + 1}
               </span>
               <h3 className="mt-4 font-display text-base font-semibold text-ink">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{step.desc}</p>
+              </div>
+              </Reveal>
             </li>
           ))}
         </ol>
@@ -201,7 +205,7 @@ async function FeaturedOffer() {
     <section className="border-y border-border/60 bg-surface py-20 md:py-28">
       <Container>
         <SectionHeading title={t("title")} description={t("desc")} />
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
+        <Reveal><div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
           {offer ? (
             <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-8 shadow-card md:p-10">
               <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-accent-soft" aria-hidden />
@@ -233,6 +237,7 @@ async function FeaturedOffer() {
             </Button>
           </div>
         </div>
+        </Reveal>
       </Container>
     </section>
   );
@@ -332,14 +337,16 @@ async function Engagement() {
       <Container>
         <SectionHeading title={t("title")} align="center" />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map(({ icon: Icon, title, desc, tone }) => (
-            <div key={title} className="rounded-[var(--radius-card)] border border-border bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+          {cards.map(({ icon: Icon, title, desc, tone }, i) => (
+            <Reveal key={title} delay={i * 80}>
+            <div className="h-full rounded-[var(--radius-card)] border border-border bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
               <div className={`flex size-11 items-center justify-center rounded-xl ${tone}`}>
                 <Icon className="size-5" aria-hidden />
               </div>
               <h3 className="mt-4 font-display text-base font-semibold text-ink">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{desc}</p>
             </div>
+            </Reveal>
           ))}
         </div>
       </Container>

@@ -71,6 +71,19 @@ body {
   animation: float-slow 6s ease-in-out infinite;
 }
 
+/* Reveal au scroll — discret, une seule fois */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .anim-fade-up, .anim-float { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
