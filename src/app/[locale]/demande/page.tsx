@@ -26,7 +26,7 @@ export default async function RequestPage({
   return (
     <div className="py-14 md:py-20">
       <Container className="max-w-3xl">
-        <h1 className="text-4xl font-semibold tracking-tight text-navy md:text-5xl">{t("title")}</h1>
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">{t("title")}</h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted md:text-lg">{t("intro")}</p>
 
         <div className="mt-6">

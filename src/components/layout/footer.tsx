@@ -37,20 +37,20 @@ export async function Footer() {
   ];
 
   return (
-    <footer className="border-t border-border bg-surface">
+    <footer className="bg-navy-dark">
       <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo href={`/${locale}`} />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{t("tagline")}</p>
+            <Logo dark href={`/${locale}`} />
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{t("tagline")}</p>
           </div>
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-navy">{col.title}</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-amber">{col.title}</h3>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-muted transition-colors hover:text-navy">
+                    <Link href={link.href} className="text-sm text-white/60 transition-colors hover:text-white">
                       {link.label}
                     </Link>
                   </li>
@@ -59,9 +59,9 @@ export async function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 border-t border-border pt-6">
-          <p className="text-sm text-muted">{t("copyright", { year: 2026 })}</p>
-          <p className="mt-2 max-w-xl text-xs leading-relaxed text-muted">{tc("legalDisclaimer")}</p>
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <p className="text-sm text-white/70">{t("copyright", { year: 2026 })}</p>
+          <p className="mt-2 max-w-xl text-xs leading-relaxed text-white/50">{tc("legalDisclaimer")}</p>
         </div>
       </div>
     </footer>

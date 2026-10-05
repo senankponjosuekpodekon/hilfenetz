@@ -186,6 +186,11 @@
       "sub": "Descubre cómo funciona HilfeNetz.",
       "ctaOffers": "Ver las ofertas",
       "ctaRequest": "Presentar una solicitud"
+    },
+    "stats": {
+      "offers": "Ofertas de donación publicadas",
+      "categories": "Ámbitos cubiertos",
+      "requests": "Solicitudes recibidas"
     }
   },
   "offers": {

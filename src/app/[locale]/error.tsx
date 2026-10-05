@@ -9,7 +9,7 @@ export default function ErrorPage({ reset }: { error: Error; reset: () => void }
   return (
     <div className="py-24 md:py-32">
       <Container className="text-center">
-        <h1 className="text-4xl font-semibold tracking-tight text-navy">{t("title")}</h1>
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-ink">{t("title")}</h1>
         <p className="mt-4 text-muted">{t("desc")}</p>
         <Button onClick={reset} className="mt-8">
           {t("retry")}

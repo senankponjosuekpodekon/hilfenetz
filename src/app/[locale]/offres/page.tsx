@@ -93,7 +93,7 @@ export default async function OffersPage({
     <div className="py-14 md:py-20">
       <Container>
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-semibold tracking-tight text-navy md:text-5xl">{t("title")}</h1>
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">{t("title")}</h1>
           <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">{t("sub")}</p>
         </div>
 

@@ -17,7 +17,7 @@ export default async function ReportPage() {
         <div className="flex size-12 items-center justify-center rounded-2xl bg-warning-soft">
           <Flag className="size-6 text-warning" aria-hidden />
         </div>
-        <h1 className="mt-5 text-4xl font-semibold tracking-tight text-navy md:text-5xl">{t("title")}</h1>
+        <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">{t("title")}</h1>
         <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">{t("sub")}</p>
         <div className="mt-10 rounded-3xl border border-border bg-surface p-6 md:p-10">
           <ReportForm />

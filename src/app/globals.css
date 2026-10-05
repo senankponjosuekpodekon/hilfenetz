@@ -1,25 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #102a43;
-  --color-navy-dark: #071a2b;
-  --color-trust: #2563eb;
-  --color-trust-dark: #1d4ed8;
-  --color-positive: #16a34a;
-  --color-background: #f8fafc;
+  /* ── Encre & neutres (70-80 % de l'écran) ─────────────── */
+  --color-ink: #101828;
+  --color-navy: #16203a;
+  --color-navy-dark: #0b1226;
+  --color-muted: #5b6478;
+  --color-background: #f7f8fb;
   --color-surface: #ffffff;
-  --color-border: #e2e8f0;
-  --color-ink: #0f172a;
-  --color-muted: #64748b;
-  --color-warning: #f59e0b;
-  --color-warning-soft: #fffbeb;
+  --color-border: #e6e8f0;
+
+  /* ── Accents fintech (20-30 %) ────────────────────────── */
+  --color-accent: #fd4070;          /* rose — CTA principal */
+  --color-accent-dark: #d92657;     /* rose hover (contraste AA) */
+  --color-accent-soft: #ffe9f0;     /* rose pastel — fonds */
+  --color-violet: #605be5;          /* violet — accent secondaire */
+  --color-violet-dark: #4a44c9;
+  --color-violet-soft: #eeedfb;
+  --color-iris: #6a73fa;            /* bleu-violet — highlights */
+  --color-iris-soft: #eef0ff;
+  --color-amber: #ffd101;           /* jaune — badges, petits éléments */
+  --color-amber-soft: #fff7d6;
+  --color-rose: #ff78af;            /* rose clair — décoratif */
+  --color-rose-soft: #ffeef5;
+
+  /* ── Sémantiques ──────────────────────────────────────── */
+  --color-trust: #605be5;
+  --color-trust-dark: #4a44c9;
+  --color-trust-soft: #eeedfb;
+  --color-positive: #16a34a;
+  --color-positive-soft: #eafaef;
+  --color-warning: #b45309;
+  --color-warning-soft: #fff7d6;
   --color-danger: #dc2626;
-  --color-positive-soft: #f0fdf4;
-  --color-trust-soft: #eff6ff;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-danger-soft: #fef2f2;
+
+  /* ── Typographie ──────────────────────────────────────── */
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-open-sans), ui-sans-serif, sans-serif;
+
+  /* ── Radius / ombres / transitions ────────────────────── */
+  --radius-card: 18px;
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.05), 0 4px 16px -4px rgb(16 24 40 / 0.08);
+  --shadow-card-hover: 0 2px 4px rgb(16 24 40 / 0.06), 0 12px 32px -8px rgb(16 24 40 / 0.14);
+  --shadow-pop: 0 8px 30px -6px rgb(96 91 229 / 0.28);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
   background: var(--color-background);
   color: var(--color-ink);
+}
+
+/* Micro-interactions discrètes (200–400 ms) */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.anim-fade-up {
+  animation: fade-up 0.5s var(--ease-out-expo) both;
+}
+
+.anim-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-float { animation: none; }
 }

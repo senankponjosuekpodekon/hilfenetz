@@ -44,8 +44,8 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
         </Link>
 
         <div className="mt-8">
-          <Badge tone="navy">{tc("offerBadge")}</Badge>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-navy md:text-4xl">{offer.title}</h1>
+          <Badge tone="accent">{tc("offerBadge")}</Badge>
+          <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{offer.title}</h1>
           <p className="mt-3 text-lg text-muted">{tc("offerSubtitle")}</p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <p className="text-sm text-muted">
@@ -56,9 +56,9 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
               {t("available")}
             </Badge>
           </div>
-          <div className="mt-6 rounded-2xl border border-border bg-surface px-6 py-5">
-            <p className="text-xs uppercase tracking-wide text-muted">{tc("amountProposed")}</p>
-            <p className="mt-1 text-4xl font-semibold tracking-tight text-ink">
+          <div className="mt-6 rounded-[var(--radius-card)] border border-violet/20 bg-violet-soft/50 px-6 py-5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted">{tc("amountProposed")}</p>
+            <p className="mt-1 font-display text-4xl font-semibold tracking-tight text-violet">
               {formatAmount(Number(offer.amount), offer.currency, locale)}
             </p>
           </div>

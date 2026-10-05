@@ -3,15 +3,16 @@ import { Link as IntlLink } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "danger" | "light";
+type Variant = "primary" | "secondary" | "ghost" | "danger" | "light" | "violet";
 type Size = "md" | "lg" | "sm";
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-[10px] font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-trust disabled:opacity-50 disabled:pointer-events-none";
+  "group inline-flex items-center justify-center gap-2 rounded-xl font-display font-semibold transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-trust disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-trust text-white hover:bg-trust-dark",
-  secondary: "border border-border bg-surface text-ink hover:border-trust hover:text-trust",
+  primary: "bg-accent text-white shadow-[0_4px_14px_-4px_rgb(253_64_112/0.5)] hover:bg-accent-dark hover:shadow-[0_6px_20px_-4px_rgb(253_64_112/0.55)] active:scale-[0.98]",
+  secondary: "border border-border bg-surface text-ink hover:border-violet hover:text-violet",
+  violet: "bg-violet text-white shadow-[0_4px_14px_-4px_rgb(96_91_229/0.5)] hover:bg-violet-dark active:scale-[0.98]",
   ghost: "text-muted hover:text-ink",
   danger: "bg-danger text-white hover:bg-danger/90",
   light: "bg-white text-navy hover:bg-white/90",

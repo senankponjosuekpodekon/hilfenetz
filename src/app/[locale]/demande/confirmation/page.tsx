@@ -25,7 +25,7 @@ export default async function ConfirmationPage({
         <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-positive-soft">
           <CheckCircle2 className="size-8 text-positive" aria-hidden />
         </div>
-        <h1 className="mt-6 text-3xl font-semibold tracking-tight text-navy md:text-4xl">{t("title")}</h1>
+        <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{t("title")}</h1>
         <p className="mt-4 text-base leading-relaxed text-muted">{t("desc")}</p>
         {ref ? (
           <p className="mt-6 inline-block rounded-xl border border-border bg-surface px-5 py-3 text-sm font-medium text-ink">

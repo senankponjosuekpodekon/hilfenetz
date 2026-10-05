@@ -2,7 +2,7 @@ import { CircleAlert } from "lucide-react";
 import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from "react";
 
 const inputBase =
-  "w-full rounded-[10px] border border-border bg-surface px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-colors focus:border-trust focus:outline-2 focus:outline-trust/20 disabled:bg-background";
+  "w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-ink placeholder:text-muted/60 transition-all duration-200 hover:border-muted/50 focus:border-violet focus:outline-4 focus:outline-violet/15 disabled:bg-background";
 
 export function Field({
   label,
@@ -58,7 +58,7 @@ export function Checkbox({ label, name, error }: { label: string; name: string; 
         type="checkbox"
         name={name}
         value="on"
-        className={`mt-0.5 size-4 shrink-0 rounded border-border accent-trust ${error ? "outline-1 outline-danger" : ""}`}
+        className={`mt-0.5 size-4 shrink-0 rounded border-border accent-violet ${error ? "outline-1 outline-danger" : ""}`}
       />
       <span>{label}</span>
     </label>

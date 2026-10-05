@@ -19,7 +19,7 @@ export default async function ContactPage() {
     <div className="py-14 md:py-20">
       <Container className="grid gap-12 lg:grid-cols-[380px_1fr]">
         <div>
-          <h1 className="text-4xl font-semibold tracking-tight text-navy md:text-5xl">{t("title")}</h1>
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">{t("title")}</h1>
           <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">{t("sub")}</p>
           <ul className="mt-8 space-y-4">
             <li className="flex items-center gap-3 rounded-2xl border border-border bg-surface px-5 py-4">

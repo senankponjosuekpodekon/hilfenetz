@@ -11,7 +11,7 @@ export async function LegalPage({ namespace }: { namespace: "conditions" | "priv
   return (
     <div className="py-14 md:py-20">
       <Container className="max-w-3xl">
-        <h1 className="text-4xl font-semibold tracking-tight text-navy">{t(`${namespace}.title`)}</h1>
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-ink">{t(`${namespace}.title`)}</h1>
         <p className="mt-4 rounded-xl border border-warning/40 bg-warning-soft px-4 py-3 text-sm text-ink">
           {t("notice")}
         </p>

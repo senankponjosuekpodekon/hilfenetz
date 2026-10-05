@@ -186,6 +186,11 @@
       "sub": "Entdecken Sie, wie HilfeNetz funktioniert.",
       "ctaOffers": "Angebote ansehen",
       "ctaRequest": "Anfrage einreichen"
+    },
+    "stats": {
+      "offers": "Veröffentlichte Spendenangebote",
+      "categories": "Abgedeckte Bereiche",
+      "requests": "Erhaltene Anfragen"
     }
   },
   "offers": {

@@ -9,7 +9,7 @@ export default async function NotFound() {
     <div className="py-24 md:py-32">
       <Container className="text-center">
         <p className="text-sm font-semibold text-trust">404</p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-navy">{t("title")}</h1>
+        <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-ink">{t("title")}</h1>
         <p className="mt-4 text-muted">{t("desc")}</p>
         <Button href="/" className="mt-8">
           {tc("backHome")}

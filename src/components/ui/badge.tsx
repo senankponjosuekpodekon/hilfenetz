@@ -1,10 +1,14 @@
 import type { ReactNode } from "react";
 
-type Tone = "neutral" | "trust" | "positive" | "warning" | "danger" | "navy";
+type Tone = "neutral" | "trust" | "positive" | "warning" | "danger" | "navy" | "accent" | "violet" | "amber" | "iris";
 
 const tones: Record<Tone, string> = {
   neutral: "bg-surface text-muted border-border",
   trust: "bg-trust-soft text-trust border-trust/20",
+  accent: "bg-accent-soft text-accent-dark border-accent/20",
+  violet: "bg-violet-soft text-violet-dark border-violet/20",
+  iris: "bg-iris-soft text-iris border-iris/20",
+  amber: "bg-amber-soft text-warning border-amber/40",
   positive: "bg-positive-soft text-positive border-positive/20",
   warning: "bg-warning-soft text-warning border-warning/30",
   danger: "bg-danger/10 text-danger border-danger/20",
