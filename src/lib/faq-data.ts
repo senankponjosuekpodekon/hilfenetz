@@ -3,10 +3,7 @@ export const FAQ_ITEMS = [
     q: "HilfeNetz garantit-il l'obtention d'un don ?",
     a: "Non. HilfeNetz est une plateforme de mise en relation. La publication d'une demande ne garantit pas qu'un don sera accordé.",
   },
-  {
-    q: "Dois-je payer pour déposer une demande ?",
-    a: "Non. Le dépôt d'une demande sur HilfeNetz est gratuit. Ne payez jamais un tiers pour obtenir un don.",
-  },
+
   {
     q: "Qui décide de l'attribution d'un don ?",
     a: "La décision appartient exclusivement au donateur concerné. HilfeNetz facilite la mise en relation mais ne décide pas de l'attribution.",
@@ -40,10 +37,7 @@ export const FAQ_ITEMS_BY_LOCALE: Record<string, { q: string; a: string }[]> = {
       q: "Garantiert HilfeNetz den Erhalt einer Spende?",
       a: "Nein. HilfeNetz ist eine Vermittlungsplattform. Die Veröffentlichung einer Anfrage garantiert nicht, dass eine Spende zugesagt wird.",
     },
-    {
-      q: "Muss ich für das Einreichen einer Anfrage bezahlen?",
-      a: "Nein. Das Einreichen einer Anfrage bei HilfeNetz ist kostenlos. Zahlen Sie niemals an Dritte, um eine Spende zu erhalten.",
-    },
+
     {
       q: "Wer entscheidet über die Vergabe einer Spende?",
       a: "Die Entscheidung liegt ausschließlich beim jeweiligen Spender. HilfeNetz erleichtert die Vermittlung, entscheidet aber nicht über die Vergabe.",
@@ -74,10 +68,7 @@ export const FAQ_ITEMS_BY_LOCALE: Record<string, { q: string; a: string }[]> = {
       q: "HilfeNetz garantisce l'ottenimento di una donazione?",
       a: "No. HilfeNetz è una piattaforma di collegamento. La pubblicazione di una richiesta non garantisce che una donazione venga concessa.",
     },
-    {
-      q: "Devo pagare per presentare una richiesta?",
-      a: "No. Presentare una richiesta su HilfeNetz è gratuito. Non pagare mai a terzi per ottenere una donazione.",
-    },
+
     {
       q: "Chi decide l'assegnazione di una donazione?",
       a: "La decisione spetta esclusivamente al donatore interessato. HilfeNetz facilita il collegamento ma non decide l'assegnazione.",
@@ -108,10 +99,7 @@ export const FAQ_ITEMS_BY_LOCALE: Record<string, { q: string; a: string }[]> = {
       q: "¿HilfeNetz garantiza la obtención de una donación?",
       a: "No. HilfeNetz es una plataforma de conexión. La publicación de una solicitud no garantiza que se conceda una donación.",
     },
-    {
-      q: "¿Debo pagar para presentar una solicitud?",
-      a: "No. Presentar una solicitud en HilfeNetz es gratuito. Nunca pagues a terceros para obtener una donación.",
-    },
+
     {
       q: "¿Quién decide la concesión de una donación?",
       a: "La decisión corresponde exclusivamente al donante en cuestión. HilfeNetz facilita la conexión pero no decide la concesión.",
@@ -142,10 +130,7 @@ export const FAQ_ITEMS_BY_LOCALE: Record<string, { q: string; a: string }[]> = {
       q: "A HilfeNetz garante a obtenção de uma doação?",
       a: "Não. A HilfeNetz é uma plataforma de ligação. A publicação de um pedido não garante que uma doação será concedida.",
     },
-    {
-      q: "Tenho de pagar para apresentar um pedido?",
-      a: "Não. Apresentar um pedido na HilfeNetz é gratuito. Nunca pagues a terceiros para obter uma doação.",
-    },
+
     {
       q: "Quem decide a atribuição de uma doação?",
       a: "A decisão pertence exclusivamente ao doador em causa. A HilfeNetz facilita a ligação, mas não decide a atribuição.",
