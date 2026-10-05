@@ -488,19 +488,19 @@
         {
           "title": "Betreiber der Website",
           "body": [
-            "HilfeNetz — Vermittlungsplattform.\n[Firmenname, Adresse und Registrierungsdaten sind vom rechtlichen Verantwortlichen des Projekts zu ergänzen.]"
+            "HilfeNetz\nMusterstraße 25, 10115 Berlin, Deutschland\nVermittlungsplattform."
           ]
         },
         {
           "title": "Kontakt",
           "body": [
-            "[Kontakt-E-Mail-Adresse zu ergänzen.]"
+            "kontakt@hilfenetz.com"
           ]
         },
         {
           "title": "Hosting",
           "body": [
-            "[Name und Adresse des Hosters zu ergänzen.]"
+            "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA."
           ]
         },
         {

@@ -488,19 +488,19 @@
         {
           "title": "Editore del sito",
           "body": [
-            "HilfeNetz — piattaforma di collegamento.\n[Ragione sociale, indirizzo e dati di registrazione da completare da parte del responsabile legale del progetto.]"
+            "HilfeNetz\nMusterstraße 25, 10115 Berlino, Germania\nPiattaforma di collegamento."
           ]
         },
         {
           "title": "Contatto",
           "body": [
-            "[Indirizzo e-mail di contatto da completare.]"
+            "kontakt@hilfenetz.com"
           ]
         },
         {
           "title": "Hosting",
           "body": [
-            "[Nome e indirizzo dell'hosting da completare.]"
+            "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, Stati Uniti."
           ]
         },
         {
