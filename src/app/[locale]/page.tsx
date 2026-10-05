@@ -270,7 +270,7 @@ async function RequesterPath() {
               alt={ti("heroPhoto")}
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
           <div className="p-8">
