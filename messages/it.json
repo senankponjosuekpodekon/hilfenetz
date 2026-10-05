@@ -191,6 +191,23 @@
       "offers": "Offerte di donazione pubblicate",
       "categories": "Aree coperte",
       "requests": "Richieste ricevute"
+    },
+    "confidence": {
+      "title": "Una piattaforma chiara, dalla richiesta alla decisione.",
+      "items": [
+        {
+          "title": "Gratuito",
+          "desc": "Presentare una richiesta non costa nulla. Non è mai richiesto alcun pagamento per ottenere una donazione."
+        },
+        {
+          "title": "Trasparente",
+          "desc": "Ogni offerta indica i suoi criteri, l'importo proposto e chi decide."
+        },
+        {
+          "title": "Controllato",
+          "desc": "I comportamenti sospetti possono essere segnalati ed esaminati dal team."
+        }
+      ]
     }
   },
   "offers": {

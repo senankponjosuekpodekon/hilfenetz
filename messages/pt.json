@@ -191,6 +191,23 @@
       "offers": "Ofertas de doação publicadas",
       "categories": "Áreas cobertas",
       "requests": "Pedidos recebidos"
+    },
+    "confidence": {
+      "title": "Uma plataforma clara, do pedido à decisão.",
+      "items": [
+        {
+          "title": "Gratuito",
+          "desc": "Apresentar um pedido não custa nada. Nunca é exigido qualquer pagamento para obter uma doação."
+        },
+        {
+          "title": "Transparente",
+          "desc": "Cada oferta indica os seus critérios, o montante proposto e quem decide."
+        },
+        {
+          "title": "Controlado",
+          "desc": "Comportamentos suspeitos podem ser denunciados e examinados pela equipa."
+        }
+      ]
     }
   },
   "offers": {

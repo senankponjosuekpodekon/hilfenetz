@@ -191,6 +191,23 @@
       "offers": "Offres de dons publiées",
       "categories": "Domaines couverts",
       "requests": "Demandes reçues"
+    },
+    "confidence": {
+      "title": "Une plateforme claire, du dépôt à la décision.",
+      "items": [
+        {
+          "title": "Gratuit",
+          "desc": "Déposer une demande ne coûte rien. Aucun paiement n'est jamais exigé pour obtenir un don."
+        },
+        {
+          "title": "Transparent",
+          "desc": "Chaque offre indique ses critères, son montant proposé et qui décide."
+        },
+        {
+          "title": "Contrôlé",
+          "desc": "Les comportements suspects peuvent être signalés et examinés par l'équipe."
+        }
+      ]
     }
   },
   "offers": {

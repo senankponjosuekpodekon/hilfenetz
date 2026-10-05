@@ -191,6 +191,23 @@
       "offers": "Veröffentlichte Spendenangebote",
       "categories": "Abgedeckte Bereiche",
       "requests": "Erhaltene Anfragen"
+    },
+    "confidence": {
+      "title": "Eine klare Plattform – von der Anfrage bis zur Entscheidung.",
+      "items": [
+        {
+          "title": "Kostenlos",
+          "desc": "Das Einreichen einer Anfrage kostet nichts. Für den Erhalt einer Spende wird niemals eine Zahlung verlangt."
+        },
+        {
+          "title": "Transparent",
+          "desc": "Jedes Angebot nennt seine Kriterien, den vorgeschlagenen Betrag und wer entscheidet."
+        },
+        {
+          "title": "Geprüft",
+          "desc": "Verdächtiges Verhalten kann gemeldet und vom Team geprüft werden."
+        }
+      ]
     }
   },
   "offers": {

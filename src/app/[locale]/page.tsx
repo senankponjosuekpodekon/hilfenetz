@@ -354,6 +354,39 @@ async function Engagement() {
   );
 }
 
+async function Confidence() {
+  const t = await getTranslations("home.confidence");
+  const items = (t.raw("items") as { title: string; desc: string }[]).map((item, i) => ({
+    ...item,
+    icon: [Euro, Eye, Flag][i],
+    tone: ["bg-accent-soft text-accent-dark", "bg-violet-soft text-violet", "bg-amber-soft text-warning"][i],
+  }));
+  return (
+    <section className="border-y border-border/60 bg-surface py-16 md:py-20">
+      <Container>
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-ink md:text-3xl">
+          {t("title")}
+        </h2>
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+          {items.map(({ icon: Icon, title, desc, tone }, i) => (
+            <Reveal key={title} delay={i * 80}>
+              <div className="flex h-full gap-4 rounded-[var(--radius-card)] border border-border bg-background p-6">
+                <span className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${tone}`}>
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <div>
+                  <h3 className="font-display text-base font-semibold text-ink">{title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{desc}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 async function FaqPreview() {
   const t = await getTranslations("home.faq");
   const locale = await getLocale();
@@ -414,6 +447,7 @@ export default function HomePage() {
       <RequesterPath />
       <DonorPath />
       <Engagement />
+      <Confidence />
       <FaqPreview />
       <FinalCta />
     </>
