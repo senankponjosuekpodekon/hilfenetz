@@ -21,14 +21,14 @@ async function Hero() {
       {/* Photo de fond + voile pour la lisibilité */}
       <div className="absolute inset-0" aria-hidden>
         <Image
-          src="/images/hero-project.jpg"
+          src="/images/hero-community.jpg"
           alt=""
           fill
           sizes="100vw"
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-surface/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/50 to-surface/5" />
       </div>
       {/* Formes décoratives discrètes */}
       <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-violet-soft/60" aria-hidden />
