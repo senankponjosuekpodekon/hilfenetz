@@ -1,12 +1,24 @@
 import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/container";
+import { getSiteSettings } from "@/lib/content";
 
 type LegalSection = { title: string; body?: string[]; items?: string[] };
 
 export async function LegalPage({ namespace }: { namespace: "conditions" | "privacy" | "imprint" }) {
   const t = await getTranslations("legal");
   const sections = t.raw(`${namespace}.sections`) as LegalSection[];
+
+  if (namespace === "imprint") {
+    const settings = await getSiteSettings();
+    const contact = sections[1];
+    if (contact) {
+      contact.body = [
+        `E-mail : ${settings.contactEmail}`,
+        ...(settings.contactPhone ? [`${t("imprint.phoneLabel")} : ${settings.contactPhone}`] : []),
+      ];
+    }
+  }
 
   return (
     <div className="py-14 md:py-20">

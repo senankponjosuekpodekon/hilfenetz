@@ -503,7 +503,8 @@
             "Tutti i contenuti del sito (testi, elementi grafici, logo) sono protetti. Ogni riproduzione senza autorizzazione è vietata."
           ]
         }
-      ]
+      ],
+      "phoneLabel": "Telefono"
     }
   },
   "notFound": {

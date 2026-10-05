@@ -503,7 +503,8 @@
             "Alle Inhalte der Website (Texte, grafische Elemente, Logo) sind geschützt. Jede Vervielfältigung ohne Genehmigung ist untersagt."
           ]
         }
-      ]
+      ],
+      "phoneLabel": "Telefon"
     }
   },
   "notFound": {
