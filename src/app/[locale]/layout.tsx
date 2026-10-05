@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { hasLocale } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -50,11 +50,13 @@ export default async function LocaleLayout({
       >
         {t("skipToContent")}
       </a>
-      <Header />
-      <main id="contenu" className="flex-1">
-        {children}
-      </main>
-      <Footer />
+      <NextIntlClientProvider locale={locale}>
+        <Header />
+        <main id="contenu" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </NextIntlClientProvider>
     </div>
   );
 }
