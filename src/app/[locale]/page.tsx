@@ -46,7 +46,7 @@ async function Hero() {
               <span className="anim-underline absolute -bottom-1 left-0 h-1 rounded-full bg-accent" aria-hidden />
             </span>
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">{t("sub")}</p>
+          <p className="mt-5 max-w-xl text-base font-medium leading-relaxed text-ink/80 md:text-lg">{t("sub")}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/offres" size="lg" arrow>
               {t("ctaOffers")}
@@ -55,7 +55,7 @@ async function Hero() {
               {t("ctaRequest")}
             </Button>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-ink/80">
             {checks.map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <span className="flex size-5 items-center justify-center rounded-full bg-positive-soft">
