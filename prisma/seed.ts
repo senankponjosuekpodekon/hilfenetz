@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { scryptSync, randomBytes } from "node:crypto";
-import { FAQ_ITEMS } from "../src/lib/faq-data.ts";
+import { FAQ_ITEMS_BY_LOCALE } from "../src/lib/faq-data.ts";
 import { DEMO_OFFERS } from "../src/lib/demo-offers.ts";
 
 const prisma = new PrismaClient();
@@ -43,16 +43,22 @@ async function main() {
     await prisma.siteSetting.upsert({ where: { key }, update: {}, create: { key, value } });
   }
 
-  // Questions FAQ initiales
-  const faqCount = await prisma.faqItem.count();
-  if (faqCount === 0) {
+  // Questions FAQ par langue — idempotent par locale
+  for (const [locale, items] of Object.entries(FAQ_ITEMS_BY_LOCALE)) {
+    const count = await prisma.faqItem.count({ where: { locale } });
+    if (count > 0) {
+      console.log(`FAQ ${locale} déjà présente — ignoré`);
+      continue;
+    }
     await prisma.faqItem.createMany({
-      data: FAQ_ITEMS.map((item, i) => ({
+      data: items.map((item, i) => ({
+        locale,
         question: item.q,
         answer: item.a,
         order: i,
       })),
     });
+    console.log(`FAQ ${locale} créée : ${items.length} entrées`);
   }
 }
 
