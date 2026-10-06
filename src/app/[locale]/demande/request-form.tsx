@@ -8,6 +8,19 @@ import { z } from "zod";
 import { useTranslations, useLocale } from "next-intl";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { submitSupportRequest } from "@/features/requests/actions";
+
+const LEAD_CONVERSION = "AW-18382054204/KH-dCIuqo5MdELzGn71E";
+
+function trackLeadConversion() {
+  if (typeof window === "undefined") return;
+  const w = window as Window & { gtag?: (...args: unknown[]) => void };
+  if (typeof w.gtag !== "function") return;
+  w.gtag("event", "conversion", {
+    send_to: LEAD_CONVERSION,
+    value: 1.0,
+    currency: "EUR",
+  });
+}
 import { Field, Input, Textarea } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 
@@ -92,6 +105,7 @@ export function RequestForm({ offerId, offerTitle }: { offerId?: string; offerTi
     startTransition(async () => {
       const result = await submitSupportRequest({ status: "idle" }, fd);
       if (result.status === "success" && result.reference) {
+        trackLeadConversion();
         router.push(`/demande/confirmation?ref=${encodeURIComponent(result.reference)}`);
       } else {
         setServerError(result.message ?? t("serverError"));
