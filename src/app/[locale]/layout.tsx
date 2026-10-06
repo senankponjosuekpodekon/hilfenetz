@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { localeAlternates } from "@/lib/seo";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { GoogleAdsTag, CookieBanner } from "@/components/analytics";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -60,6 +61,15 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer />
+        <GoogleAdsTag />
+        <CookieBanner
+          labels={{
+            title: t("cookieConsent.title"),
+            description: t("cookieConsent.description"),
+            accept: t("cookieConsent.accept"),
+            reject: t("cookieConsent.reject"),
+          }}
+        />
       </NextIntlClientProvider>
     </div>
   );

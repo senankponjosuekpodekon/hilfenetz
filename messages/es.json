@@ -35,7 +35,13 @@
     "mainNav": "Navegación principal",
     "mobileNav": "Navegación móvil",
     "formSteps": "Pasos del formulario",
-    "chooseLanguage": "Elegir idioma"
+    "chooseLanguage": "Elegir idioma",
+    "cookieConsent": {
+      "title": "Cookies y medición de audiencia",
+      "description": "Utilizamos cookies para medir la audiencia y mejorar el sitio. Puedes aceptar o rechazar.",
+      "accept": "Aceptar",
+      "reject": "Rechazar"
+    }
   },
   "nav": {
     "home": "Inicio",
