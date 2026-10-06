@@ -1,12 +1,14 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { CheckCircle2 } from "lucide-react";
 import { submitContact } from "@/features/contact/actions";
 import { Field, Input, Textarea, Honeypot } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 import type { FormState } from "@/features/requests/actions";
+
+const CONVERSION_LABEL = "AW-18382054204/ytcuCNuho5MdELzGn71E";
 
 const initial: FormState = { status: "idle" };
 
@@ -15,6 +17,16 @@ export function ContactForm() {
   const tc = useTranslations("common");
   const [state, action, pending] = useActionState(submitContact, initial);
   const errors = state.errors ?? {};
+
+  useEffect(() => {
+    if (state.status !== "success") return;
+    if (typeof window === "undefined" || !("gtag" in window) || typeof (window as Window & { gtag?: (...args: unknown[]) => void }).gtag !== "function") return;
+    (window as Window & { gtag: (...args: unknown[]) => void }).gtag("event", "conversion", {
+      send_to: CONVERSION_LABEL,
+      value: 1.0,
+      currency: "EUR",
+    });
+  }, [state.status]);
 
   if (state.status === "success") {
     return (
