@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Container, SectionHeading } from "@/components/ui/container";
 import { FaqAccordion } from "@/components/faq/faq-accordion";
+import { HeroOffersSlider } from "@/components/offers/hero-offers-slider";
 import { Reveal } from "@/components/ui/reveal";
 import { getFaqItems } from "@/lib/content";
 import { formatAmount } from "@/lib/utils";
@@ -17,7 +18,13 @@ export const dynamic = "force-dynamic";
 async function Hero() {
   const t = await getTranslations("home.hero");
   const tc = await getTranslations("common");
+  const locale = await getLocale();
   const checks = t.raw("checks") as string[];
+  const offers = await db.donationOffer.findMany({
+    where: { status: "PUBLISHED" },
+    orderBy: { publishedAt: "desc" },
+    take: 8,
+  });
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-surface">
       {/* Photo de fond + voile pour la lisibilité */}
@@ -69,7 +76,7 @@ async function Hero() {
           </ul>
         </div>
 
-        {/* Composition produit — carte offre + éléments flottants */}
+        {/* Composition produit — carrousel d'offres + éléments flottants */}
         <div className="relative mx-auto w-full max-w-md">
           <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card md:flex">
             <span className="flex size-6 items-center justify-center rounded-full bg-positive-soft">
@@ -82,28 +89,24 @@ async function Hero() {
             {t("cardConnection")}
           </div>
           <div className="absolute -right-8 -top-10 hidden size-20 rotate-12 rounded-2xl bg-amber shadow-card md:block" aria-hidden>
-            <Euro className="absolute inset-0 m-auto size-8 text-navy" />
+            <Euro className="absolute inset-0 m-auto size-8 text-navy" aria-hidden />
           </div>
 
-          <div className="relative ml-auto rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-card-hover">
-            <div className="flex items-center justify-between">
-              <Badge tone="accent">{tc("offerBadge")}</Badge>
-              <span className="flex items-center gap-1.5 text-xs font-medium text-positive">
-                <Check className="size-3.5" aria-hidden /> {t("cardVerified")}
-              </span>
-            </div>
-            <h2 className="mt-5 font-display text-lg font-semibold text-ink">{tc("offerSubtitle")}</h2>
-            <p className="mt-1.5 text-sm text-muted">{tc("donor")} : Laurent D.</p>
-            <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">{tc("amountProposed")}</p>
-            <p className="mt-1 font-display text-4xl font-semibold tracking-tight text-ink">5 000 €</p>
-            <div className="mt-4 rounded-xl border-l-4 border-violet bg-violet-soft/60 px-4 py-3">
-              <p className="text-sm italic leading-relaxed text-muted">{t("cardDesc")}</p>
-            </div>
-            <Button href="/demande" className="mt-6 w-full" arrow>
-              {tc("submitRequest")}
-            </Button>
-            <p className="mt-3 text-center text-xs text-muted">{tc("decisionDonor")}</p>
-          </div>
+          <HeroOffersSlider
+            offers={offers}
+            locale={locale}
+            labels={{
+              offerBadge: tc("offerBadge"),
+              offerSubtitle: tc("offerSubtitle"),
+              verified: t("cardVerified"),
+              donor: tc("donor"),
+              anonymous: tc("anonymous"),
+              amountProposed: tc("amountProposed"),
+              submitRequest: tc("submitRequest"),
+              decisionDonor: tc("decisionDonor"),
+              noOffers: tc("noOffersTitle"),
+            }}
+          />
         </div>
       </Container>
     </section>
