@@ -20,18 +20,11 @@ async function Hero() {
   const tc = await getTranslations("common");
   const locale = await getLocale();
   const checks = t.raw("checks") as string[];
-  let offers = await db.donationOffer.findMany({
-    where: { status: "PUBLISHED", locale },
+  const offers = await db.donationOffer.findMany({
+    where: { status: "PUBLISHED" },
     orderBy: { publishedAt: "desc" },
     take: 8,
   });
-  if (offers.length === 0) {
-    offers = await db.donationOffer.findMany({
-      where: { status: "PUBLISHED" },
-      orderBy: { publishedAt: "desc" },
-      take: 8,
-    });
-  }
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-surface">
       {/* Photo de fond + voile pour la lisibilité */}
@@ -46,6 +39,8 @@ async function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-surface/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-transparent" />
+        {/* Voile renforcé en mobile — la colonne texte+carte passe sous la photo */}
+        <div className="absolute inset-0 bg-surface/60 lg:hidden" />
       </div>
 
       <Container className="relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[55fr_45fr]">
@@ -54,7 +49,7 @@ async function Hero() {
             <Sparkles className="size-3.5" aria-hidden />
             {t("badge")}
           </Badge>
-          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] tracking-tight text-ink md:text-6xl">
+          <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.15] tracking-tight text-ink sm:text-4xl md:text-6xl">
             {t("title1")}
             <br />
             <span className="anim-fade-up relative inline-block text-violet" style={{ animationDelay: "0.25s" }}>
@@ -167,11 +162,12 @@ async function Stats() {
   ];
   return (
     <section className="border-b border-border/60 bg-surface">
-      <Container className="grid grid-cols-3 gap-3 py-12 text-center sm:gap-8 md:py-14">
+      <Container className="grid grid-cols-1 gap-8 py-12 text-center sm:grid-cols-3 md:py-14">
+        {/* Reveal per stat via wrapper divs below */}
         {stats.map((s) => (
           <div key={s.label}>
-            <p className={`font-display text-2xl font-semibold tracking-tight sm:text-4xl md:text-5xl ${s.tone}`}>{s.value}</p>
-            <p className="mt-2 text-xs font-medium leading-snug text-muted sm:text-sm">{s.label}</p>
+            <p className={`font-display text-4xl font-semibold tracking-tight md:text-5xl ${s.tone}`}>{s.value}</p>
+            <p className="mt-2 text-sm font-medium text-muted">{s.label}</p>
           </div>
         ))}
       </Container>
@@ -232,7 +228,7 @@ async function FeaturedOffer() {
         <SectionHeading title={t("title")} description={t("desc")} />
         <Reveal><div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
           {offer ? (
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-6 shadow-card md:p-10">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-8 shadow-card md:p-10">
               <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-accent-soft" aria-hidden />
               <Badge tone="accent">{tc("offerBadge")}</Badge>
               <h3 className="mt-4 font-display text-2xl font-semibold text-ink">{tc("offerSubtitle")}</h3>
@@ -287,7 +283,7 @@ async function RequesterPath() {
               className="object-cover object-center"
             />
           </div>
-          <div className="p-6 md:p-8">
+          <div className="p-8">
           <div className="flex size-12 items-center justify-center rounded-2xl bg-violet-soft">
             <FileText className="size-6 text-violet" aria-hidden />
           </div>

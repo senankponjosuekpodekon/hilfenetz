@@ -80,7 +80,7 @@ export function HeroOffersSlider({
                 {labels.donor} : {o.donorName || labels.anonymous}
               </p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">{labels.amountProposed}</p>
-              <p className="mt-1 font-display text-4xl font-semibold tracking-tight text-ink">
+              <p className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
                 {formatAmount(Number(o.amount), o.currency, locale)}
               </p>
               <div className="mt-4 rounded-xl border-l-4 border-violet bg-violet-soft/60 px-4 py-3">
