@@ -2,12 +2,18 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
-import type { DonationOffer } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatAmount } from "@/lib/utils";
 
-type Offer = Pick<DonationOffer, "id" | "title" | "donorName" | "amount" | "currency" | "donorMessage">;
+type Offer = {
+  id: string;
+  title: string;
+  donorName: string | null;
+  amount: number;
+  currency: string;
+  donorMessage: string | null;
+};
 
 export function HeroOffersSlider({
   offers,
@@ -81,7 +87,7 @@ export function HeroOffersSlider({
               </p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">{labels.amountProposed}</p>
               <p className="mt-1 font-display text-4xl font-semibold tracking-tight text-ink">
-                {formatAmount(Number(o.amount), o.currency, locale)}
+                {formatAmount(o.amount, o.currency, locale)}
               </p>
               <div className="mt-4 rounded-xl border-l-4 border-violet bg-violet-soft/60 px-4 py-3">
                 <p className="text-sm italic leading-relaxed text-muted line-clamp-3">{o.donorMessage || o.title}</p>

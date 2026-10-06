@@ -20,11 +20,20 @@ async function Hero() {
   const tc = await getTranslations("common");
   const locale = await getLocale();
   const checks = t.raw("checks") as string[];
-  const offers = await db.donationOffer.findMany({
-    where: { status: "PUBLISHED" },
-    orderBy: { publishedAt: "desc" },
-    take: 8,
-  });
+  const offers = (
+    await db.donationOffer.findMany({
+      where: { status: "PUBLISHED" },
+      orderBy: { publishedAt: "desc" },
+      take: 8,
+    })
+  ).map((o) => ({
+    id: o.id,
+    title: o.title,
+    donorName: o.donorName,
+    amount: Number(o.amount),
+    currency: o.currency,
+    donorMessage: o.donorMessage,
+  }));
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-surface">
       {/* Photo de fond + voile pour la lisibilité */}
