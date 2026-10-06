@@ -39,17 +39,15 @@ async function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-surface/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-surface/70 via-transparent to-transparent" />
-        {/* Voile renforcé en mobile — la colonne texte+carte passe sous la photo */}
-        <div className="absolute inset-0 bg-surface/60 lg:hidden" />
       </div>
 
-      <Container className="relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[55fr_45fr]">
-        <div className="anim-fade-up">
+      <Container className="relative grid grid-cols-1 items-center gap-12 py-14 md:py-24 lg:grid-cols-[55fr_45fr]">
+        <div className="anim-fade-up min-w-0">
           <Badge tone="violet">
             <Sparkles className="size-3.5" aria-hidden />
             {t("badge")}
           </Badge>
-          <h1 className="mt-5 font-display text-3xl font-semibold leading-[1.15] tracking-tight text-ink sm:text-4xl md:text-6xl">
+          <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] tracking-tight text-ink md:text-6xl">
             {t("title1")}
             <br />
             <span className="anim-fade-up relative inline-block text-violet" style={{ animationDelay: "0.25s" }}>
@@ -79,18 +77,18 @@ async function Hero() {
         </div>
 
         {/* Composition produit — carrousel d'offres + éléments flottants */}
-        <div className="relative mx-auto w-full max-w-md">
-          <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card lg:flex">
+        <div className="relative mx-auto w-full min-w-0 max-w-md">
+          <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card md:flex">
             <span className="flex size-6 items-center justify-center rounded-full bg-positive-soft">
               <Check className="size-3.5 text-positive" aria-hidden />
             </span>
             {t("cardReviewed")}
           </div>
-          <div className="anim-float absolute -bottom-5 -right-3 z-10 hidden items-center gap-2 rounded-xl border border-violet/20 bg-violet-soft px-4 py-2.5 text-xs font-semibold text-violet shadow-card lg:flex" style={{ animationDelay: "1.2s" }}>
+          <div className="anim-float absolute -bottom-5 -right-3 z-10 hidden items-center gap-2 rounded-xl border border-violet/20 bg-violet-soft px-4 py-2.5 text-xs font-semibold text-violet shadow-card md:flex" style={{ animationDelay: "1.2s" }}>
             <HeartHandshake className="size-4" aria-hidden />
             {t("cardConnection")}
           </div>
-          <div className="absolute -right-8 -top-10 hidden size-20 rotate-12 rounded-2xl bg-amber shadow-card lg:block" aria-hidden>
+          <div className="absolute -right-8 -top-10 hidden size-20 rotate-12 rounded-2xl bg-amber shadow-card md:block" aria-hidden>
             <Euro className="absolute inset-0 m-auto size-8 text-navy" aria-hidden />
           </div>
 
@@ -226,7 +224,7 @@ async function FeaturedOffer() {
     <section className="border-y border-border/60 bg-surface py-20 md:py-28">
       <Container>
         <SectionHeading title={t("title")} description={t("desc")} />
-        <Reveal><div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
+        <Reveal><div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
           {offer ? (
             <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-8 shadow-card md:p-10">
               <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-accent-soft" aria-hidden />
@@ -272,7 +270,7 @@ async function RequesterPath() {
   const formSteps = t.raw("formSteps") as string[];
   return (
     <section className="py-20 md:py-28">
-      <Container className="grid items-center gap-12 lg:grid-cols-2">
+      <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
         <div className="order-2 overflow-hidden rounded-3xl border border-border bg-surface shadow-card lg:order-1">
           <div className="relative h-44 w-full">
             <Image
@@ -329,7 +327,7 @@ async function DonorPath() {
     <section className="relative overflow-hidden border-y border-violet/20 bg-violet-dark py-20 md:py-28">
       <div className="pointer-events-none absolute -left-20 -top-20 size-72 rounded-full bg-iris/20" aria-hidden />
       <div className="pointer-events-none absolute -bottom-24 -right-16 size-80 rounded-full bg-accent/15" aria-hidden />
-      <Container className="relative grid items-center gap-12 lg:grid-cols-2">
+      <Container className="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-amber">{t("eyebrow")}</p>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">{t("title")}</h2>
@@ -380,7 +378,7 @@ async function Engagement() {
     <section className="py-20 md:py-28">
       <Container>
         <SectionHeading title={t("title")} align="center" />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map(({ icon: Icon, title, desc, tone }, i) => (
             <Reveal key={title} delay={i * 80}>
             <div className="h-full rounded-[var(--radius-card)] border border-border bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
@@ -469,7 +467,7 @@ async function FaqPreview() {
   const items = await getFaqItems(locale);
   return (
     <section className="py-20 md:py-28">
-      <Container className="grid gap-10 lg:grid-cols-[360px_1fr]">
+      <Container className="grid grid-cols-1 gap-10 lg:grid-cols-[360px_1fr]">
         <div>
           <SectionHeading title={t("title")} description={t("desc")} />
           <Button href="/faq" variant="ghost" arrow className="mt-6">

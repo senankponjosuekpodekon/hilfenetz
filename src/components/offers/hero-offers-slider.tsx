@@ -60,15 +60,15 @@ export function HeroOffersSlider({
   const offer = offers[index];
 
   return (
-    <div className="relative mx-auto w-full max-w-md">
-      <div className="overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface shadow-card-hover">
+    <div className="relative mx-auto w-full min-w-0 max-w-md">
+      <div className="touch-pan-y overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface shadow-card-hover">
         <div
           className="flex transition-transform duration-500 ease-out-expo"
           style={{ transform: `translateX(-${index * 100}%)` }}
           aria-live="polite"
         >
           {offers.map((o) => (
-            <article key={o.id} className="w-full shrink-0 p-5 sm:p-7">
+            <article key={o.id} className="w-full min-w-0 shrink-0 basis-full p-5 sm:p-7">
               <div className="flex items-center justify-between">
                 <Badge tone="accent">{labels.offerBadge}</Badge>
                 <span className="flex items-center gap-1.5 text-xs font-medium text-positive">
@@ -80,13 +80,13 @@ export function HeroOffersSlider({
                 {labels.donor} : {o.donorName || labels.anonymous}
               </p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">{labels.amountProposed}</p>
-              <p className="mt-1 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              <p className="mt-1 font-display text-4xl font-semibold tracking-tight text-ink">
                 {formatAmount(Number(o.amount), o.currency, locale)}
               </p>
               <div className="mt-4 rounded-xl border-l-4 border-violet bg-violet-soft/60 px-4 py-3">
                 <p className="text-sm italic leading-relaxed text-muted line-clamp-3">{o.donorMessage || o.title}</p>
               </div>
-              <Button href={`/demande?offre=${o.id}`} className="mt-6 w-full" arrow>
+              <Button href={`/demande?offre=${o.id}`} className="mt-6 w-full whitespace-normal text-center" arrow>
                 {labels.submitRequest}
               </Button>
               <p className="mt-3 text-center text-xs text-muted">{labels.decisionDonor}</p>
