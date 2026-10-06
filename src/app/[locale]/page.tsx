@@ -20,11 +20,18 @@ async function Hero() {
   const tc = await getTranslations("common");
   const locale = await getLocale();
   const checks = t.raw("checks") as string[];
-  const offers = await db.donationOffer.findMany({
-    where: { status: "PUBLISHED" },
+  let offers = await db.donationOffer.findMany({
+    where: { status: "PUBLISHED", locale },
     orderBy: { publishedAt: "desc" },
     take: 8,
   });
+  if (offers.length === 0) {
+    offers = await db.donationOffer.findMany({
+      where: { status: "PUBLISHED" },
+      orderBy: { publishedAt: "desc" },
+      take: 8,
+    });
+  }
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-surface">
       {/* Photo de fond + voile pour la lisibilité */}
@@ -160,12 +167,11 @@ async function Stats() {
   ];
   return (
     <section className="border-b border-border/60 bg-surface">
-      <Container className="grid grid-cols-1 gap-8 py-12 text-center sm:grid-cols-3 md:py-14">
-        {/* Reveal per stat via wrapper divs below */}
+      <Container className="grid grid-cols-3 gap-3 py-12 text-center sm:gap-8 md:py-14">
         {stats.map((s) => (
           <div key={s.label}>
-            <p className={`font-display text-4xl font-semibold tracking-tight md:text-5xl ${s.tone}`}>{s.value}</p>
-            <p className="mt-2 text-sm font-medium text-muted">{s.label}</p>
+            <p className={`font-display text-2xl font-semibold tracking-tight sm:text-4xl md:text-5xl ${s.tone}`}>{s.value}</p>
+            <p className="mt-2 text-xs font-medium leading-snug text-muted sm:text-sm">{s.label}</p>
           </div>
         ))}
       </Container>
@@ -226,7 +232,7 @@ async function FeaturedOffer() {
         <SectionHeading title={t("title")} description={t("desc")} />
         <Reveal><div className="mt-12 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-center">
           {offer ? (
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-8 shadow-card md:p-10">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-6 shadow-card md:p-10">
               <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-accent-soft" aria-hidden />
               <Badge tone="accent">{tc("offerBadge")}</Badge>
               <h3 className="mt-4 font-display text-2xl font-semibold text-ink">{tc("offerSubtitle")}</h3>
@@ -281,7 +287,7 @@ async function RequesterPath() {
               className="object-cover object-center"
             />
           </div>
-          <div className="p-8">
+          <div className="p-6 md:p-8">
           <div className="flex size-12 items-center justify-center rounded-2xl bg-violet-soft">
             <FileText className="size-6 text-violet" aria-hidden />
           </div>

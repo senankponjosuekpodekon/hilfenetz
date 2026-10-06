@@ -68,7 +68,7 @@ export function HeroOffersSlider({
           aria-live="polite"
         >
           {offers.map((o) => (
-            <article key={o.id} className="w-full shrink-0 p-7">
+            <article key={o.id} className="w-full shrink-0 p-5 sm:p-7">
               <div className="flex items-center justify-between">
                 <Badge tone="accent">{labels.offerBadge}</Badge>
                 <span className="flex items-center gap-1.5 text-xs font-medium text-positive">
