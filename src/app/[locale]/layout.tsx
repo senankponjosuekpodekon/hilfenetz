@@ -7,6 +7,7 @@ import { localeAlternates } from "@/lib/seo";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { GoogleAdsTag, CookieBanner } from "@/components/analytics";
+import { TrackPage } from "@/components/analytics/track-page";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer />
+        <TrackPage locale={locale} />
         <GoogleAdsTag />
         <CookieBanner
           labels={{

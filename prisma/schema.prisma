@@ -119,6 +119,20 @@ model SiteSetting {
   updatedAt DateTime @updatedAt
 }
 
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  type      String   @default("page_view")
+  path      String
+  locale    String?
+  referrer  String?
+  userAgent String?
+  ipHash    String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path])
+}
+
 model FaqItem {
   id        String   @id @default(cuid())
   locale    String   @default("fr")
