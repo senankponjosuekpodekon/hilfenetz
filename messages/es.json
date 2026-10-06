@@ -220,19 +220,19 @@
       "desc": "Primeros testimonios de usuarios de la plataforma.",
       "items": [
         {
-          "quote": "Presenté mi proyecto en HilfeNetz y rápidamente pude conversar con un donante. Tras nuestros intercambios, recibí efectivamente el apoyo acordado. Esta ayuda me permitió hacer avanzar mi proyecto y estoy muy agradecido por esta oportunidad.",
           "name": "Thomas M.",
-          "meta": "Berlín"
+          "city": "Berlín",
+          "quote": "Pude presentar mi proyecto en HilfeNetz y hablar con un donante interesado. El proceso fue sencillo y transparente."
         },
         {
-          "quote": "Quería obtener un apoyo para mi situación y decidí presentar mi proyecto en HilfeNetz. Un donante se puso en contacto conmigo y, tras conversar, recibí el apoyo anunciado. Estoy satisfecha con la conexión y el acompañamiento durante el proceso.",
           "name": "Anna K.",
-          "meta": "Hamburgo"
+          "city": "Hamburgo",
+          "quote": "Envié mi solicitud y un donante se puso en contacto conmigo. El intercambio fue respetuoso y claro."
         },
         {
-          "quote": "Gracias a HilfeNetz pude presentar claramente mi proyecto a un donante. Tras varios intercambios, mi solicitud fue aceptada y recibí efectivamente el apoyo. Esta ayuda fue importante para concretar una parte de mi proyecto.",
           "name": "Michael S.",
-          "meta": "Múnich"
+          "city": "Múnich",
+          "quote": "Gracias a HilfeNetz, pude explicar mi proyecto a un donante. El acercamiento fue fácil y profesional."
         }
       ],
       "disclaimer": "Testimonios recogidos entre los primeros usuarios."
@@ -321,7 +321,8 @@
       "confirmAccuracy": "Confirmo que la información facilitada es exacta según mi leal saber y entender.",
       "confirmAccuracyError": "Debes confirmar la exactitud de la información.",
       "acceptProcessing": "Acepto que mis datos sean utilizados conforme a las reglas aplicables al tratamiento de las solicitudes.",
-      "acceptProcessingError": "Debes aceptar el tratamiento de tus datos."
+      "acceptProcessingError": "Debes aceptar el tratamiento de tus datos.",
+      "legalNotice": "Al enviar este formulario, confirma que ha leído las <link>condiciones de participación</link> y la <privacy>política de privacidad</privacy>, y acepta el tratamiento de sus datos."
     },
     "back": "Atrás",
     "next": "Continuar",
@@ -456,33 +457,74 @@
       ]
     },
     "privacy": {
-      "title": "Protección de datos",
+      "title": "Política de privacidad",
       "sections": [
         {
-          "title": "1. Datos recopilados",
+          "title": "1. Responsable del tratamiento",
           "body": [
-            "HilfeNetz recopila la información transmitida a través de sus formularios: identidad, datos de contacto (correo electrónico, teléfono), descripción de la situación o de la propuesta."
+            "El responsable del tratamiento de los datos recogidos en este sitio es:",
+            "HilfeNetz\n[forma jurídica]\n[dirección jurídica completa]\nCorreo electrónico: kontakt@hilfenetz.com\nRepresentante legal: [nombre, apellido, cargo]"
           ]
         },
         {
-          "title": "2. Finalidades",
+          "title": "2. Datos recogidos y categorías",
+          "body": [
+            "Recogemos los datos que nos facilita voluntariamente: nombre, apellidos, correo electrónico, teléfono, país, descripción de su situación o proyecto, mensaje al donante y, en su caso, el identificador de una oferta vinculada."
+          ]
+        },
+        {
+          "title": "3. Finalidades y bases legales",
           "items": [
-            "examen de las solicitudes;",
-            "conexión entre donantes y solicitantes;",
-            "tratamiento de las denuncias;",
-            "respuesta a los mensajes de contacto."
+            "Examen y tratamiento de solicitudes de apoyo (medidas precontractuales);",
+            "Puesta en relación con donantes potenciales (interés legítimo, consentimiento explícito);",
+            "Tratamiento de denuncias (interés legítimo en la seguridad de la plataforma);",
+            "Respuesta a mensajes de contacto (consentimiento);",
+            "Medición de audiencia y optimización de marketing con su consentimiento (cookies/tracking)."
           ]
         },
         {
-          "title": "3. Conservación y seguridad",
+          "title": "4. Destinatarios y encargados del tratamiento",
           "body": [
-            "La información se conserva durante el tiempo necesario para el tratamiento de las solicitudes y solo es accesible a las personas autorizadas. Los plazos de conservación precisos se definirán con el responsable legal del proyecto."
+            "Sus datos son destinados exclusivamente al equipo HilfeNetz encargado de examinar las solicitudes. Utilizamos los siguientes encargados técnicos: Vercel Inc. (alojamiento), Resend Inc. (envío de correos), Prisma/DataStax (base de datos PostgreSQL). Estos tratamientos están amparados por contratos de encargado del tratamiento conformes al RGPD."
           ]
         },
         {
-          "title": "4. Tus derechos",
+          "title": "5. Transferencias fuera de la Unión Europea",
           "body": [
-            "Conforme a la normativa aplicable, puedes solicitar el acceso, la rectificación o la supresión de tus datos contactándonos a través de la página de Contacto."
+            "Algunos encargados (Vercel, Resend) pueden alojar datos en Estados Unidos. La transferencia se basa en las cláusulas contractuales tipo de la Comisión Europea y, en su caso, en el Data Privacy Framework."
+          ]
+        },
+        {
+          "title": "6. Plazos de conservación",
+          "items": [
+            "Solicitudes de apoyo: hasta 3 años después del último contacto o solicitud de supresión;",
+            "Mensajes de contacto: 2 años;",
+            "Denuncias: 2 años después del cierre;",
+            "Datos de conexión y cookies: máximo 13 meses."
+          ]
+        },
+        {
+          "title": "7. Sus derechos",
+          "body": [
+            "De conformidad con el RGPD, tiene derecho de acceso, rectificación, supresión, limitación del tratamiento, oposición y portabilidad. Para ejercerlos, póngase en contacto con kontakt@hilfenetz.com. También puede presentar una reclamación ante la autoridad de control competente."
+          ]
+        },
+        {
+          "title": "8. Cookies y tecnologías de seguimiento",
+          "body": [
+            "Utilizamos cookies y etiquetas técnicamente necesarias. Con su consentimiento, activamos Google Ads y Google Tag Manager para medir la audiencia y optimizar las campañas. Puede modificar su elección en cualquier momento desde el banner de cookies."
+          ]
+        },
+        {
+          "title": "9. Google Ads / Google Tag",
+          "body": [
+            "Cuando acepta las cookies, Google Ads (etiqueta AW-18382054204) puede recibir información limitada (páginas visitadas, eventos de conversión) para evaluar la eficacia de las campañas. No se transmiten datos personales sensibles."
+          ]
+        },
+        {
+          "title": "10. Seguridad",
+          "body": [
+            "Implementamos medidas técnicas y organizativas para proteger sus datos: conexiones cifradas (HTTPS), accesos restringidos, base de datos protegida."
           ]
         }
       ]
@@ -541,5 +583,30 @@
     "terms": "Condiciones de participación",
     "privacy": "Protección de datos",
     "imprint": "Aviso legal"
+  },
+  "adsLanding": {
+    "title": "Plataforma de conexión entre donantes y personas que buscan apoyo",
+    "subtitle": "Presenta tu proyecto o tu situación. HilfeNetz examina tu solicitud y puede ponerte en contacto con donantes potenciales. La decisión corresponde exclusivamente al donante.",
+    "cta": "Presentar mi solicitud",
+    "ctaSecondary": "Cómo funciona",
+    "statementTitle": "Sin garantía, sin gestión de dinero",
+    "statementItems": [
+      "HilfeNetz no recauda donaciones ni transfiere fondos.",
+      "HilfeNetz no decide la concesión de una ayuda.",
+      "Presentar una solicitud es completamente gratuito.",
+      "Solo el donante decide si responde a una solicitud."
+    ],
+    "howItWorksTitle": "Cómo funciona",
+    "howItWorksDesc": "Un proceso transparente en 5 pasos.",
+    "trustTitle": "Un servicio claro y prudente",
+    "trustItems": [
+      "Sin gastos para presentar una solicitud",
+      "No se piden datos bancarios",
+      "Denuncia de anuncios sospechosos",
+      "Plataforma de conexión, sin financiación garantizada"
+    ],
+    "legalNotice": "HilfeNetz es una plataforma de conexión. No garantiza la obtención de una donación, un crédito o una financiación. Lee las <a href=\"/conditions\" class=\"text-trust hover:underline\">condiciones de participación</a> y la <a href=\"/confidentialite\" class=\"text-trust hover:underline\">política de privacidad</a>.",
+    "finalCtaTitle": "Presenta tu proyecto ahora",
+    "finalCtaDesc": "Envía una solicitud gratuita y sin compromiso."
   }
 }

@@ -220,19 +220,19 @@
       "desc": "Erste Rückmeldungen von Nutzern der Plattform.",
       "items": [
         {
-          "quote": "Ich habe mein Projekt auf HilfeNetz vorgestellt und konnte schnell mit einem Spender in Kontakt treten. Nach unserem Austausch habe ich die vereinbarte Unterstützung tatsächlich erhalten. Diese Hilfe hat mir ermöglicht, mein Projekt voranzubringen, und ich bin sehr dankbar für diese Gelegenheit.",
           "name": "Thomas M.",
-          "meta": "Berlin"
+          "city": "Berlin",
+          "quote": "Ich konnte mein Projekt auf HilfeNetz vorstellen und mich mit einem interessierten Spender austauschen. Der Prozess war einfach und transparent."
         },
         {
-          "quote": "Ich wollte Unterstützung für meine Situation erhalten und habe beschlossen, mein Projekt auf HilfeNetz vorzustellen. Ein Spender hat mich kontaktiert und nach unserem Gespräch habe ich die angekündigte Unterstützung erhalten. Ich bin mit der Vermittlung und der Begleitung während des Prozesses zufrieden.",
           "name": "Anna K.",
-          "meta": "Hamburg"
+          "city": "Hamburg",
+          "quote": "Ich habe meine Anfrage eingereicht und ein Spender hat mich kontaktiert. Der Austausch war respektvoll und klar."
         },
         {
-          "quote": "Dank HilfeNetz konnte ich mein Projekt einem Spender klar vorstellen. Nach mehreren Gesprächen wurde meine Anfrage berücksichtigt und ich habe die Unterstützung tatsächlich erhalten. Diese Hilfe war wichtig, um einen Teil meines Projekts zu verwirklichen.",
           "name": "Michael S.",
-          "meta": "München"
+          "city": "München",
+          "quote": "Dank HilfeNetz konnte ich einem Spender mein Projekt erklären. Die Vermittlung war unkompliziert und professionell."
         }
       ],
       "disclaimer": "Rückmeldungen der ersten Nutzer der Plattform."
@@ -321,7 +321,8 @@
       "confirmAccuracy": "Ich bestätige, dass die angegebenen Informationen nach bestem Wissen zutreffend sind.",
       "confirmAccuracyError": "Sie müssen die Richtigkeit der Angaben bestätigen.",
       "acceptProcessing": "Ich akzeptiere, dass meine Angaben gemäß den geltenden Regeln für die Bearbeitung von Anfragen verwendet werden.",
-      "acceptProcessingError": "Sie müssen die Verarbeitung Ihrer Angaben akzeptieren."
+      "acceptProcessingError": "Sie müssen die Verarbeitung Ihrer Angaben akzeptieren.",
+      "legalNotice": "Mit dem Absenden dieses Formulars bestätigen Sie, dass Sie die <link>Teilnahmebedingungen</link> und die <privacy>Datenschutzerklärung</privacy> gelesen haben, und willigen in die Verarbeitung Ihrer Daten ein."
     },
     "back": "Zurück",
     "next": "Weiter",
@@ -459,30 +460,71 @@
       "title": "Datenschutzerklärung",
       "sections": [
         {
-          "title": "1. Erhobene Daten",
+          "title": "1. Verantwortlicher",
           "body": [
-            "HilfeNetz erhebt die über seine Formulare übermittelten Informationen: Identität, Kontaktdaten (E-Mail, Telefon), Beschreibung der Situation oder des Vorschlags."
+            "Verantwortlicher für die Datenverarbeitung auf dieser Website ist:",
+            "HilfeNetz\n[Rechtsform]\n[vollständige Rechtsadresse]\nE-Mail: kontakt@hilfenetz.com\nGesetzliche(r) Vertreter(in): [Vorname, Name, Funktion]"
           ]
         },
         {
-          "title": "2. Zwecke",
+          "title": "2. Erhobene Daten und Kategorien",
+          "body": [
+            "Wir verarbeiten die Daten, die Sie uns freiwillig übermitteln: Vorname, Nachname, E-Mail-Adresse, Telefonnummer, Land, Beschreibung Ihrer Situation oder Ihres Projekts, Nachricht an den Spender sowie ggf. die ID eines verknüpften Angebots."
+          ]
+        },
+        {
+          "title": "3. Zwecke und Rechtsgrundlagen",
           "items": [
-            "Prüfung der Anfragen;",
-            "Vermittlung zwischen Spendern und Antragstellern;",
-            "Bearbeitung von Meldungen;",
-            "Beantwortung von Kontaktnachrichten."
+            "Prüfung und Bearbeitung von Unterstützungsanfragen (vorvertragliche Maßnahmen);",
+            "Vermittlung von Kontakten zu potenziellen Spendern (berechtigtes Interesse, ausdrückliche Einwilligung);",
+            "Bearbeitung von Meldungen (berechtigtes Interesse an der Plattformsicherheit);",
+            "Beantwortung von Kontaktnachrichten (Einwilligung);",
+            "Reichweitenmessung und Marketing-Optimierung mit Ihrer Einwilligung (Cookies/Tracking)."
           ]
         },
         {
-          "title": "3. Aufbewahrung und Sicherheit",
+          "title": "4. Empfänger und Auftragsverarbeiter",
           "body": [
-            "Die Informationen werden für die zur Bearbeitung der Anfragen erforderliche Dauer aufbewahrt und sind nur für berechtigte Personen zugänglich. Die genauen Aufbewahrungsfristen werden mit dem rechtlichen Verantwortlichen des Projekts festgelegt."
+            "Ihre Daten sind ausschließlich für das HilfeNetz-Team bestimmt, das die Anfragen prüft. Wir nutzen folgende technische Auftragsverarbeiter: Vercel Inc. (Hosting), Resend Inc. (E-Mail-Versand), Prisma/DataStax (PostgreSQL-Datenbank). Die Verarbeitungen sind durch Auftragsverarbeitungsverträge nach DSGVO geregelt."
           ]
         },
         {
-          "title": "4. Ihre Rechte",
+          "title": "5. Übermittlungen außerhalb der EU",
           "body": [
-            "Gemäß den geltenden Vorschriften können Sie Auskunft, Berichtigung oder Löschung Ihrer Daten verlangen, indem Sie uns über die Kontaktseite erreichen."
+            "Einige Auftragsverarbeiter (Vercel, Resend) können Daten in den USA hosten. Die Übermittlung basiert auf den Standardvertragsklauseln der Europäischen Kommission und ggf. auf dem Data Privacy Framework."
+          ]
+        },
+        {
+          "title": "6. Speicherdauer",
+          "items": [
+            "Unterstützungsanfragen: bis zu 3 Jahre nach dem letzten Kontakt oder Löschantrag;",
+            "Kontaktnachrichten: 2 Jahre;",
+            "Meldungen: 2 Jahre nach Abschluss;",
+            "Verbindungsdaten und Cookies: maximal 13 Monate."
+          ]
+        },
+        {
+          "title": "7. Ihre Rechte",
+          "body": [
+            "Nach DSGVO haben Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch und Datenübertragbarkeit. Wenden Sie sich dazu bitte an kontakt@hilfenetz.com. Sie können sich auch bei der zuständigen Aufsichtsbehörde beschweren."
+          ]
+        },
+        {
+          "title": "8. Cookies und Tracking",
+          "body": [
+            "Wir setzen technisch notwendige Cookies und Tags ein. Mit Ihrer Einwilligung aktivieren wir Google Ads und Google Tag Manager für Reichweitenmessung und Kampagnenoptimierung. Sie können Ihre Entscheidung jederzeit über das Cookie-Banner ändern."
+          ]
+        },
+        {
+          "title": "9. Google Ads / Google Tag",
+          "body": [
+            "Wenn Sie den Cookies zustimmen, kann Google Ads (Tag AW-18382054204) begrenzte Informationen empfangen (besuchte Seiten, Conversion-Ereignisse), um die Kampagnenwirksamkeit zu bewerten. Es werden keine sensiblen personenbezogenen Daten übermittelt."
+          ]
+        },
+        {
+          "title": "10. Sicherheit",
+          "body": [
+            "Wir implementieren technische und organisatorische Maßnahmen zum Schutz Ihrer Daten: verschlüsselte Verbindungen (HTTPS), eingeschränkte Zugriffe, gesicherte Datenbank."
           ]
         }
       ]
@@ -541,5 +583,30 @@
     "terms": "Teilnahmebedingungen",
     "privacy": "Datenschutzerklärung",
     "imprint": "Impressum"
+  },
+  "adsLanding": {
+    "title": "Vermittlungsplattform für Spender und Menschen mit Unterstützungsbedarf",
+    "subtitle": "Stellen Sie Ihr Projekt oder Ihre Situation vor. HilfeNetz prüft Ihre Angaben und vermittelt eine mögliche Verbindung zu interessierten Spendern. Die Entscheidung über eine Unterstützung liegt ausschließlich beim Spender.",
+    "cta": "Jetzt Anfrage einreichen",
+    "ctaSecondary": "So funktioniert es",
+    "statementTitle": "Keine Garantie, keine Verwaltung von Geldern",
+    "statementItems": [
+      "HilfeNetz sammelt keine Spenden und überweist keine Gelder.",
+      "HilfeNetz entscheidet nicht über die Vergabe einer Unterstützung.",
+      "Das Einreichen einer Anfrage ist kostenlos.",
+      "Der Spender entscheidet eigenständig, ob er auf eine Anfrage reagiert."
+    ],
+    "howItWorksTitle": "So funktioniert es",
+    "howItWorksDesc": "Ein transparenter Ablauf in 5 Schritten.",
+    "trustTitle": "Ein klarer und vorsichtiger Service",
+    "trustItems": [
+      "Keine Gebühren für die Einreichung einer Anfrage",
+      "Keine Bankdaten erforderlich",
+      "Meldung verdächtiger Angebote",
+      "Vermittlungsplattform ohne Garantie auf Finanzierung"
+    ],
+    "legalNotice": "HilfeNetz ist eine Vermittlungsplattform. Sie garantiert weder den Erhalt einer Spende noch die Bewilligung eines Darlehens. Lesen Sie die <a href=\"/conditions\" class=\"text-trust hover:underline\">Teilnahmebedingungen</a> und die <a href=\"/confidentialite\" class=\"text-trust hover:underline\">Datenschutzerklärung</a>.",
+    "finalCtaTitle": "Stellen Sie Ihr Projekt jetzt vor",
+    "finalCtaDesc": "Reichen Sie eine kostenlose und unverbindliche Anfrage ein."
   }
 }

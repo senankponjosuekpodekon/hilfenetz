@@ -4,31 +4,25 @@ import { useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatAmount } from "@/lib/utils";
 
 type Offer = {
   id: string;
   title: string;
   donorName: string | null;
-  amount: number;
-  currency: string;
   donorMessage: string | null;
 };
 
 export function HeroOffersSlider({
   offers,
   labels,
-  locale,
 }: {
   offers: Offer[];
-  locale: string;
   labels: {
     offerBadge: string;
     offerSubtitle: string;
     verified: string;
     donor: string;
     anonymous: string;
-    amountProposed: string;
     submitRequest: string;
     decisionDonor: string;
     noOffers: string;
@@ -85,11 +79,7 @@ export function HeroOffersSlider({
               <p className="mt-1.5 text-sm text-muted">
                 {labels.donor} : {o.donorName || labels.anonymous}
               </p>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">{labels.amountProposed}</p>
-              <p className="mt-1 font-display text-4xl font-semibold tracking-tight text-ink">
-                {formatAmount(o.amount, o.currency, locale)}
-              </p>
-              <div className="mt-4 rounded-xl border-l-4 border-violet bg-violet-soft/60 px-4 py-3">
+              <div className="mt-5 rounded-xl border-l-4 border-violet bg-violet-soft/60 px-4 py-3">
                 <p className="text-sm italic leading-relaxed text-muted line-clamp-3">{o.donorMessage || o.title}</p>
               </div>
               <Button href={`/demande?offre=${o.id}`} className="mt-6 w-full whitespace-normal text-center" arrow>

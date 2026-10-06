@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "@/i18n/navigation";
+import { useRouter, Link } from "@/i18n/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -249,6 +249,20 @@ export function RequestForm({ offerId, offerTitle }: { offerId?: string; offerTi
               ) : null}
             </div>
           </div>
+          <p className="mt-6 text-sm leading-relaxed text-muted">
+            {t.rich("s3.legalNotice", {
+              link: (chunks) => (
+                <Link href="/conditions" className="text-trust hover:underline">
+                  {chunks}
+                </Link>
+              ),
+              privacy: (chunks) => (
+                <Link href="/confidentialite" className="text-trust hover:underline">
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </p>
         </fieldset>
       ) : null}
 

@@ -30,8 +30,6 @@ async function Hero() {
     id: o.id,
     title: o.title,
     donorName: o.donorName,
-    amount: Number(o.amount),
-    currency: o.currency,
     donorMessage: o.donorMessage,
   }));
   return (
@@ -103,14 +101,12 @@ async function Hero() {
 
           <HeroOffersSlider
             offers={offers}
-            locale={locale}
             labels={{
               offerBadge: tc("offerBadge"),
               offerSubtitle: tc("offerSubtitle"),
               verified: t("cardVerified"),
               donor: tc("donor"),
               anonymous: tc("anonymous"),
-              amountProposed: tc("amountProposed"),
               submitRequest: tc("submitRequest"),
               decisionDonor: tc("decisionDonor"),
               noOffers: tc("noOffersTitle"),
