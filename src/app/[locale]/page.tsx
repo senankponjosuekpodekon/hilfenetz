@@ -80,17 +80,17 @@ async function Hero() {
 
         {/* Composition produit — carrousel d'offres + éléments flottants */}
         <div className="relative mx-auto w-full max-w-md">
-          <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card md:flex">
+          <div className="anim-float absolute -left-4 -top-6 z-10 hidden items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-xs font-semibold text-ink shadow-card lg:flex">
             <span className="flex size-6 items-center justify-center rounded-full bg-positive-soft">
               <Check className="size-3.5 text-positive" aria-hidden />
             </span>
             {t("cardReviewed")}
           </div>
-          <div className="anim-float absolute -bottom-5 -right-3 z-10 hidden items-center gap-2 rounded-xl border border-violet/20 bg-violet-soft px-4 py-2.5 text-xs font-semibold text-violet shadow-card md:flex" style={{ animationDelay: "1.2s" }}>
+          <div className="anim-float absolute -bottom-5 -right-3 z-10 hidden items-center gap-2 rounded-xl border border-violet/20 bg-violet-soft px-4 py-2.5 text-xs font-semibold text-violet shadow-card lg:flex" style={{ animationDelay: "1.2s" }}>
             <HeartHandshake className="size-4" aria-hidden />
             {t("cardConnection")}
           </div>
-          <div className="absolute -right-8 -top-10 hidden size-20 rotate-12 rounded-2xl bg-amber shadow-card md:block" aria-hidden>
+          <div className="absolute -right-8 -top-10 hidden size-20 rotate-12 rounded-2xl bg-amber shadow-card lg:block" aria-hidden>
             <Euro className="absolute inset-0 m-auto size-8 text-navy" aria-hidden />
           </div>
 
