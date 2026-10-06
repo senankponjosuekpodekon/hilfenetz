@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/ui/badge";
 import { StatusSelect } from "@/components/admin/status-select";
 import { SeedOffersButton } from "@/components/admin/seed-offers-button";
-import { setOfferStatus } from "@/features/admin/actions";
+import { DeleteButton } from "@/components/admin/delete-button";
+import { setOfferStatus, deleteOffer } from "@/features/admin/actions";
 import { CATEGORY_LABELS, LOCALE_LABELS, OFFER_STATUS_LABELS, formatAmount, formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -62,9 +63,12 @@ export default async function AdminOffersPage() {
                   </td>
                   <td className="px-5 py-3 text-muted">{formatDate(o.publishedAt)}</td>
                   <td className="px-5 py-3 text-right">
-                    <Link href={`/admin/offres/${o.id}`} className="text-sm font-medium text-trust hover:underline">
-                      Modifier
-                    </Link>
+                    <div className="flex items-center justify-end gap-2">
+                      <Link href={`/admin/offres/${o.id}`} className="text-sm font-medium text-trust hover:underline">
+                        Modifier
+                      </Link>
+                      <DeleteButton id={o.id} action={deleteOffer} confirmLabel="Supprimer cette offre ?" />
+                    </div>
                   </td>
                 </tr>
               ))

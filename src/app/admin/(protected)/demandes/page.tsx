@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { StatusBadge } from "@/components/ui/badge";
+import { DeleteButton } from "@/components/admin/delete-button";
+import { deleteSupportRequest } from "@/features/admin/actions";
 import { REQUEST_STATUS_LABELS, formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -24,6 +26,7 @@ export default async function AdminRequestsPage() {
               <th className="px-5 py-3">Offre liée</th>
               <th className="px-5 py-3">Statut</th>
               <th className="px-5 py-3">Date</th>
+              <th className="px-5 py-3"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
@@ -46,6 +49,9 @@ export default async function AdminRequestsPage() {
                     <StatusBadge status={r.status} label={REQUEST_STATUS_LABELS[r.status] ?? r.status} />
                   </td>
                   <td className="px-5 py-3 text-muted">{formatDate(r.createdAt)}</td>
+                  <td className="px-5 py-3 text-right">
+                    <DeleteButton id={r.id} action={deleteSupportRequest} confirmLabel={`Supprimer la demande ${r.reference} ?`} />
+                  </td>
                 </tr>
               ))
             )}

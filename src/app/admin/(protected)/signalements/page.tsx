@@ -1,7 +1,8 @@
 import { db } from "@/lib/db";
 import { StatusBadge } from "@/components/ui/badge";
 import { StatusSelect } from "@/components/admin/status-select";
-import { setReportStatus } from "@/features/admin/actions";
+import { DeleteButton } from "@/components/admin/delete-button";
+import { setReportStatus, deleteReport } from "@/features/admin/actions";
 import { REPORT_REASON_LABELS, REPORT_STATUS_LABELS, formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -28,6 +29,7 @@ export default async function AdminReportsPage() {
                 <div className="flex items-center gap-2">
                   <StatusBadge status={r.status} label={REPORT_STATUS_LABELS[r.status] ?? r.status} />
                   <StatusSelect id={r.id} value={r.status} options={REPORT_STATUS_LABELS} action={setReportStatus} />
+                  <DeleteButton id={r.id} action={deleteReport} confirmLabel="Supprimer ce signalement ?" />
                 </div>
               </div>
               <p className="mt-3 text-sm">

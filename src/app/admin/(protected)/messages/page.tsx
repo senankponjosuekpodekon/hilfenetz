@@ -1,4 +1,6 @@
 import { db } from "@/lib/db";
+import { DeleteButton } from "@/components/admin/delete-button";
+import { deleteContactMessage } from "@/features/admin/actions";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +21,10 @@ export default async function AdminMessagesPage() {
             <div key={m.id} className="rounded-2xl border border-border bg-surface p-5">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="font-semibold text-navy">{m.subject}</p>
-                <p className="text-xs text-muted">{formatDate(m.createdAt)}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-xs text-muted">{formatDate(m.createdAt)}</p>
+                  <DeleteButton id={m.id} action={deleteContactMessage} confirmLabel="Supprimer ce message ?" />
+                </div>
               </div>
               <p className="mt-0.5 text-sm text-muted">
                 {m.name} · {m.email}

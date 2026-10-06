@@ -164,3 +164,28 @@ export async function deleteFaqItem(id: string): Promise<void> {
   revalidatePath("/[locale]", "page");
   revalidatePath("/admin/faq");
 }
+
+export async function deleteOffer(id: string): Promise<void> {
+  await requireAdmin();
+  await db.donationOffer.delete({ where: { id } });
+  revalidatePath("/admin/offres");
+  revalidatePath("/[locale]/offres", "page");
+}
+
+export async function deleteSupportRequest(id: string): Promise<void> {
+  await requireAdmin();
+  await db.supportRequest.delete({ where: { id } });
+  revalidatePath("/admin/demandes");
+}
+
+export async function deleteReport(id: string): Promise<void> {
+  await requireAdmin();
+  await db.report.delete({ where: { id } });
+  revalidatePath("/admin/signalements");
+}
+
+export async function deleteContactMessage(id: string): Promise<void> {
+  await requireAdmin();
+  await db.contactMessage.delete({ where: { id } });
+  revalidatePath("/admin/messages");
+}

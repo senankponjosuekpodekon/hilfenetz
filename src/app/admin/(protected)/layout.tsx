@@ -1,25 +1,15 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import { LayoutDashboard, Gift, Inbox, Flag, Mail, LogOut, CircleHelp, Settings } from "lucide-react";
+import Link from "next/link";import { LogOut } from "lucide-react";
 import { getSession } from "@/lib/auth";
 import { Logo } from "@/components/layout/logo";
+import { AdminNav } from "@/components/admin/admin-nav";
 import { logout } from "@/features/admin/actions";
 
 export const metadata: Metadata = {
   title: "Administration",
   robots: { index: false },
 };
-
-const NAV = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/offres", label: "Offres", icon: Gift },
-  { href: "/admin/demandes", label: "Demandes", icon: Inbox },
-  { href: "/admin/signalements", label: "Signalements", icon: Flag },
-  { href: "/admin/messages", label: "Messages", icon: Mail },
-  { href: "/admin/faq", label: "FAQ", icon: CircleHelp },
-  { href: "/admin/parametres", label: "Paramètres", icon: Settings },
-];
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await getSession();
@@ -32,16 +22,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <Logo />
         </div>
         <nav className="flex-1 space-y-1 p-4" aria-label="Navigation admin">
-          {NAV.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex items-center gap-3 rounded-[10px] px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-background hover:text-navy"
-            >
-              <Icon className="size-4" aria-hidden />
-              {label}
-            </Link>
-          ))}
+          <AdminNav />
         </nav>
         <div className="border-t border-border p-4">
           <p className="mb-3 truncate px-3 text-xs text-muted">{session.email}</p>
@@ -60,16 +41,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Topbar mobile */}
         <div className="flex h-14 items-center gap-2 overflow-x-auto border-b border-border bg-surface px-4 lg:hidden">
-          {NAV.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex shrink-0 items-center gap-2 rounded-[10px] px-3 py-2 text-sm font-medium text-muted hover:text-navy"
-            >
-              <Icon className="size-4" aria-hidden />
-              {label}
-            </Link>
-          ))}
+          <AdminNav mobile />
           <form action={logout} className="ml-auto shrink-0">
             <button type="submit" className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-danger">
               <LogOut className="size-4" aria-hidden />
