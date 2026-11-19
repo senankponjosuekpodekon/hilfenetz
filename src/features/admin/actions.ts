@@ -9,7 +9,7 @@ import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { createSession, destroySession, requireAdmin, verifyPassword } from "@/lib/auth";
 import { offerSchema, OFFER_LOCALES } from "@/lib/validation";
 import { DEMO_OFFERS } from "@/lib/demo-offers";
-import { removeImageFile, saveImageFile } from "@/lib/uploads";
+import { isValidImageFile, removeImageFile, saveImageFile } from "@/lib/uploads";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -61,11 +61,21 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
   const id = String(formData.get("id") ?? "");
 
   const donorPhoto = formData.get("donorPhoto");
+  const invalidPhoto = donorPhoto instanceof File && donorPhoto.size > 0 && !isValidImageFile(donorPhoto);
+  if (invalidPhoto) {
+    return { status: "error", errors: { donorPhoto: ["Image invalide (JPEG, PNG, WebP ou AVIF, 5 Mo max)."] } };
+  }
+
+  const images = formData.getAll("images").filter((f): f is File => f instanceof File && f.size > 0);
+  if (images.some((f) => !isValidImageFile(f))) {
+    return { status: "error", errors: { images: ["Chaque image doit être en JPEG, PNG, WebP ou AVIF, 5 Mo max."] } };
+  }
+
   let donorPhotoUrl: string | undefined;
   if (donorPhoto instanceof File && donorPhoto.size > 0) {
     const saved = await saveImageFile(donorPhoto);
     if (!saved) {
-      return { status: "error", errors: { donorPhoto: ["Image invalide (JPEG, PNG, WebP ou AVIF, 5 Mo max)."] } };
+      return { status: "error", errors: { donorPhoto: ["Impossible d'enregistrer la photo."] } };
     }
     donorPhotoUrl = saved;
   }
@@ -77,22 +87,29 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
   };
 
   let offerId = id;
+  let previousPhotoUrl: string | null = null;
   if (id) {
+    const existing = await db.donationOffer.findUnique({ where: { id }, select: { donorPhotoUrl: true } });
+    previousPhotoUrl = existing?.donorPhotoUrl ?? null;
     await db.donationOffer.update({ where: { id }, data });
   } else {
     const created = await db.donationOffer.create({ data });
     offerId = created.id;
   }
 
-  const images = formData.getAll("images").filter((f): f is File => f instanceof File && f.size > 0);
+  if (donorPhotoUrl && previousPhotoUrl && previousPhotoUrl !== donorPhotoUrl) {
+    await removeImageFile(previousPhotoUrl);
+  }
+
   if (images.length > 0) {
     const maxPosition = await db.offerImage.aggregate({ where: { offerId }, _max: { position: true } });
     let position = (maxPosition._max.position ?? -1) + 1;
     for (const file of images.slice(0, 10)) {
       const url = await saveImageFile(file);
-      if (url) {
-        await db.offerImage.create({ data: { offerId, url, position: position++ } });
+      if (!url) {
+        return { status: "error", errors: { images: ["Impossible d'enregistrer une image. L'offre a été enregistrée."] } };
       }
+      await db.offerImage.create({ data: { offerId, url, position: position++ } });
     }
   }
 
@@ -205,7 +222,11 @@ export async function deleteFaqItem(id: string): Promise<void> {
 
 export async function deleteOffer(id: string): Promise<void> {
   await requireAdmin();
-  await db.donationOffer.delete({ where: { id } });
+  const offer = await db.donationOffer.delete({ where: { id }, include: { images: true } });
+  if (offer.donorPhotoUrl) await removeImageFile(offer.donorPhotoUrl);
+  for (const image of offer.images) {
+    await removeImageFile(image.url);
+  }
   revalidatePath("/admin/offres");
   revalidatePath("/[locale]/offres", "page");
 }

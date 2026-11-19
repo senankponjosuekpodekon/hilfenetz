@@ -10,7 +10,11 @@ const ALLOWED_TYPES: Record<string, string> = {
   "image/avif": ".avif",
 };
 
-const uploadDir = path.join(process.cwd(), "public", "uploads");
+const uploadDir = path.join(process.cwd(), "uploads");
+
+export function isValidImageFile(file: File): boolean {
+  return file.size > 0 && file.size <= MAX_SIZE && file.type in ALLOWED_TYPES;
+}
 
 export async function saveImageFile(file: File): Promise<string | null> {
   const ext = ALLOWED_TYPES[file.type];
@@ -24,7 +28,7 @@ export async function saveImageFile(file: File): Promise<string | null> {
 export async function removeImageFile(url: string): Promise<void> {
   if (!url.startsWith("/uploads/")) return;
   try {
-    await unlink(path.join(process.cwd(), "public", url));
+    await unlink(path.join(process.cwd(), "uploads", path.basename(url)));
   } catch {
     // fichier déjà absent
   }
