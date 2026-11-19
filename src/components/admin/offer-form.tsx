@@ -1,9 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
-import { saveOffer } from "@/features/admin/actions";
+import { deleteOfferImage, saveOffer } from "@/features/admin/actions";
 import { Field, Input, Textarea, Select } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
+import { DeleteButton } from "@/components/admin/delete-button";
 import { CATEGORY_LABELS, LOCALE_LABELS, OFFER_STATUS_LABELS } from "@/lib/utils";
 
 type OfferData = {
@@ -11,6 +12,10 @@ type OfferData = {
   locale: string;
   title: string;
   donorName: string | null;
+  donorPhotoUrl?: string | null;
+  donorEmail?: string | null;
+  donorPhone?: string | null;
+  images?: { id: string; url: string }[];
   description: string;
   donorMessage: string | null;
   amount: unknown;
@@ -39,6 +44,35 @@ export function OfferForm({ offer }: { offer?: OfferData }) {
       </Field>
       <Field label="Donateur" hint="Nom affiché publiquement. Laissez vide pour « Donateur anonyme ».">
         <Input name="donorName" defaultValue={offer?.donorName ?? ""} placeholder="Ex. : Laurent D." />
+      </Field>
+      <Field label="Photo du donateur" hint="Photo de profil affichée publiquement. JPEG, PNG, WebP ou AVIF, 5 Mo max." error={errors.donorPhoto?.[0]}>
+        {offer?.donorPhotoUrl ? (
+          <img src={offer.donorPhotoUrl} alt="" className="mb-2 size-16 rounded-full object-cover" />
+        ) : null}
+        <Input type="file" name="donorPhoto" accept="image/jpeg,image/png,image/webp,image/avif" error={!!errors.donorPhoto} />
+      </Field>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="E-mail du donateur" hint="Contact privé, visible uniquement dans l'admin." error={errors.donorEmail?.[0]}>
+          <Input type="email" name="donorEmail" defaultValue={offer?.donorEmail ?? ""} placeholder="donateur@exemple.com" error={!!errors.donorEmail} />
+        </Field>
+        <Field label="Téléphone du donateur" hint="Contact privé, visible uniquement dans l'admin." error={errors.donorPhone?.[0]}>
+          <Input type="tel" name="donorPhone" defaultValue={offer?.donorPhone ?? ""} placeholder="+33 6 12 34 56 78" error={!!errors.donorPhone} />
+        </Field>
+      </div>
+      <Field label="Images de l'offre" hint="Jusqu'à 10 images par envoi. JPEG, PNG, WebP ou AVIF, 5 Mo max chacune." error={errors.images?.[0]}>
+        {offer?.images && offer.images.length > 0 ? (
+          <div className="mb-2 flex flex-wrap gap-3">
+            {offer.images.map((img) => (
+              <div key={img.id} className="relative">
+                <img src={img.url} alt="" className="h-20 w-28 rounded-lg border border-border object-cover" />
+                <span className="absolute -right-2 -top-2">
+                  <DeleteButton id={img.id} action={deleteOfferImage} confirmLabel="Supprimer cette image ?" />
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : null}
+        <Input type="file" name="images" accept="image/jpeg,image/png,image/webp,image/avif" multiple error={!!errors.images} />
       </Field>
       <Field label="Description" required error={errors.description?.[0]}>
         <Textarea name="description" defaultValue={offer?.description} error={!!errors.description} rows={5} />

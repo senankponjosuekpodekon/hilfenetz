@@ -53,6 +53,8 @@ export const offerSchema = z.object({
   donorName: z.string().trim().max(120).optional(),
   description: z.string().trim().min(10, "Décrivez l'offre.").max(5000),
   donorMessage: z.string().trim().max(2000).optional(),
+  donorEmail: z.union([z.literal(""), z.string().trim().email("E-mail invalide.").max(200)]).optional(),
+  donorPhone: z.string().trim().max(40).optional(),
   amount: z.coerce.number().positive("Montant invalide.").max(10_000_000),
   currency: z.enum(["EUR", "USD", "CHF", "GBP"]),
   category: z.enum(["SOCIAL", "PROFESSIONAL", "COMMUNITY"]),

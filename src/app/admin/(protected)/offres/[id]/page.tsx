@@ -6,7 +6,10 @@ export const dynamic = "force-dynamic";
 
 export default async function EditOfferPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const offer = await db.donationOffer.findUnique({ where: { id } });
+  const offer = await db.donationOffer.findUnique({
+    where: { id },
+    include: { images: { orderBy: { position: "asc" } } },
+  });
   if (!offer) notFound();
 
   return (

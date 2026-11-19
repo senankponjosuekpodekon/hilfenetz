@@ -9,6 +9,7 @@ import { clientKey, rateLimit } from "@/lib/rate-limit";
 import { createSession, destroySession, requireAdmin, verifyPassword } from "@/lib/auth";
 import { offerSchema, OFFER_LOCALES } from "@/lib/validation";
 import { DEMO_OFFERS } from "@/lib/demo-offers";
+import { removeImageFile, saveImageFile } from "@/lib/uploads";
 
 export type LoginState = { status: "idle" | "error"; message?: string };
 
@@ -44,6 +45,8 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
     donorName: formData.get("donorName") || undefined,
     description: formData.get("description"),
     donorMessage: formData.get("donorMessage") || undefined,
+    donorEmail: formData.get("donorEmail") || undefined,
+    donorPhone: formData.get("donorPhone") || undefined,
     amount: formData.get("amount"),
     currency: formData.get("currency"),
     category: formData.get("category"),
@@ -56,20 +59,55 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
   }
 
   const id = String(formData.get("id") ?? "");
+
+  const donorPhoto = formData.get("donorPhoto");
+  let donorPhotoUrl: string | undefined;
+  if (donorPhoto instanceof File && donorPhoto.size > 0) {
+    const saved = await saveImageFile(donorPhoto);
+    if (!saved) {
+      return { status: "error", errors: { donorPhoto: ["Image invalide (JPEG, PNG, WebP ou AVIF, 5 Mo max)."] } };
+    }
+    donorPhotoUrl = saved;
+  }
+
   const data = {
     ...parsed.data,
+    ...(donorPhotoUrl ? { donorPhotoUrl } : {}),
     publishedAt: parsed.data.status === "PUBLISHED" ? new Date() : null,
   };
 
+  let offerId = id;
   if (id) {
     await db.donationOffer.update({ where: { id }, data });
   } else {
-    await db.donationOffer.create({ data });
+    const created = await db.donationOffer.create({ data });
+    offerId = created.id;
+  }
+
+  const images = formData.getAll("images").filter((f): f is File => f instanceof File && f.size > 0);
+  if (images.length > 0) {
+    const maxPosition = await db.offerImage.aggregate({ where: { offerId }, _max: { position: true } });
+    let position = (maxPosition._max.position ?? -1) + 1;
+    for (const file of images.slice(0, 10)) {
+      const url = await saveImageFile(file);
+      if (url) {
+        await db.offerImage.create({ data: { offerId, url, position: position++ } });
+      }
+    }
   }
 
   revalidatePath("/admin/offres");
   revalidatePath("/[locale]/offres", "page");
+  revalidatePath(`/[locale]/offres/${offerId}`, "page");
   return { status: "success" };
+}
+
+export async function deleteOfferImage(imageId: string): Promise<void> {
+  await requireAdmin();
+  const image = await db.offerImage.delete({ where: { id: imageId } });
+  await removeImageFile(image.url);
+  revalidatePath("/admin/offres");
+  revalidatePath(`/[locale]/offres/${image.offerId}`, "page");
 }
 
 export async function setOfferStatus(id: string, status: OfferStatus): Promise<void> {

@@ -30,7 +30,10 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
   const t = await getTranslations("offerDetail");
   const tc = await getTranslations("common");
   const locale = await getLocale();
-  const offer = await db.donationOffer.findUnique({ where: { id } });
+  const offer = await db.donationOffer.findUnique({
+    where: { id },
+    include: { images: { orderBy: { position: "asc" } } },
+  });
   if (!offer || offer.status !== "PUBLISHED") notFound();
 
   const criteria = [
@@ -54,7 +57,10 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
           <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">{offer.title}</h1>
           <p className="mt-3 text-lg text-muted">{tc("offerSubtitle")}</p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <p className="text-sm text-muted">
+            <p className="flex items-center gap-2 text-sm text-muted">
+              {offer.donorPhotoUrl ? (
+                <img src={offer.donorPhotoUrl} alt="" className="size-8 rounded-full border border-border object-cover" />
+              ) : null}
               {tc("donor")} : <span className="font-medium text-ink">{offer.donorName || tc("anonymous")}</span>
             </p>
             <Badge tone="positive">
@@ -69,6 +75,19 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
             </p>
           </div>
         </div>
+
+        {offer.images.length > 0 ? (
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {offer.images.map((image) => (
+              <img
+                key={image.id}
+                src={image.url}
+                alt={offer.title}
+                className="w-full rounded-[var(--radius-card)] border border-border object-cover"
+              />
+            ))}
+          </div>
+        ) : null}
 
         <p className="mt-8 text-base leading-relaxed text-ink/90">{offer.description}</p>
 

@@ -51,6 +51,11 @@ export default async function AdminOffersPage() {
                     <Link href={`/admin/offres/${o.id}`} className="text-navy hover:text-trust">
                       {o.title}
                     </Link>
+                    {o.donorEmail || o.donorPhone ? (
+                      <p className="mt-0.5 text-xs font-normal text-muted">
+                        {[o.donorEmail, o.donorPhone].filter(Boolean).join(" · ")}
+                      </p>
+                    ) : null}
                   </td>
                   <td className="px-5 py-3 text-muted uppercase">{LOCALE_LABELS[o.locale] ?? o.locale}</td>
                   <td className="px-5 py-3">{formatAmount(Number(o.amount), o.currency, "fr")}</td>
