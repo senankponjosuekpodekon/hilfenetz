@@ -15,6 +15,7 @@ type OfferData = {
   donorPhotoUrl?: string | null;
   donorEmail?: string | null;
   donorPhone?: string | null;
+  donorAddress?: string | null;
   images?: { id: string; url: string }[];
   description: string;
   donorMessage: string | null;
@@ -52,13 +53,16 @@ export function OfferForm({ offer }: { offer?: OfferData }) {
         <Input type="file" name="donorPhoto" accept="image/jpeg,image/png,image/webp,image/avif" error={!!errors.donorPhoto} />
       </Field>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="E-mail du donateur" hint="Contact privé, visible uniquement dans l'admin." error={errors.donorEmail?.[0]}>
+        <Field label="E-mail du donateur" hint="Affiché publiquement sur l'offre." error={errors.donorEmail?.[0]}>
           <Input type="email" name="donorEmail" defaultValue={offer?.donorEmail ?? ""} placeholder="donateur@exemple.com" error={!!errors.donorEmail} />
         </Field>
-        <Field label="Téléphone du donateur" hint="Contact privé, visible uniquement dans l'admin." error={errors.donorPhone?.[0]}>
+        <Field label="Téléphone du donateur" hint="Optionnel. Affiché publiquement sur l'offre." error={errors.donorPhone?.[0]}>
           <Input type="tel" name="donorPhone" defaultValue={offer?.donorPhone ?? ""} placeholder="+33 6 12 34 56 78" error={!!errors.donorPhone} />
         </Field>
       </div>
+      <Field label="Adresse du donateur" hint="Adresse postale affichée publiquement sur l'offre." error={errors.donorAddress?.[0]}>
+        <Input name="donorAddress" defaultValue={offer?.donorAddress ?? ""} placeholder="Ex. : 12 rue des Lilas, 75011 Paris" error={!!errors.donorAddress} />
+      </Field>
       <Field label="Images de l'offre" hint="Jusqu'à 10 images par envoi. JPEG, PNG, WebP ou AVIF, 5 Mo max chacune." error={errors.images?.[0]}>
         {offer?.images && offer.images.length > 0 ? (
           <div className="mb-2 flex flex-wrap gap-3">

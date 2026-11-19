@@ -41,7 +41,11 @@
       "description": "Nous utilisons des cookies pour mesurer l'audience et améliorer le site. Vous pouvez accepter ou refuser.",
       "accept": "Accepter",
       "reject": "Refuser"
-    }
+    },
+    "donorContact": "Contact du donateur",
+    "donorEmail": "E-mail",
+    "donorPhone": "Téléphone",
+    "donorAddress": "Adresse"
   },
   "nav": {
     "home": "Accueil",

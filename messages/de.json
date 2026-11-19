@@ -41,7 +41,11 @@
       "description": "Wir verwenden Cookies zur Reichweitenmessung und zur Verbesserung der Website. Sie können zustimmen oder ablehnen.",
       "accept": "Akzeptieren",
       "reject": "Ablehnen"
-    }
+    },
+    "donorContact": "Kontakt zum Spender",
+    "donorEmail": "E-Mail",
+    "donorPhone": "Telefon",
+    "donorAddress": "Adresse"
   },
   "nav": {
     "home": "Startseite",

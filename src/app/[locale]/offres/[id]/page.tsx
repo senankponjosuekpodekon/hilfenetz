@@ -63,6 +63,14 @@ export default async function OfferDetailPage({ params }: { params: Promise<{ id
               ) : null}
               {tc("donor")} : <span className="font-medium text-ink">{offer.donorName || tc("anonymous")}</span>
             </p>
+            {offer.donorEmail || offer.donorPhone || offer.donorAddress ? (
+              <div className="text-sm text-muted">
+                <p className="font-medium text-ink">{tc("donorContact")}</p>
+                {offer.donorEmail ? <p>{tc("donorEmail")} : {offer.donorEmail}</p> : null}
+                {offer.donorPhone ? <p>{tc("donorPhone")} : {offer.donorPhone}</p> : null}
+                {offer.donorAddress ? <p>{tc("donorAddress")} : {offer.donorAddress}</p> : null}
+              </div>
+            ) : null}
             <Badge tone="positive">
               <Check className="size-3.5" aria-hidden />
               {t("available")}

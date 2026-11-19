@@ -47,6 +47,7 @@ export async function saveOffer(_prev: unknown, formData: FormData): Promise<{ s
     donorMessage: formData.get("donorMessage") || undefined,
     donorEmail: formData.get("donorEmail") || undefined,
     donorPhone: formData.get("donorPhone") || undefined,
+    donorAddress: formData.get("donorAddress") || undefined,
     amount: formData.get("amount"),
     currency: formData.get("currency"),
     category: formData.get("category"),
